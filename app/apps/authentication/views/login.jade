@@ -1,0 +1,15 @@
+div.span6.offset3
+  h2
+    | Login
+  form(action='/sessions', method='post')
+    label
+      | Username
+      input(type='text', name='user')
+    label
+      | Password
+      input(type='password', name='password')
+    input(type='submit', value='Submit').btn.btn-large.btn-primary
+  p
+   | New user? 
+   a(href="#")
+     | Sign up now!

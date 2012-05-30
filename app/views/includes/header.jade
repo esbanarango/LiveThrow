@@ -1,14 +1,19 @@
 div.navbar.navbar-fixed-top
-                div.navbar-inner 
-                    div.container
-                        a(data-toggle="collapse", data-target=".nav-collapse").btn.btn-navbar
-                            span.icon-bar
-                            span.icon-bar
-                            span.icon-bar
-                        a(href='#').brand Live Throw
-                        div.nav-collapse
-                            ul.nav 
-                                li.active 
-                                    a(href='#') Home 
-                                li 
-                                    a(href='#') Contact
+  div.navbar-inner
+    div.container
+      a(data-toggle="collapse", data-target=".nav-collapse").btn.btn-navbar
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a(href='#').brand Live Throw
+      div.nav-collapse
+        ul.nav
+          li
+            a(href='/') Home 
+          li 
+            a(href='#') Contact
+          li 
+            a(href='#') About
+        ul.nav.pull-right
+          li 
+            a(href='/login') Login

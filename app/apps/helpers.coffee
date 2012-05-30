@@ -1,7 +1,8 @@
 
 helpers = (app) ->
   app.dynamicHelpers
-
+    flash: (req, res) ->
+      req.flash()
   app.helpers
     # Returns the 'expected' state and 'on' if it matches 'actual'.
     #

@@ -1,19 +1,31 @@
 !!! 
-html 
-    head 
-        title= title 
-        link(rel="stylesheet", href="/lib/bootstrap/css/bootstrap.min.css")
-        link(rel='stylesheet', href='/stylesheets/custom.css')
-        link(rel="stylesheet", href="/lib/bootstrap/css/bootstrap-responsive.min.css")
-        meta( name="viewport", content="width=device-width, initial-scale=1.0")
-        != js('application')
-        script(src='/lib/bootstrap/js/bootstrap.min.js')
-        //- Hack to keep all links in same browser when in iOS app mode.
-        script(type="text/javascript")
-            (function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")        
-        body 
-            include includes/header            
-            div.container!= body
-            footer
-                p &copy; :)
+html
+  head
+    title= "Live Throw - "+ title 
+    link(rel="stylesheet", href="/lib/bootstrap/css/bootstrap.min.css")
+    link(rel='stylesheet', href='/stylesheets/custom.css')
+    link(rel="stylesheet", href="/lib/bootstrap/css/bootstrap-responsive.min.css")
+    meta( name="viewport", content="width=device-width, initial-scale=1.0")
+    != js('application')
+    script(src='/lib/bootstrap/js/bootstrap.min.js')
+    //- Hack to keep all links in same browser when in iOS app mode.
+    script(type="text/javascript")
+      (function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")        
+    //if lt IE 9
+      script( src="http://html5shim.googlecode.com/svn/trunk/html5.js")
+    body 
+      include includes/header            
+      div.container
+
+        - var flashTypes = ['info', 'error', 'success']
+        each flashType in flashTypes
+          if flash[flashType]
+            div(class="alert alert-"+flashType)
+              a(data-dismiss="alert").close
+                | ×
+              = flash[flashType]
+              
+        div.row
+          div.span12!= body
+        include includes/footer   
         script(src='/socket.io/socket.io.js')        
