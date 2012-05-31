@@ -49,6 +49,27 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
+// Database
+/*
+var mysql = require('mysql');
+var DATABASE = 'db_live_throw';
+var client = mysql.createClient({
+  user: 'root'
+});
+client.query('USE '+DATABASE);
+
+client.query(
+  'SELECT * FROM USER',
+  function (err, results, fields) {
+    if (err) {
+      throw err;
+    }
+
+    console.log(results);
+    client.end();
+  }
+);*/
+
 // Global helpers
 require('./apps/helpers')(app);
 
