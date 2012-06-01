@@ -1,0 +1,76 @@
+div.span9.offset2
+  legend
+    | Sign up
+    p 
+      | In order to be able to use all the awesome features you will need an account, it's so easy.!
+  fieldset
+    form(action='/user/new', method='post', id="registerHere").form-horizontal
+      div.control-group
+        label.control-label
+          | Email
+        div.controls
+          input(type='email', name="email", id="email", data-content="What’s your email address?", data-original-title="Email").input-xlarge
+      div.control-group
+        label.control-label
+          | Password
+        div.controls
+          input(type='password', name='password', id="password", data-content="6 characters or more! Be tricky", data-original-title="Password" ).input-xlarge
+      div.control-group
+        label.control-label
+          | Confirm Password
+        div.controls
+          input(type='password', name='password_confirmation', id="password_confirmation", data-content="Re-enter your password for confirmation.", data-original-title="Re-Password" ).input-xlarge
+      div.control-group
+        label.control-label
+          | Gender
+        div.controls
+          label.radio
+            | Male
+            input(type='radio', name='gender', checked)
+          label.radio
+            | Female
+            input(type='radio', name='gender')
+      div.form-actions
+        button(type='submit').btn.btn-success
+          | Create My Account
+
+script(type="text/javascript")
+  $("#registerHere").validate({
+        rules:{
+          email:{
+              required:true,
+              email: true
+            },
+          password:{
+            required:true,
+            minlength: 6
+          },
+          password_confirmation:{
+            required:true,
+            equalTo: "#password"
+          }
+        },
+        messages:{
+          email:{
+            required:"Enter your email address",
+            email:"Enter valid email address"
+          },
+          password:{
+            required:"Enter your password",
+            minlength:"Password must be minimum 6 characters"
+          },
+          password_confirmation:{
+            required:"Enter confirm password",
+            equalTo:"Password and Confirm Password must match"
+          }
+        },
+        errorClass: "help-inline",
+        errorElement: "span",
+        highlight:function(element, errorClass, validClass) {
+          $(element).parents('.control-group').addClass('error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+          $(element).parents('.control-group').removeClass('error');
+          $(element).parents('.control-group').addClass('success');
+        }
+      });
