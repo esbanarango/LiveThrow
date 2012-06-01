@@ -3,7 +3,7 @@
 
 Live Throw is the final project for the _Special Topics in Telematics_ course; the idea behind this project is a open-source web app where you can keep track of statistics, real-time updates/score and community collaboration, all around Ultimate Frisbee games.
 
-All written in Node.js with the fantastic and beautiful _little language_ CoffeeScript.
+All written in [Node.js](http://nodejs.org/) with the fantastic and beautiful _little language_ [CoffeeScript](http://coffeescript.org/).
 
 ###Context
 
