@@ -1,41 +1,41 @@
 _              = require 'underscore'
 
 class Team
-  # The Redis key that will store all Pie objects as a hash.
+  # The Redis key that will store all Team objects as a hash.
   @key: ->
-    "Pie:#{process.env.NODE_ENV}"
+    "Teams"
   @states: ['inactive', 'making', 'ready']
-  # Fetch all Pie objects from the database.
-  # callback: (err, pies)
+  # Fetch all Team objects from the database.
+  # callback: (err, teams)
   @all: (callback) ->
-    redis.hgetall Pie.key(), (err, objects) ->
-      pies = []
+    redis.hgetall Team.key(), (err, objects) ->
+      teams = []
       for key, value of objects
-        pie = new Pie JSON.parse(value)
-        pies.push pie
-      callback null, pies
+        team = new Team JSON.parse(value)
+        teams.push team
+      callback null, teams
   @active: (callback) ->
-    Pie.all (err, pies) ->
-      activePies = []
-      activePies.push pie for pie in pies when pie.state isnt 'inactive'
-      readyPies  = _.filter activePies, (pie) -> pie.state is 'ready'
-      makingPies = _.filter activePies, (pie) -> pie.state is 'making'
-      readyPies  = _.sortBy readyPies,  (pie) -> -pie.stateUpdatedAt
-      makingPies = _.sortBy makingPies, (pie) -> -pie.stateUpdatedAt
-      sortedPies = _.flatten [makingPies, readyPies]
-      callback null, sortedPies
+    Team.all (err, teams) ->
+      activeTeams = []
+      activeTeams.push team for team in teams when team.state isnt 'inactive'
+      readyTeams  = _.filter activeTeams, (team) -> team.state is 'ready'
+      makingTeams = _.filter activeTeams, (team) -> team.state is 'making'
+      readyTeams  = _.sortBy readyTeams,  (team) -> -team.stateUpdatedAt
+      makingTeams = _.sortBy makingTeams, (team) -> -team.stateUpdatedAt
+      sortedTeams = _.flatten [makingTeams, readyTeams]
+      callback null, sortedTeams
 
-  # Retrive a single Pie by Id.
+  # Retrive a single Team by Id.
   #
-  # id: The unique id of the Pie, such as 'Key-Lime'.
-  # callback: (err, pie)
+  # id: The unique id of the Team, such as 'Key-Lime'.
+  # callback: (err, team)
   @getById: (id, callback) ->
-    redis.hget Pie.key(), id, (err, json) ->
+    redis.hget Team.key(), id, (err, json) ->
       if json is null
-        callback new Error("Pie '#{id}' could not be found.")
+        callback new Error("Team '#{id}' could not be found.")
         return
-      pie = new Pie JSON.parse(json)
-      callback null, pie
+      team = new Team JSON.parse(json)
+      callback null, team
   constructor: (attributes) ->
     @[key] = value for key,value of attributes
     @setDefaults()
@@ -50,7 +50,7 @@ class Team
       @id = @name.replace /\s/g, '-'
   # Adds a method for each state that can be called to change the @state to that state.
   defineStateMachine: ->
-    for state in Pie.states
+    for state in Team.states
       do (state) =>
         @[state] = (callback) ->
           @state = state
@@ -60,13 +60,13 @@ class Team
   # Persists the current object to Redis. The key is the Id.
   # All other attributes are saved as a sub-hash in JSON format.
   #
-  # callback: (err, pie)
+  # callback: (err, team)
   save: (callback) ->
     @generateId()
-    redis.hset Pie.key(), @id, JSON.stringify(@), (err, responseCode) =>
+    redis.hset Team.key(), @id, JSON.stringify(@), (err, responseCode) =>
       callback null, @
   destroy: (callback) ->
-    redis.hdel Pie.key(), @id, (err) ->
+    redis.hdel Team.key(), @id, (err) ->
       callback err if callback
 
-module.exports = Pie
+module.exports = Team

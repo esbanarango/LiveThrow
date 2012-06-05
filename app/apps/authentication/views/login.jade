@@ -1,22 +1,23 @@
-div.span6.offset3
+div.span5.offset3.bordersform
   legend
     | Login
   fieldset
-    form(action='/sessions', method='post').form-horizontal
+    form(action='/sessions', method='post').form-inline
       div.control-group
         label.control-label
           | Email
         div.controls
-          input(type='email', name='user', required="required").input-xlarge  
+          input(type='email', name='email', required="required").input-xlarge  
       div.control-group
         label.control-label
           | Password
         div.controls
-          input(type='password', name='password').input-xlarge
+          input(type='password', name='password', required="required").input-xlarge
       div.form-actions
-        input(type='submit', value='Submit').btn.btn-large.btn-primary
+        button(type='submit').btn.btn-large.btn-primary
+          | Submit
     label.control-label
-      | New user?
+      | New user? 
       a(href="/signup")
         | Sign up now!
 

@@ -1,10 +1,15 @@
-div.span9.offset2
+div.span8.offset2.bordersform
   legend
     | Sign up
-    p 
+    p(style="font-size:15px")
       | In order to be able to use all the awesome features you will need an account, it's so easy.!
   fieldset
     form(action='/user/new', method='post', id="registerHere").form-horizontal
+      div.control-group
+        label.control-label
+          | NickName ;)
+        div.controls
+          input(type='text', name="username", id="username", data-content="What’s your nickname?", data-original-title="Username").input-xlarge
       div.control-group
         label.control-label
           | Email
@@ -26,10 +31,10 @@ div.span9.offset2
         div.controls
           label.radio
             | Male
-            input(type='radio', name='gender', checked)
+            input(type='radio', value="m", name='gender', checked)
           label.radio
             | Female
-            input(type='radio', name='gender')
+            input(type='radio', value="f", name='gender')
       div.form-actions
         button(type='submit').btn.btn-success
           | Create My Account
@@ -37,6 +42,9 @@ div.span9.offset2
 script(type="text/javascript")
   $("#registerHere").validate({
         rules:{
+          username:{
+              required:true
+            },
           email:{
               required:true,
               email: true
@@ -51,6 +59,9 @@ script(type="text/javascript")
           }
         },
         messages:{
+          email:{
+            required:"Let us know you nickname plz."
+          },
           email:{
             required:"Enter your email address",
             email:"Enter valid email address"

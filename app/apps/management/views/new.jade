@@ -1,0 +1,35 @@
+div.span6.offset3.bordersform
+  legend
+    | New team
+  fieldset
+    form(action='/user/new', method='post', id="registerHere").form-horizontal
+      div.control-group
+        label.control-label
+          | Name
+        div.controls
+          input(type='text', name="username", id="username", data-content="What’s your nickname?", data-original-title="Username").input-medium
+      div.control-group
+        label.control-label
+          | Gender
+        div.controls
+          label.radio
+            | Male
+            input(type='radio', value="m", name='gender', checked)
+          label.radio
+            | Female
+            input(type='radio', value="f", name='gender')
+      div.form-actions
+        button(type='submit').btn.btn-success
+          | Create New Team
+
+div(style="display:block; width:450px;")
+  h2 
+    | My Teams
+  table(class="table table-striped table-bordered table-condensed")
+    thead
+      th
+        | Name
+    tbody
+      tr
+        td
+          | Kie

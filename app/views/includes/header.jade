@@ -11,9 +11,38 @@ div.navbar.navbar-fixed-top
           li
             a(href='/') Home 
           li 
-            a(href='#') Contact
-          li 
             a(href='#') About
         ul.nav.pull-right
-          li 
-            a(href='/login') Login
+          li.divider-vertical
+          - if (currentUserName)
+            li.dropdown
+              a(href='#',data-toggle="dropdown").dropdown-toggle
+                i(style="opacity:0.6;").icon-user.icon-white  
+                #{" "+currentUserName}
+              ul.dropdown-menu
+                li
+                  a
+                    i(style="padding-right:5px;").icon-flag   
+                    | New game
+                li
+                  a(href="/teams/new")
+                    i(style="padding-right:5px;").icon-book
+                    | Teams
+                li.divider
+                li
+                  form(method="post", action="/sessions", id="logoutform", style="margin:0;")
+                    input(type="hidden", name="_method", value="delete" )
+                    a(href="#", id="logoutLink")
+                      | Logout
+                  script
+                    $("#logoutLink").click(function(e){
+                        e.preventDefault();
+                        $("#logoutform").submit();
+                      });
+          - else
+              li
+                a(href='/login') Login
+          li
+            form(method="post", action="/sessions", name="logoutform", style="display:none;")
+              input(type="hidden", name="_method", value="delete" )
+              a(href="javascript:document.logoutform.submit();").Logout

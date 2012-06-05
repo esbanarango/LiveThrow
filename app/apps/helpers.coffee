@@ -3,6 +3,8 @@ helpers = (app) ->
   app.dynamicHelpers
     flash: (req, res) ->
       req.flash()
+    currentUserName: (req, res) ->
+      req.session.currentUser_name
   app.helpers
     # Returns the 'expected' state and 'on' if it matches 'actual'.
     #

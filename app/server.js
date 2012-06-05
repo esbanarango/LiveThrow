@@ -49,33 +49,13 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
-// Database
-/*
-var mysql = require('mysql');
-var DATABASE = 'db_live_throw';
-var client = mysql.createClient({
-  user: 'root'
-});
-client.query('USE '+DATABASE);
-
-client.query(
-  'SELECT * FROM USER',
-  function (err, results, fields) {
-    if (err) {
-      throw err;
-    }
-
-    console.log(results);
-    client.end();
-  }
-);*/
-
 // Global helpers
 require('./apps/helpers')(app);
 
 // Routes
 require('./apps/static/routes')(app);
 require('./apps/authentication/routes')(app);
+require('./apps/management/routes')(app);
 
 app.listen(app.settings.port, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
