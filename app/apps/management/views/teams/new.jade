@@ -1,0 +1,52 @@
+div.span6.offset3.bordersform
+  legend
+    | New team
+  fieldset
+    form(id="newTeamForm").form-horizontal
+      div.control-group
+        label.control-label
+          | Name
+        div.controls
+          input(type='text', name="name", id="name", data-content="Teams name?", data-original-title="name").input-medium
+      div.control-group
+        label.control-label
+          | Category
+        div.controls
+          label.radio
+            | Open
+            input(type='radio', value="Open", name='category', checked)
+          label.radio
+            | Women
+            input(type='radio', value="Women", name='category')
+      div.form-actions
+        button(type='submit').btn.btn-success
+          | Create New Team
+
+script(type="text/javascript")
+  $("#newTeamForm").validate({
+        rules:{
+          name:{
+              required:true
+            },
+          category:{
+              required:true
+            }
+        },
+        messages:{
+          name:{
+            required:"Enter a team name"
+          },
+          category:{
+            required:"Enter the category"
+          }
+        },
+        errorClass: "help-inline",
+        errorElement: "span",
+        highlight:function(element, errorClass, validClass) {
+          $(element).parents('.control-group').addClass('error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+          $(element).parents('.control-group').removeClass('error');
+          //$(element).parents('.control-group').addClass('success');
+        }
+      });

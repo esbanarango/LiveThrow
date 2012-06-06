@@ -1,0 +1,35 @@
+div.row
+  h1(style="padding-left:20px;")= team.name
+  div.span2
+    div(class="well2 sidebar-nav")
+      ul.nav.nav-list
+        li.nav-header Team
+        li.active
+          a(href='#') Players
+        li
+          a(href='#') Records
+        li
+          a(href='#') Bio
+
+  div.span8
+    div(class="well2")
+      h2
+        | Players
+      table(class="table table-striped")
+        thead
+          tr
+            th
+              | Name
+            th
+              | Position
+        tbody
+          tr
+            td
+              |  Esban "el calidoso"
+            td
+              |  Armador, Cortador
+            td
+              a(href="#")
+                i(class="icon-remove icon-white")
+              a(href="#")
+                i(class="icon-pencil icon-white")                

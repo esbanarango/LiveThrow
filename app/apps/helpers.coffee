@@ -3,6 +3,8 @@ helpers = (app) ->
   app.dynamicHelpers
     flash: (req, res) ->
       req.flash()
+    currentUserId: (req, res) ->
+      req.session.currentUser
     currentUserName: (req, res) ->
       req.session.currentUser_name
   app.helpers

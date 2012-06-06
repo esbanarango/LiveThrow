@@ -8,12 +8,13 @@ html
     meta( name="viewport", content="width=device-width, initial-scale=1.0")
     != js('application')
     script(src='/lib/bootstrap/js/bootstrap.min.js')
+    script(src="/lib/js/jquery.validate.js")
+    script(src="/lib/js/jquery.form.js")
     //- Hack to keep all links in same browser when in iOS app mode.
     script(type="text/javascript")
       (function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")        
     //if lt IE 9
       script( src="http://html5shim.googlecode.com/svn/trunk/html5.js")
-    script(src="/lib/js/jquery.validate.js")
     body 
       include includes/header            
       div.container
@@ -29,4 +30,7 @@ html
         div.row
           div.span12!= body
         include includes/footer   
-        script(src='/socket.io/socket.io.js')        
+      script(src='/socket.io/socket.io.js') 
+      -var scripts = scripts || []
+      -each script in scripts
+        != js(script)
