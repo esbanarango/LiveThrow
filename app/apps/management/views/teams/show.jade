@@ -15,7 +15,10 @@ div.row
     div(class="well2")
       h2
         | Players
-      table(class="table table-striped")
+        div(style="float:right;")
+          button(type='submit', data-backdrop="false", data-toggle="modal", href="#modalNewPlayer", id="buttomAddPlayer", rel="tooltip", data-original-title="Add another player").btn.btn-success.btn-mini
+            | +
+      table(class="table table-striped", id="playersTable")
         thead
           tr
             th
@@ -23,13 +26,76 @@ div.row
             th
               | Position
         tbody
-          tr
-            td
-              |  Esban "el calidoso"
-            td
-              |  Armador, Cortador
-            td
-              a(href="#")
-                i(class="icon-remove icon-white")
-              a(href="#")
-                i(class="icon-pencil icon-white")                
+          each player in players        
+            tr
+              td= player.name+" "+player.nickname+" "+player.last_name
+              td= player.position
+              td
+                a(href="#")
+                  i(class="icon-remove icon-white")
+
+div(class="modal hide fade bordersform", id="modalNewPlayer")
+  div(class="modal-header")
+    button(type="button", class="close", data-dismiss="modal")×
+    h3
+      |  New Player
+  div(class="modal-body")
+    fieldset
+      form(id="newPlayerForm").form-vertical
+        div.span3.spanModal
+          div.control-group
+            label.control-label
+              | Name
+            div.controls
+              input(type='text', name="name", id="name", data-original-title="name").input-medium)
+
+          div.control-group
+            label.control-label
+              | Last Name
+            div.controls
+              input(type='text', name="last_name", id="last_name", data-original-title="last_name").input-medium)
+        div.span3.spanModal
+          div.control-group
+            label.control-label
+              | NickName
+            div.controls
+              input(type='text', name="nickname", id="nickname", data-original-title="nickname").input-medium)
+
+          div.control-group
+            label.control-label
+              | Position
+            div.controls
+              input(type='text', name="position", id="position", data-original-title="position").input-medium)
+
+  div(class="modal-footer")
+    a(href="#", id="submitNewPlayerForm" , class="btn btn-success")
+      |  Save player               
+
+script(type="text/javascript")
+  //Tooltip "AddPlayer"
+  $('#buttomAddPlayer').tooltip()
+
+  $("#newPlayerForm").validate({
+        rules:{
+          name:{
+              required:true
+            }
+        },
+        messages:{
+          name:{
+            required:"Enter the player's name"
+          }
+        },
+        errorClass: "help-inline",
+        errorElement: "span",
+        highlight:function(element, errorClass, validClass) {
+          $(element).parents('.control-group').addClass('error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+          $(element).parents('.control-group').removeClass('error');
+          //$(element).parents('.control-group').addClass('success');
+        }
+      });
+
+
+

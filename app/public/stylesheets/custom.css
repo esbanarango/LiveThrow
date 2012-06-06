@@ -81,6 +81,10 @@ input{
   font-size: 140%;
 }
 
+.noty_bar {
+  top: 50px !important;
+}
+
 /* header */
 
 #logo {
@@ -153,6 +157,60 @@ filter:alpha(opacity=80); /* For IE8 and earlier */
   padding: 10px;
   border: 10px solid rgba(62, 57, 61, 0.25);
 
+}
+
+
+/* modal */
+.modal {
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  z-index: 1050;
+  overflow: auto;
+  width: auto;
+  margin: -250px 0 0 -280px;
+  background: #252123 url("../images/bg-texture-light.png") repeat;
+  /*background-color: rgba(50,50,50,0.9);*/
+  border: 1px solid #999;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+
+}
+
+.modal .modal-footer{
+  padding: 14px 15px 15px;
+  margin-bottom: 0;
+  text-align: right;
+  background-color: rgba(250,250,200,0.2);;
+  border-top: 1px solid #DDD;
+  -webkit-border-radius: 0 0 6px 6px;
+  -moz-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+  -webkit-box-shadow: inset 0 1px 0 white;
+  -moz-box-shadow: inset 0 1px 0 #ffffff;
+  box-shadow: inset 0 1px 0 white;
+}
+
+.modal .close{
+  opacity: 2;
+  -moz-opacity: 2;
+  filter:alpha(opacity=2);
+  color: #ddd;
+}
+
+.modal .close:hover{
+  color: #eee;
+}
+
+.spanModalRight{
 }
 
 /* footer */

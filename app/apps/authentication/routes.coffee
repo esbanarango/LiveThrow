@@ -27,7 +27,7 @@ routes = (app) ->
       title: 'Sign up'
 
   app.namespace '/user', ->
-    app.post '/new', (req, res) ->
+    app.post '/create', (req, res) ->
       attributes =
         username: req.body.username
         email: req.body.email
@@ -35,7 +35,9 @@ routes = (app) ->
         gender: req.body.gender
       user = new User attributes
       user.save () ->
-        req.flash 'success', "¡Welcome!"
+        req.session.currentUser = user.email
+        req.session.currentUser_name = user.username
+        req.flash 'success', "You are now logged in as #{req.session.currentUser_name}."        
         res.redirect '/'
 
 module.exports = routes

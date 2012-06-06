@@ -1,7 +1,11 @@
+#Models
 User = require '../../models/user'
 Team = require '../../models/Management/team'
+Player = require '../../models/Management/player'
 
 routes = (app) ->
+
+  #Teams
   app.namespace '/teams', ->
     # Authentication check
     app.all '/*', (req, res, next) ->
@@ -20,20 +24,22 @@ routes = (app) ->
     app.get '/new', (req, res) ->
       res.render "#{__dirname}/views/teams/new",
         title: "Live Throw"
-        scripts: ['teams']
+        scripts: ['teams/teams']
 
     app.post '/create', (req, res) ->
       attributes =
         name: req.body.name
         category: req.body.category
+        public: req.body.public || 'off'
         userId: req.session.currentUser
       team = new Team attributes
       team.save () ->
         res.contentType('json');
-        res.send({ response: JSON.stringify(team) });
+        res.send({ response: JSON.stringify(team), message:"Team was successfully created." });
 
     app.get '/:id', (req, res) ->
-      Team.getById req.params.id, (err, team) ->
+      teamId = req.params.id
+      Team.getById req.params.id, (err, team) =>
         if team is null
           console.log(err)
           res.render 'error',
@@ -42,10 +48,26 @@ routes = (app) ->
             title: "Incorrect Pie state"
             stylesheet: 'admin'        
         else
-          res.render "#{__dirname}/views/teams/show",
-            title: "Team #{team.name}"
-            scripts: ['teams']
-            team: team
+          Player.all "Players#{teamId}", (err, players)->
+            res.render "#{__dirname}/views/teams/show",
+              title: "Team #{team.name}"
+              scripts: ['teams/teams','players/players']
+              team: team
+              players: players
 
+  #Teams
+  app.namespace '/players', ->
+    app.post '/create', (req, res) ->
+      refParts = req.header('Referrer').split('/')
+      teamId = refParts[4].split('?')[0]
+      attributes =
+        name: req.body.name
+        last_name: req.body.last_name || ""
+        nickname: "\""+req.body.nickname+"\"" || ""
+        position: req.body.position || ""
+      player = new Player attributes, "Players#{teamId}"
+      player.save () ->        
+        res.contentType('json');
+        res.send({ response: player, message:"Player was successfully added." });
 
 module.exports = routes

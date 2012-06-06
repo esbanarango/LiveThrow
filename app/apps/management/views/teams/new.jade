@@ -8,7 +8,7 @@ div.span6.offset3.bordersform
           | Name
         div.controls
           input(type='text', name="name", id="name", data-content="Teams name?", data-original-title="name").input-medium
-      div.control-group
+      div(style="margin-bottom:5px;").control-group
         label.control-label
           | Category
         div.controls
@@ -18,11 +18,17 @@ div.span6.offset3.bordersform
           label.radio
             | Women
             input(type='radio', value="Women", name='category')
+      div.control-group
+        label.control-label Public 
+          em(id="publicQ", rel="tooltip", data-original-title="Do you want everyone to see this team?")?
+        div.controls
+          input(type="checkbox", name="public", checked)          
       div.form-actions
         button(type='submit').btn.btn-success
           | Create New Team
 
 script(type="text/javascript")
+  $('#publicQ').tooltip()
   $("#newTeamForm").validate({
         rules:{
           name:{
