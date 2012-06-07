@@ -24,6 +24,10 @@ class Player
       player = new Player JSON.parse(json), @key
       callback null, player
 
+  @destroy: (key,id,callback) ->
+    redis.hdel key, id, (err) ->
+      callback err if callback    
+
   constructor: (attributes, key) ->
     @[k] = value for k,value of attributes
     @key = key
@@ -41,7 +45,7 @@ class Player
         callback null, @  
 
   destroy: (callback) ->
-    redis.hdel @key, id, (err) ->
+    redis.hdel @key, @id, (err) ->
       callback err if callback
 
 module.exports = Player

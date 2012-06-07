@@ -22,21 +22,27 @@ div.row
         thead
           tr
             th
+              | #          
+            th
               | Name
             th
               | Position
+            th
+              | Gender              
         tbody
           each player in players        
-            tr
+            tr(data-playerid=player.id, data-playername=player.name+" "+player.nickname+" "+player.last_name)
+              td= player.number
               td= player.name+" "+player.nickname+" "+player.last_name
               td= player.position
+              td= player.gender              
               td
-                a(href="#")
+                a(href="#", class="deletePlayer")
                   i(class="icon-remove icon-white")
 
 div(class="modal hide fade bordersform", id="modalNewPlayer")
   div(class="modal-header")
-    button(type="button", class="close", data-dismiss="modal")×
+    button(type="button", id="buttonXModal", class="close", data-dismiss="modal")×
     h3
       |  New Player
   div(class="modal-body")
@@ -54,6 +60,11 @@ div(class="modal hide fade bordersform", id="modalNewPlayer")
               | Last Name
             div.controls
               input(type='text', name="last_name", id="last_name", data-original-title="last_name").input-medium)
+          div.control-group
+            label.control-label
+              | Number
+            div.controls
+              input(type='number', name="number", id="number", data-original-title="number").input-small)          
         div.span3.spanModal
           div.control-group
             label.control-label
@@ -66,10 +77,20 @@ div(class="modal hide fade bordersform", id="modalNewPlayer")
               | Position
             div.controls
               input(type='text', name="position", id="position", data-original-title="position").input-medium)
+          div.control-group
+            label.control-label
+              | Gender
+            div.controls
+              label.radio
+                | Male
+                input(type='radio', value="m", name='gender', checked)
+              label.radio
+                | Female
+                input(type='radio', value="f", name='gender')
 
   div(class="modal-footer")
     a(href="#", id="submitNewPlayerForm" , class="btn btn-success")
-      |  Save player               
+      |  Save player     
 
 script(type="text/javascript")
   //Tooltip "AddPlayer"

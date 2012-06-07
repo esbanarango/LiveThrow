@@ -65,9 +65,21 @@ routes = (app) ->
         last_name: req.body.last_name || ""
         nickname: "\""+req.body.nickname+"\"" || ""
         position: req.body.position || ""
+        number: req.body.number || ""
+        gender: req.body.gender || ""        
       player = new Player attributes, "Players#{teamId}"
       player.save () ->        
         res.contentType('json');
         res.send({ response: player, message:"Player was successfully added." });
 
+    app.del '/', (req, res) ->
+      refParts = req.header('Referrer').split('/')
+      teamId = refParts[4].split('?')[0]
+      id = req.body.id
+      Player.destroy "Players#{teamId}", id, (err) ->
+        response = "Destroyed"
+        response = err if err
+        res.contentType('json')
+        res.send({ response: response})       
+        
 module.exports = routes

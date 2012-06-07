@@ -24,4 +24,28 @@
     closable: false
     closeOnSelfClick: false
 
+@notyConfirm = (text,layOut,type,okFunction,cancelFunction) ->    
+  noty
+    layout: layOut
+    text: text
+    type: type
+    theme : 'noty_theme_twitter'
+    closable: false
+    timeout: false  
+    closeOnSelfClick: false
+    closeOnSelfHover: false    
+    buttons: [
+      type: "btn btn-small btn-danger"
+      text: "Ok"
+      click: ($noty) ->
+        $noty.close()
+        okFunction()
+    ,
+      type: "btn btn-small"
+      text: "Cancel"
+      click: ($noty) ->
+        $noty.close()
+        cancelFunction()
+     ]
+
 jQuery ->
