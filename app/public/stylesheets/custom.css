@@ -36,8 +36,46 @@ input{
   color:#aaa !important;
 }
 
+.separador_x
+{
+    width: 10px;
+    height: 10px;
+    float: left;
+}
+.separador_y
+{
+    width: 10px;
+    height: 10px;
+}
+
+
 .span4 p{
   color:#ddd;
+}
+
+.vs {
+  float: left;
+  width: 30px;
+  margin-left:30px;
+
+}
+
+.chzn-container .chzn-drop {
+  border-radius:0px 0px 4px 4px;
+  background: #3D3D3D !important;
+}
+.chzn-container-multi .chzn-choices {
+    border-radius:2px 2px 2px 2px;
+  background: #313131 !important;
+    cursor: pointer !important;
+  
+}
+#teams_chzn ul li input{
+  color: #aaa;
+  cursor: pointer !important;
+}
+.control-group-match{
+  margin-left: 20px;
 }
 
 /* WELL 2 */

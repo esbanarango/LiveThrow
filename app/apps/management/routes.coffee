@@ -16,7 +16,8 @@ routes = (app) ->
       next()
 
     app.get '/', (req, res) ->
-      Team.getByuserId req.session.currentUser, (err, teams) ->
+      Team.getByuserId req.session.currentUser, (err, _teams) ->
+        teams = _teams.reverse()
         res.render "#{__dirname}/views/teams/index",
           title: "Live Throw"
           teams: teams
@@ -34,8 +35,8 @@ routes = (app) ->
         userId: req.session.currentUser
       team = new Team attributes
       team.save () ->
-        res.contentType('json');
-        res.send({ response: JSON.stringify(team), message:"Team was successfully created." });
+        req.flash 'success', 'Team was successfully created.'
+        res.redirect '/teams'
 
     app.get '/:id', (req, res) ->
       teamId = req.params.id
@@ -55,15 +56,24 @@ routes = (app) ->
               team: team
               players: players
 
-  #Teams
+  #Players
   app.namespace '/players', ->
+
+    # Authentication check
+    app.all '/*', (req, res, next) ->
+      if not (req.session.currentUser)
+        req.flash 'error', 'Please login.'
+        res.redirect '/login'
+        return
+      next()
+
     app.post '/create', (req, res) ->
       refParts = req.header('Referrer').split('/')
       teamId = refParts[4].split('?')[0]
       attributes =
         name: req.body.name
         last_name: req.body.last_name || ""
-        nickname: "\""+req.body.nickname+"\"" || ""
+        nickname: if req.body.nickname then "\""+req.body.nickname+"\"" else ""
         position: req.body.position || ""
         number: req.body.number || ""
         gender: req.body.gender || ""        
@@ -80,6 +90,37 @@ routes = (app) ->
         response = "Destroyed"
         response = err if err
         res.contentType('json')
-        res.send({ response: response})       
-        
+        res.send({ response: response})
+
+  #Matches
+  app.namespace '/matches', ->
+
+    # Authentication check
+    app.all '/*', (req, res, next) ->
+      if not (req.session.currentUser)
+        req.flash 'error', 'Please login.'
+        res.redirect '/login'
+        return
+      next()
+      
+    app.get '/', (req, res) ->
+      Team.getByuserId req.session.currentUser, (err, _teams) ->
+        teams = _teams.reverse()
+        res.render "#{__dirname}/views/teams/index",
+          title: "Live Throw"
+          teams: teams
+
+
+
 module.exports = routes
+
+
+
+
+
+
+
+
+
+
+

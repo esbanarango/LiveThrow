@@ -3,6 +3,7 @@
 #= require jquery.noty.js
 #= require jquery.validate.js
 #= require jquery.form.js
+#= require chosen.jquery.js
 
 #Beautyfull alerts with noty! :) http://needim.github.com/noty/
 @notyAlert = (text, layOut, type, timeOut) ->

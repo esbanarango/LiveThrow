@@ -22,7 +22,6 @@ class User
       if json is null
         callback new Error("User '#{email}' could not be found.")
         return
-      console.log("eeelo"+json)
       user = new User JSON.parse(json)
       callback null, user
   constructor: (attributes) ->

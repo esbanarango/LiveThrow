@@ -56,6 +56,7 @@ require('./apps/helpers')(app);
 require('./apps/static/routes')(app);
 require('./apps/authentication/routes')(app);
 require('./apps/management/routes')(app);
+require('./apps/livescore/routes')(app);
 
 app.listen(app.settings.port, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

@@ -7,6 +7,11 @@ html
     link(rel="stylesheet", href="/lib/bootstrap/css/bootstrap-responsive.min.css")
     link(rel="stylesheet", href="/lib/css/jquery.noty.css")
     link(rel="stylesheet", href="/lib/css/noty_theme_twitter.css")
+    link(rel="stylesheet", href="/lib/css/chosen.css")
+
+    -var csss = csss || []
+    -each css in csss
+      link(rel="stylesheet", href="/stylesheets/"+css+".css")
 
     meta( name="viewport", content="width=device-width, initial-scale=1.0")
     != js('application')

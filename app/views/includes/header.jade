@@ -10,6 +10,8 @@ div.navbar.navbar-fixed-top
         ul.nav
           li
             a(href='/') Home 
+          li
+            a(href='/') Live Games             
           li 
             a(href='#') About
         ul.nav.pull-right
@@ -21,18 +23,24 @@ div.navbar.navbar-fixed-top
                 #{" "+currentUserName}
               ul.dropdown-menu
                 li
-                  a
+                  a(href="/matches/new")
                     i(style="padding-right:5px;").icon-flag   
-                    | New game
+                    | New match
                 li
                   a(href="/teams/")
                     i(style="padding-right:5px;").icon-book
                     | Teams
+                li(class="nav-header")
+                  | Account
+                li
+                  a(href="/user/edit")
+                    i(style="padding-right:5px;").icon-cog
+                    | Edit account
                 li.divider
                 li
                   form(method="post", action="/sessions", id="logoutform", style="margin:0;")
                     input(type="hidden", name="_method", value="delete" )
-                    a(href="#", id="logoutLink")
+                    a(href="#", id="logoutLink", style="text-decoration:none;")
                       | Logout
                   script
                     $("#logoutLink").click(function(e){

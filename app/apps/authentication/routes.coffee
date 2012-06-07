@@ -40,4 +40,27 @@ routes = (app) ->
         req.flash 'success', "You are now logged in as #{req.session.currentUser_name}."        
         res.redirect '/'
 
+    app.get '/edit', (req, res) ->
+      User.getByEmail req.session.currentUser, (err,user) ->
+            res.render "#{__dirname}/views/users/edit",
+              title: 'Edit'
+              user:user
+
+    app.put '/:email', (req, res) ->
+      userEmail = req.params.email
+      attrs =
+        username: req.body.username
+        password: req.body.password
+        gender: req.body.gender
+      User.getByEmail req.session.currentUser, (err,user) ->
+        user.username = attrs.username
+        user.passwoord = attrs.password if attrs.password
+        user.gender = attrs.gender
+        user.save ->
+          req.session.currentUser_name = user.username
+          req.flash 'success', "User was successfully updated."        
+          res.redirect '/'
+
+
+
 module.exports = routes

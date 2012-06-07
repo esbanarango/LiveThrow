@@ -1,0 +1,75 @@
+div.span8.offset2.bordersform
+  legend
+    | Edit account
+  fieldset
+    form(action="/user/"+user.email, method='post', id="editUserForm").form-horizontal
+      input(type="hidden", name="_method", value="put" )
+      div.control-group
+        label.control-label
+          | NickName ;)
+        div.controls
+          input(type='text', value=user.username, name="username", id="username", data-content="What’s your nickname?", data-original-title="Username").input-xlarge
+      div(style="margin-bottom: 3px;").control-group
+        label(style="font-size:12px; color:#666").control-label
+          |  
+        p(style="font-size:12px; color:#666")
+          | If you do not want to change your password, leave empty the entries below 
+      div.control-group
+        label.control-label
+          | Password
+        div.controls
+          input(type='password', name='password', id="password", data-content="6 characters or more! Be tricky", data-original-title="Password" ).input-xlarge
+      div.control-group
+        label.control-label
+          | Confirm Password
+        div.controls
+          input(type='password', name='password_confirmation', id="password_confirmation", data-content="Re-enter your password for confirmation.", data-original-title="Re-Password" ).input-xlarge
+      div.control-group
+        label.control-label
+          | Gender
+        div.controls
+          label.radio
+            | Male
+            input(type='radio', value="m", name='gender', checked)
+          label.radio
+            | Female
+            input(type='radio', value="f", name='gender')
+      div.form-actions
+        button(type='submit').btn.btn-success
+          | Update My Account
+
+script(type="text/javascript")
+  $("#editUserForm").validate({
+        rules:{
+          username:{
+              required:true
+            },
+          password:{
+            minlength: 6
+          },
+          password_confirmation:{
+            equalTo: "#password"
+          }
+        },
+        messages:{
+          username:{
+            required:"Let us know your nickname plz."
+          },
+          password:{
+            minlength:"Password must be minimum 6 characters"
+          },
+          password_confirmation:{
+            equalTo:"Password and Confirm Password must match"
+          }
+        },
+        errorClass: "help-inline",
+        errorElement: "span",
+        highlight:function(element, errorClass, validClass) {
+          $(element).parents('.control-group').addClass('error');
+          $(element).parents('.control-group').addClass('success');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+          $(element).parents('.control-group').removeClass('error');
+          $(element).parents('.control-group').addClass('success');
+        }
+      });

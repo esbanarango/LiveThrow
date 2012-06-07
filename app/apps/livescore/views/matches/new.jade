@@ -1,0 +1,39 @@
+div.span9.offset1.bordersform
+  legend
+    | New Match
+  fieldset
+    form(id="newMatchForm").form-vertical
+      p(style="font-size:13px")
+        | Create a match is so easy, just select the teams you want face, and that's all. :)
+ 
+      div.control-group.control-group-match
+        label.control-label
+          | Teams
+        div.controls
+          select(id="teams",class="chzn-select", multiple="", required="required")
+            optgroup(label="My Teams")
+              each team in myTeams      
+                option= team.name
+            optgroup(label="Public Teams")
+              each team in allTeams
+                - if (team.userId != currentUserId)          
+                  option= team.name     
+      div.form-actions
+        button(type='submit').btn.btn-success
+          | Create Match
+
+script(type="text/javascript")
+  $(".chzn-select").chosen({no_results_text: "No results matched"});
+  $('#teams').chosen().change(function(event) { 
+    if($(this).val()!=null){
+      if ($(this).val().length > 1) {
+        $(".chzn-drop").css("display","none");
+      }
+      if ($(this).val().length < 2) {
+        $(".chzn-drop").css("display","block");
+      }
+    }
+  });
+
+
+

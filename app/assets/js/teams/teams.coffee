@@ -1,4 +1,6 @@
 jQuery ->
+###
+#Create team ajax
   $("#newTeamForm").on "submit", (e) ->
     e.preventDefault()
     validation = $("#newTeamForm").validate()
@@ -14,6 +16,7 @@ jQuery ->
           console.log data
           validation.resetForm()          
           notyAlert(data.message,"topCenter","success","3000")
+###
 
 
 

@@ -1,0 +1,220 @@
+
+.principal2
+{
+    width: 700px;
+    min-height: 500px;
+}
+.video_embedded
+{
+    width: 640px;
+    height: 470px;
+    margin: 30px;	
+}
+.datos_juego
+{
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    font-size: 11px;
+    color: #006798;
+}
+.fecha
+{
+    height: 20px;
+    padding-top: 5px;
+    font-weight: bold;
+    padding-left: 10px;
+    font-size: 12px;
+    background-color: #0D3E59;
+    color: #F7B91F;
+}
+.marcador
+{
+    min-height: 160px;
+    margin-bottom: 20px;
+    /*line-height: 0px !important;*/
+}
+
+
+.equipo_1, .equipo_2
+{
+    width: 280px;
+    min-height: 140px;
+    float: left;
+    text-align: center;
+    padding: 10px;
+}
+.equipo_1
+{
+    background-color: rgba(156, 154, 58, 0.3);
+}
+.equipo_2
+{
+    background-color: rgba(0, 148, 151, 0.3);
+}
+.accion_equipo_1, .accion_equipo_2
+{
+    /*width: 590px;*/
+    padding: 10px;
+    border-bottom-color: #006798;
+    border-bottom-style: dashed;
+    border-bottom-width: 1px;
+    /*height: 70px;*/
+}
+.accion_equipo_1
+{
+    background-color: rgba(156, 154, 58, 0.3);
+    text-align: left;
+}
+.accion_equipo_2
+{
+    background-color: rgba(0, 148, 151, 0.3);
+    text-align: right;
+}
+.dato_accion_1, .dato_accion_2
+{
+    width: 420px;
+    height: 30px;
+    background-image: url(../images/tiempo_dato.png);
+    background-repeat: no-repeat;
+    margin-top: 20px;
+}
+.dato_accion_1_left
+{
+    float: left;
+    padding-left: 20px;
+    background-position: left center;
+}
+.dato_accion_2_right
+{
+    float: right;
+    padding-right: 20px;
+    background-position: right center;
+}
+.defensa_1, .defensa_2
+{
+    width: 480px;
+    background-image: url(../images/dato.png);
+    background-repeat: no-repeat;
+    height: 15px;
+    margin-top: 20px;
+}
+.defensa_1
+{
+    background-position: left center;
+    float: left;
+    padding-left: 20px;
+}
+.defensa_2
+{
+    background-position: right center;
+    float: right;
+    padding-right: 20px;
+}
+.eliminar_1, .eliminar_2
+{
+    width: 10px;
+    height: 10px;
+    background-image: url(../images/elinminar_dato.png);
+}
+.eliminar_1
+{
+    float: right;
+}
+.eliminar_2
+{
+    float: left;
+}
+.eliminar_1:hover, .eliminar_2:hover
+{
+    cursor: pointer;
+}
+
+
+
+.clear
+{
+    clear: both;
+}
+.separador_x, .separador_y
+{
+    width: 10px;
+    height: 10px;
+}
+.separador_x
+{
+    float: left;
+}
+
+/*ADMINISTRADOR*/
+.cajon_score, .select_score
+{
+    background-color: #CCC;
+    border: 1px solid #333;
+    color: #006798;
+    font-size: 11px;
+    padding: 2px;
+    margin: 0px;
+}
+.btn_form_small, btn_form_small:hover, .btn_form_small_dis
+{
+    width: 72px;
+    height: 24px;
+    background-image: url(../images/btn_form_small.png);
+    color: #FFF;
+    background-color: transparent;
+    border: none;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 0px;
+    margin: 0px;
+}
+.btn_form_small
+{
+    background-position: top;
+}
+.btn_form_small:hover
+{
+    cursor: pointer;
+    background-position: center;
+}
+.btn_form_small_dis
+{
+l    background-position: bottom; 
+}
+.foto_gol_left, .foto_gol_right, .foto_asist_left, .foto_asist_right,.foto_defensa_left, .foto_defensa_right
+{
+    width: 50px;
+    height: 60px;
+}
+.foto_gol_left
+{
+    float: left;
+    margin-right: 10px;
+}
+.foto_gol_right
+{
+    float: right;
+    margin-left: 10px;
+}
+.foto_asist_left
+{
+    float: left;
+    margin-right: 10px;
+}
+.foto_asist_right
+{
+    float: right;
+    margin-left: 10px;
+}
+.foto_defensa_left
+{
+    float: left;
+    margin-right: 10px;
+}
+.foto_defensa_right
+{
+    float: right;
+    margin-left: 10px;
+}

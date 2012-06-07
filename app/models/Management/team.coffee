@@ -12,7 +12,7 @@ class Team
       teams = []
       for key, value of objects
         team = new Team JSON.parse(value)
-        teams.push team
+        teams.push team if team.public is "on"
       callback null, teams
 
   # Retrive a single Team by Id.
