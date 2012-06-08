@@ -52,7 +52,7 @@ routes = (app) ->
           res.render "#{__dirname}/views/live/monitor",
             title: "Live Score"
             csss: ['scoreReport']
-            scripts: ['livescore/monitor']
+            scripts: ['livescore/monitor','livescore/live']
             match: matchFull
 
     app.post '/action', (req,res) ->
@@ -80,17 +80,31 @@ routes = (app) ->
 
     app.get '/:id', (req, res) ->
       Match.getById req.params.id, (err, match) ->
-        match.fillUp (err, matchFull)->
-          res.render "#{__dirname}/views/live/show",
-            title: "Live Score"
-            csss: ['scoreReport']
-            scripts: ['livescore/live']
-            match: matchFull
+        if match is undefined
+          console.log(err)
+          res.render 'error',
+            status: 403,
+            message: "Match does not exist."
+            title: "Incorrect Team id"
+            stylesheet: 'admin'        
+        else
+          match.fillUp (err, matchFull)->
+            res.render "#{__dirname}/views/live/show",
+              title: "Live Score"
+              csss: ['scoreReport']
+              scripts: ['livescore/live']
+              match: matchFull
 
     app.get '/', (req, res) ->
-      res.render "#{__dirname}/views/live/show",
-        title: "Live Score"            
-        csss: ['scoreReport']
+      Match.all (err, _matches) ->
+        Team.allall (err, _teams) ->
+
+          console.log _matches
+          console.log _teams
+          res.render "#{__dirname}/views/live/index",
+            title: "Live Games"
+            matches: _matches
+            teams: _teams        
 
 module.exports = routes
 

@@ -1,4 +1,10 @@
 div.span12.offset3
+  label
+    |  Share this game 
+  a(href="https://twitter.com/share", class="twitter-share-button", data-url="http://200.12.180.110/live/"+match.id, data-text="Hey "+match.team1.name+" is playing against "+match.team2.name+", Check it out! on Live Throw")
+  script(type="text/javascript")
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
   div(class="datos_juego")
     div(class="top-information")
       div(class="marcador")
@@ -9,6 +15,9 @@ div.span12.offset3
               strong(id="team1Score")=match.scoreTeam1          
             div.namerico
               label=match.team1.name
+          select(id="playersTeam1", style="display:none")
+            each player in match.players1
+              option(id="id-"+player.id+"team-1", data-name=player.name, data-number=player.number, data-nickname=player.nickname, data-lastname=player.last_name)
 
         div.separador_x 
 
@@ -18,18 +27,52 @@ div.span12.offset3
               strong(id="team2Score")=match.scoreTeam2       
             div.namerico
               label=match.team2.name
- 
-  div.clear
-  #golTeam1.accion_equipo_1.span8
-      .eliminar_1
-      div.tiempo_1
-        label.golTime <img src="./../../images/tiempo.png"> 00:02:00
-      div.dato_accion_1_left.golName
-        strong Gol: 
-        label.golName Hector Lavoe   
-      div.dato_accion_1_left.assitanceName
-        strong Asistencia: 
-        label.assistName Pete Conde Rodriguez
-      .clear
+          select(id="playersTeam2", style="display:none")
+            each player in match.players2
+              option(id="id-"+player.id+"team-2", data-name=player.name, data-number=player.number, data-nickname=player.nickname, data-lastname=player.last_name)
 
+  div(id="tableScores").bordersTableScore
+    each action in match.actions
+      div(class="accion_equipo_"+action.team+" span8",style="display:inline-block")
+        div.tiempo_1
+          label.golTime <img src="./../../images/tiempo.png"> #{action.minuto}
+        div(class="dato_accion_"+action.team+"_pos")
+          strong Gol: 
+          label(class="changeId", data-idteam=action.team).golName=action.golPlayerId
+        div.separador_x 
+        div.separador_x   
+        div(class="dato_accion_"+action.team+"_pos")
+          strong Assitence: 
+          label(class="changeId", data-idteam=action.team).assistName=action.assitencePlayerId
+      .clear
+  div(style="display:none;")      
+    div.clear
+      div#golStructTeam1
+        div(style="display:none;").accion_equipo_1.span8
+          div.tiempo_1
+            label.golTime <img src="./../../images/tiempo.png"> 00:02:00
+          div.dato_accion_1_pos
+            strong Gol: 
+            label.golName Hector Lavoe 
+          div.separador_x 
+          div.separador_x    
+          div.dato_accion_1_pos
+            strong Assitence: 
+            label.assistName Pete Conde Rodriguez
+        .clear
+
+    div.clear
+      div#golStructTeam2
+        div(style="display:none;").accion_equipo_2.span8
+          div.tiempo_1
+            label.golTime <img src="./../../images/tiempo.png"> 00:02:00
+          div.dato_accion_2_pos
+            strong Gol: 
+            label.golName Hector Lavoe
+          div.separador_x 
+          div.separador_x       
+          div.dato_accion_2_pos
+            strong Assitence: 
+            label.assistName Pete Conde Rodriguez
+        .clear
 script(type="text/javascript")

@@ -15,6 +15,13 @@ class Team
         teams.push team if team.public is "on"
       callback null, teams
 
+  @allall: (callback) ->
+    redis.hgetall Team.key(), (err, objects) ->
+      teams = []
+      for key, value of objects
+        team = new Team JSON.parse(value)
+        teams.push team
+      callback null, teams
   # Retrive a single Team by Id.
   #
   # id: The unique id of the Team, such as 'Key-Lime'.

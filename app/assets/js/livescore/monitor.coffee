@@ -11,7 +11,9 @@ jQuery ->
         console.log "Error " + jqXHR
       success: (_data) =>
         console.log _data
+###        
         numTeam = $(@).find("input[name=team]").val()
         console.log numTeam
         score = parseInt($("#team#{numTeam}Score").text())
         $("#team#{numTeam}Score").text(++score)
+###        

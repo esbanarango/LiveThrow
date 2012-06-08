@@ -2,6 +2,7 @@ redis          = require('redis').createClient()
 _              = require 'underscore'
 Team           = require './../Management/team'
 Player         = require './../Management/player'
+Action         = require './action'
 
 class Match
   # The Redis key that will store all Match objects as a hash.
@@ -38,8 +39,10 @@ class Match
         Player.all "Players#{@teamId1}", (err, _players1) =>
           @players1 = _players1
           Player.all "Players#{@teamId2}", (err, _players2) =>
-            @players2 =_players2
-            callback null,@
+            @players2 = _players2
+            Action.all "Actions"+@id, (err,_actions) =>              
+              @actions =_actions.reverse()
+              callback null,@
   # Persists the current object to Redis. The key is the Id.
   # All other attributes are saved as a sub-hash in JSON format.
   #
