@@ -7,8 +7,8 @@ div.span12.offset3
           div(class="equipo_1",style="margin-top: 20px;")
             div.numerico
               strong(id="equipo_1_marcador")=match.scoreTeam1          
-            div(style="display:block")
-              label(style="font-size: 20px; font-style: italic;")=match.team1.name
+            div.namerico
+              label=match.team1.name
 
         div.separador_x 
 
@@ -16,19 +16,19 @@ div.span12.offset3
           div(class="equipo_2",style="margin-top: 20px;")
             div.numerico
               strong(id="equipo_1_marcador")=match.scoreTeam2       
-            div
-              label(style="font-size: 20px; font-style: italic;")=match.team2.name
+            div.namerico
+              label=match.team2.name
           
        
   div.clear
-  #gol_equipo_1.accion_equipo_1.span8
+  #golTeam1.accion_equipo_1.span8
       .eliminar_1
       div.tiempo_1
-        label.golTime 00:02:00
-      div.dato_accion_1_left
+        label.golTime <img src="./../../images/tiempo_dato.png"> 00:02:00
+      div.dato_accion_1_left.golName
         strong Gol: 
         label.golName Hector Lavoe   
-      div.dato_accion_1_left
+      div.dato_accion_1_left.assitanceName
         strong Asistencia: 
         label.assistName Pete Conde Rodriguez
       .clear

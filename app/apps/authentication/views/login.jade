@@ -3,16 +3,17 @@ div.span5.offset3.bordersform
     | Login
   fieldset
     form(action='/sessions', method='post').form-inline
-      div.control-group
-        label.control-label
-          | Email
-        div.controls
-          input(type='email', name='email', required="required").input-xlarge  
-      div.control-group
-        label.control-label
-          | Password
-        div.controls
-          input(type='password', name='password', required="required").input-xlarge
+      div(style="padding-left:10px;")
+        div.control-group
+          label.control-label
+            | Email
+          div.controls
+            input(type='email', name='email', required="required").input-xlarge  
+        div.control-group
+          label.control-label
+            | Password
+          div.controls
+            input(type='password', name='password', required="required").input-xlarge
       div.form-actions
         button(type='submit').btn.btn-large.btn-primary
           | Submit

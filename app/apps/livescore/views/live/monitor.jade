@@ -6,28 +6,29 @@ div.span12.offset3
         div(style="float:left")
           div(class="equipo_1",style="margin-top: 20px;")
             div.numerico
-              strong(id="equipo_1_marcador")=match.scoreTeam1          
-            div(style="display:block")
-              label(style="font-size: 20px; font-style: italic;")=match.team1.name
+              strong(id="team1Score")=match.scoreTeam1          
+            div.namerico
+              label=match.team1.name
           div(id="control_gol_1", style="display: ; padding-bottom: 15px;")
             fieldset
-              form(id="form_gol_equipo1", method="post", action="").form-inline.form-actions1
+              form(id="formGolTeam1", method="post", action="").form-inline.form-actions1
+                input(type="hidden", value="1", name="team")
                 div.span3.controlDivOut  
                   div.control-group
                     label.control-label
                       | Gol
                     div.controls
-                      select(data-placeholder="Seleccione Jugador", id="idPartGol_E_1", data-placeholder="Jugadores...", style="width: 190px;",  tabindex="3")
+                      select(class="chzn-seect", name="golPlayerId", data-placeholder="Seleccione Jugador", id="idPartGol_E_1", data-placeholder="Players...", style="width: 200px;",  tabindex="3")
                         each player in match.players1
-                          option=player.name
+                          option(value=player.id)=player.number+" "+player.name+" "+player.nickname+" "+player.last_name
                 div.span3.controlDivOut       
                   div.control-group
                     label.control-label
                       | Assitence
                     div.controls                
-                      select(data-placeholder="Seleccione Jugador",  id="idPartAssist_E_1", data-placeholder="Jugadores...", style="width: 190px;",  tabindex="3")
+                      select(class="chzn-seect", name="assitencePlayerId", data-placeholder="Seleccione Jugador",  id="idPartAssist_E_1", data-placeholder="Players...", style="width: 200px;",  tabindex="3")
                         each player in match.players1
-                          option=player.name
+                          option(value=player.id)=player.number+" "+player.name+" "+player.nickname+" "+player.last_name
                 div.span3.controlDivOut
                   label.control-label
                     | Time
@@ -42,28 +43,29 @@ div.span12.offset3
         div(style="float:left")       
           div(class="equipo_2",style="margin-top: 20px;")
             div.numerico
-              strong(id="equipo_1_marcador")=match.scoreTeam2       
-            div
-              label(style="font-size: 20px; font-style: italic;")=match.team2.name
+              strong(id="team2Score")=match.scoreTeam2       
+            div.namerico
+              label=match.team2.name
           div(id="control_gol_1", style="padding-bottom: 15px;")
             fieldset
-              form(id="form_gol_equipo1", method="post", action="").form-inline.form-actions2
+              form(id="formGolTeam2", method="post", action="").form-inline.form-actions2
+                input(type="hidden", value="2", name="team")
                 div.span3.controlDivOut  
                   div.control-group
                     label.control-label
                       | Gol
                     div.controls
-                      select(data-placeholder="Seleccione Jugador", id="idPartGol_E_1", data-placeholder="Jugadores...", style="width: 190px;",  tabindex="3")
+                      select(class="chzn-select", name="golPlayerId", data-placeholder="Seleccione Jugador", id="idPartGol_E_1", data-placeholder="Players...", style="width: 200px;",  tabindex="3")
                         each player in match.players2
-                          option=player.name
+                          option(value=player.id)=player.number+" "+player.name+" "+player.nickname+" "+player.last_name
                 div.span3.controlDivOut       
                   div.control-group
                     label.control-label
                       | Assitence
                     div.controls                
-                      select(data-placeholder="Seleccione Jugador",  id="idPartAssist_E_1", data-placeholder="Jugadores...", style="width: 190px;",  tabindex="3")
+                      select(class="chzn-select", name="assitencePlayerId", data-placeholder="Seleccione Jugador",  id="idPartAssist_E_1", data-placeholder="Players...", style="width: 200px;",  tabindex="3")
                         each player in match.players2
-                          option=player.name
+                          option(value=player.id)=player.number+" "+player.name+" "+player.nickname+" "+player.last_name
                 div.span3.controlDivOut
                   label.control-label
                     | Time
@@ -74,16 +76,21 @@ div.span12.offset3
                     input(class="btn btn-inverse", type="submit", value="Insertar")              
        
   div.clear
-  #gol_equipo_1.accion_equipo_1.span8
+  #golTeam1.accion_equipo_1.span8
       .eliminar_1
       div.tiempo_1
+        img(src="./../../images/tiempo.png", style="display:line-block;")
         label.golTime 00:02:00
-      div.dato_accion_1_left
+      div.dato_accion_1_left.golName
         strong Gol: 
         label.golName Hector Lavoe   
-      div.dato_accion_1_left
+      div.dato_accion_1_left.assitanceName
         strong Asistencia: 
         label.assistName Pete Conde Rodriguez
       .clear
 
 script(type="text/javascript")
+  $(".chzn-select").chosen();
+  $(".chzn-seect").chosen();
+
+

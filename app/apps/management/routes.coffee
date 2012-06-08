@@ -69,7 +69,7 @@ routes = (app) ->
 
     app.post '/create', (req, res) ->
       refParts = req.header('Referrer').split('/')
-      teamId = refParts[4].split('?')[0]
+      teamId = parseInt(refParts[4].split('?')[0])
       attributes =
         name: req.body.name
         last_name: req.body.last_name || ""

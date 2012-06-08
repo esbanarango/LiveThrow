@@ -57,6 +57,7 @@ input{
   color:#ddd;
 }
 
+/*CHOSEN*/
 
 .chzn-container .chzn-drop {
   border-radius:0px 0px 4px 4px;
@@ -68,6 +69,10 @@ input{
     cursor: pointer !important;
   
 }
+
+
+
+
 #teams_chzn ul li input{
   color: #aaa;
   cursor: pointer !important;

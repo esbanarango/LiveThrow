@@ -3,6 +3,7 @@ User = require '../../models/user'
 Team = require '../../models/Management/team'
 Player = require '../../models/Management/player'
 Match = require '../../models/LiveScore/match'
+Action = require '../../models/LiveScore/action'
 _              = require 'underscore'
 
 routes = (app) ->
@@ -51,19 +52,29 @@ routes = (app) ->
           res.render "#{__dirname}/views/live/monitor",
             title: "Live Score"
             csss: ['scoreReport']
+            scripts: ['livescore/monitor']
             match: matchFull
 
-    app.post '/:id/action', (req,res) ->
-        eventOn = "live:match:"+req.params.id
-        if socketIO = app.settings.socketIO
-          socketIO.sockets.emit "user:newMessage:#{id}", post
-          console.log "New Message"
-          respToServer = "Ok"
-        else
-          respToServer = "Error"
-        res.header("Content-Type","application/json")
-        res.json({response: respToServer})
-        res.end()
+    app.post '/action', (req,res) ->
+        matchId = req.header('Referrer').split('/')[4]
+        attributes =
+          team: req.body.team
+          golPlayerId: req.body.golPlayerId
+          assitencePlayerId: req.body.assitencePlayerId
+          minuto: req.body.minuto        
+        action = new Action attributes, "Actions#{matchId}"
+        action.save () ->
+          #Update Score
+          Match.getById matchId, (err,match) ->
+            if action.team == "1"
+              newScore=parseInt(match.scoreTeam1)
+              match.scoreTeam1 = ++newScore
+            else
+              newScore=parseInt(match.scoreTeam2)
+              match.scoreTeam2 = ++newScore
+            match.update ()->
+              res.contentType('json');
+              res.send({ response: action });
 
     app.get '/:id', (req, res) ->
       Match.getById req.params.id, (err, match) ->
