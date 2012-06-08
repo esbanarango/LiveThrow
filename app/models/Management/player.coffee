@@ -40,7 +40,6 @@ class Player
     # Generate de id
     redis.incr @key+"Id", ( err, id ) =>
       @id = id
-      console.log("Pilla la id: #{id}")
       redis.hset @key, id, JSON.stringify(@), (err, responseCode) =>
         callback null, @  
 

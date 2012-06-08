@@ -6,20 +6,19 @@ div.span12.offset3
         div(style="float:left")
           div(class="equipo_1",style="margin-top: 20px;")
             div.numerico
-              strong(id="equipo_1_marcador")=match.scoreTeam1          
+              strong(id="team1Score")=match.scoreTeam1          
             div.namerico
               label=match.team1.name
-
+              
         div.separador_x 
 
         div(style="float:left")       
           div(class="equipo_2",style="margin-top: 20px;")
             div.numerico
-              strong(id="equipo_1_marcador")=match.scoreTeam2       
+              strong(id="team2Score")=match.scoreTeam2       
             div.namerico
               label=match.team2.name
-          
-       
+ 
   div.clear
   #golTeam1.accion_equipo_1.span8
       .eliminar_1

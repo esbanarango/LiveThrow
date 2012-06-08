@@ -73,16 +73,18 @@ routes = (app) ->
               newScore=parseInt(match.scoreTeam2)
               match.scoreTeam2 = ++newScore
             match.update ()->
+              if socketIO = app.settings.socketIO
+                socketIO.sockets.emit "match:#{matchId}", action   
               res.contentType('json');
               res.send({ response: action });
 
     app.get '/:id', (req, res) ->
       Match.getById req.params.id, (err, match) ->
         match.fillUp (err, matchFull)->
-          console.log(matchFull.team1)
           res.render "#{__dirname}/views/live/show",
             title: "Live Score"
             csss: ['scoreReport']
+            scripts: ['livescore/live']
             match: matchFull
 
     app.get '/', (req, res) ->
