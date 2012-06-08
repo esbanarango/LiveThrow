@@ -1,0 +1,89 @@
+div.span12.offset3
+  div(class="datos_juego")
+    div(class="top-information")
+      div(class="marcador")
+
+        div(style="float:left")
+          div(class="equipo_1",style="margin-top: 20px;")
+            div.numerico
+              strong(id="equipo_1_marcador")=match.scoreTeam1          
+            div(style="display:block")
+              label(style="font-size: 20px; font-style: italic;")=match.team1.name
+          div(id="control_gol_1", style="display: ; padding-bottom: 15px;")
+            fieldset
+              form(id="form_gol_equipo1", method="post", action="").form-inline.form-actions1
+                div.span3.controlDivOut  
+                  div.control-group
+                    label.control-label
+                      | Gol
+                    div.controls
+                      select(data-placeholder="Seleccione Jugador", id="idPartGol_E_1", data-placeholder="Jugadores...", style="width: 190px;",  tabindex="3")
+                        each player in match.players1
+                          option=player.name
+                div.span3.controlDivOut       
+                  div.control-group
+                    label.control-label
+                      | Assitence
+                    div.controls                
+                      select(data-placeholder="Seleccione Jugador",  id="idPartAssist_E_1", data-placeholder="Jugadores...", style="width: 190px;",  tabindex="3")
+                        each player in match.players1
+                          option=player.name
+                div.span3.controlDivOut
+                  label.control-label
+                    | Time
+                  div.controls            
+                    input(style="width:110px; height: 21px; text-align: center; font-size: 13px;", value="00:00", name="minuto",  type="text", class="chzn-container chzn-container-single chzn-done", id="minuto_gol_1", placeholder="Tiempo")
+                div.clear
+                div.controlsSubmit                              
+                    input(class="btn btn-inverse", type="submit", value="Insertar") 
+
+        div.separador_x 
+
+        div(style="float:left")       
+          div(class="equipo_2",style="margin-top: 20px;")
+            div.numerico
+              strong(id="equipo_1_marcador")=match.scoreTeam2       
+            div
+              label(style="font-size: 20px; font-style: italic;")=match.team2.name
+          div(id="control_gol_1", style="padding-bottom: 15px;")
+            fieldset
+              form(id="form_gol_equipo1", method="post", action="").form-inline.form-actions2
+                div.span3.controlDivOut  
+                  div.control-group
+                    label.control-label
+                      | Gol
+                    div.controls
+                      select(data-placeholder="Seleccione Jugador", id="idPartGol_E_1", data-placeholder="Jugadores...", style="width: 190px;",  tabindex="3")
+                        each player in match.players2
+                          option=player.name
+                div.span3.controlDivOut       
+                  div.control-group
+                    label.control-label
+                      | Assitence
+                    div.controls                
+                      select(data-placeholder="Seleccione Jugador",  id="idPartAssist_E_1", data-placeholder="Jugadores...", style="width: 190px;",  tabindex="3")
+                        each player in match.players2
+                          option=player.name
+                div.span3.controlDivOut
+                  label.control-label
+                    | Time
+                  div.controls            
+                    input(style="width:110px; height: 21px; text-align: center; font-size: 13px;", value="00:00", name="minuto",  type="text", class="chzn-container chzn-container-single chzn-done", id="minuto_gol_1", placeholder="Tiempo")
+                div.clear
+                div.controlsSubmit                              
+                    input(class="btn btn-inverse", type="submit", value="Insertar")              
+       
+  div.clear
+  #gol_equipo_1.accion_equipo_1.span8
+      .eliminar_1
+      div.tiempo_1
+        label.golTime 00:02:00
+      div.dato_accion_1_left
+        strong Gol: 
+        label.golName Hector Lavoe   
+      div.dato_accion_1_left
+        strong Asistencia: 
+        label.assistName Pete Conde Rodriguez
+      .clear
+
+script(type="text/javascript")

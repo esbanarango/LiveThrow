@@ -1,10 +1,12 @@
 redis          = require('redis').createClient()
 _              = require 'underscore'
+Team           = require './../Management/team'
+Player         = require './../Management/player'
 
 class Match
   # The Redis key that will store all Match objects as a hash.
   @key: ->
-    "Matchs"
+    "Matches"
   # Fetch all Match objects from the database.
   # callback: (err, matchs)
   @all: (callback) ->
@@ -27,15 +29,34 @@ class Match
   constructor: (attributes) ->
     @[key] = value for key,value of attributes
     @
+
+  fillUp: (callback) ->
+    Team.getById @teamId1, (err, _team1) =>
+      @team1 = _team1
+      Team.getById @teamId2, (err, _team2) =>
+        @team2 = _team2
+        Player.all "Players#{@teamId1}", (err, _players1) =>
+          @players1 = _players1
+          Player.all "Players#{@teamId2}", (err, _players2) =>
+            @players2 =_players2
+            callback null,@
   # Persists the current object to Redis. The key is the Id.
   # All other attributes are saved as a sub-hash in JSON format.
   #
   # callback: (err, match)
   save: (callback) ->
-    redis.hset Match.key(), @email, JSON.stringify(@), (err, responseCode) =>
-      callback null, @
+    # Generate de id
+    redis.incr "MatchesId", ( err, id ) =>
+      @id = id      
+      redis.hset Match.key(), id, JSON.stringify(@), (err, responseCode) =>
+        callback null, @
+  update: (callback) ->
+    redis.hset Match.key(), @id, JSON.stringify(@), (err, responseCode) =>
+      callback null, @            
   destroy: (callback) ->
     redis.hdel Match.key(), @email, (err) ->
       callback err if callback
+
+
 
 module.exports = Match

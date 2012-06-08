@@ -4,12 +4,7 @@
     width: 700px;
     min-height: 500px;
 }
-.video_embedded
-{
-    width: 640px;
-    height: 470px;
-    margin: 30px;	
-}
+
 .datos_juego
 {
 
@@ -36,30 +31,64 @@
     /*line-height: 0px !important;*/
 }
 
+.form-actions1{
+    padding: 20px;
+    max-width:200px;
+    background-color: rgba(156, 154, 58, 0.1);
+    color: #aaa;
+}
+
+.form-actions2{
+    padding: 20px;
+    max-width:200px;
+    background-color: rgba(0, 148, 151, 0.1);
+    color: #aaa;
+}
+
+.controlDivOut{
+    margin-left: 0px;
+}
+.controlsSubmit{
+    margin-top: 20px;
+    display: inline-block;
+    width: 50px;
+}
 
 .equipo_1, .equipo_2
 {
-    width: 280px;
-    min-height: 140px;
-    float: left;
+    width: 220px;
     text-align: center;
     padding: 10px;
 }
 .equipo_1
 {
-    background-color: rgba(156, 154, 58, 0.3);
+    background-color: rgba(156, 154, 58, 0.1);
 }
 .equipo_2
 {
-    background-color: rgba(0, 148, 151, 0.3);
+    background-color: rgba(0, 148, 151, 0.1);
 }
+
+.numerico{
+    margin-top: 20px;
+    height:60px;
+    font-size: 90px; 
+    text-shadow: 3px 3px #C1C1C1;
+    display: inline-block;
+
+}
+
+
+
 .accion_equipo_1, .accion_equipo_2
 {
-    /*width: 590px;*/
+    max-width: 470px;
     padding: 10px;
     border-bottom-color: #006798;
     border-bottom-style: dashed;
     border-bottom-width: 1px;
+    display: inline-block;
+    margin-left: 0px !important;
     /*height: 70px;*/
 }
 .accion_equipo_1
@@ -92,6 +121,16 @@
     padding-right: 20px;
     background-position: right center;
 }
+
+.tiempo_1
+{
+
+    display: block;
+    padding-left: 20px;
+    background-position: left center;
+}
+
+
 .defensa_1, .defensa_2
 {
     width: 480px;

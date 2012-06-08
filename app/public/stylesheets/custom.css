@@ -36,6 +36,10 @@ input{
   color:#aaa !important;
 }
 
+.textAreaMatch{
+  color: #aaa;
+}
+
 .separador_x
 {
     width: 10px;
@@ -53,12 +57,6 @@ input{
   color:#ddd;
 }
 
-.vs {
-  float: left;
-  width: 30px;
-  margin-left:30px;
-
-}
 
 .chzn-container .chzn-drop {
   border-radius:0px 0px 4px 4px;

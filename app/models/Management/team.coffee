@@ -44,7 +44,6 @@ class Team
     # Generate de id
     redis.incr "TeamsId", ( err, id ) =>
       @id = id
-      console.log("Pilla la id: #{id}")
       redis.hset Team.key(), id, JSON.stringify(@), (err, responseCode) =>
         callback null, @
   destroy: (callback) ->

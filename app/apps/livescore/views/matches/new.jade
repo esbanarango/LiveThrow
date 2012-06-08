@@ -1,8 +1,8 @@
-div.span9.offset1.bordersform
+div.span8.offset1.bordersform
   legend
     | New Match
   fieldset
-    form(id="newMatchForm").form-vertical
+    form(id="newMatchForm", action="/matches/create", method="post").form-vertical
       p(style="font-size:13px")
         | Create a match is so easy, just select the teams you want face, and that's all. :)
  
@@ -10,14 +10,19 @@ div.span9.offset1.bordersform
         label.control-label
           | Teams
         div.controls
-          select(id="teams",class="chzn-select", multiple="", required="required")
+          select(id="teams", name="teams", class="chzn-select", multiple="", required="required")
             optgroup(label="My Teams")
               each team in myTeams      
-                option= team.name
+                option(value=team.id)= team.name
             optgroup(label="Public Teams")
               each team in allTeams
                 - if (team.userId != currentUserId)          
-                  option= team.name     
+                  option(value=team.id)= team.name     
+      div.control-group.control-group-match
+        label.control-label
+          | Description
+        div.controls
+          textarea(class="textAreaMatch", name="description")                    
       div.form-actions
         button(type='submit').btn.btn-success
           | Create Match

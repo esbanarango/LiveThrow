@@ -1,36 +1,36 @@
-div.span12.offset2
-div(class="datos_juego")
-  div(class="top-information")
-    div(class="marcador")
-      div(class="equipo_1",style="margin-top: 20px;")
-        div(style="font-size: 90px; text-shadow: 3px 3px #C1C1C1;display:block;")
-          strong(id="equipo_1_marcador", style="margin-top: 520px;")
-            |  12            
-        div(style="display:block")
-          label(style="font-size: 20px; font-style: italic;")
-            |  Kie     
-      div.separador_x        
-      div(class="equipo_2",style="margin-top: 20px;")
-        div(style="font-size: 90px; text-shadow: 3px 3px #C1C1C1;")
-          strong(id="equipo_1_marcador", style="margin-top: 520px;")
-            |  5            
-        div
-          label(style="font-size: 20px; font-style: italic;")
-            |  Kie          
-div.separador_y
-#gol_equipo_1.accion_equipo_1
-    .eliminar_1(onclick='deleteGol(\'\')')
-    .dato_accion_1_left
-      label.golTime 00:02:00
-      br
-    .dato_accion_1_left
-      strong Gol: 
-      label.golName Hector Lavoe   
-    .dato_accion_1_left
-      strong Asistencia: 
-      label.assistName Pete Conde Rodriguez
-    .clear
+div.span12.offset3
+  div(class="datos_juego")
+    div(class="top-information")
+      div(class="marcador")
+
+        div(style="float:left")
+          div(class="equipo_1",style="margin-top: 20px;")
+            div.numerico
+              strong(id="equipo_1_marcador")=match.scoreTeam1          
+            div(style="display:block")
+              label(style="font-size: 20px; font-style: italic;")=match.team1.name
+
+        div.separador_x 
+
+        div(style="float:left")       
+          div(class="equipo_2",style="margin-top: 20px;")
+            div.numerico
+              strong(id="equipo_1_marcador")=match.scoreTeam2       
+            div
+              label(style="font-size: 20px; font-style: italic;")=match.team2.name
+          
+       
+  div.clear
+  #gol_equipo_1.accion_equipo_1.span8
+      .eliminar_1
+      div.tiempo_1
+        label.golTime 00:02:00
+      div.dato_accion_1_left
+        strong Gol: 
+        label.golName Hector Lavoe   
+      div.dato_accion_1_left
+        strong Asistencia: 
+        label.assistName Pete Conde Rodriguez
+      .clear
 
 script(type="text/javascript")
-  /*$("body").css("line-height","90px");*/
-     

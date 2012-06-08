@@ -45,8 +45,8 @@ routes = (app) ->
           console.log(err)
           res.render 'error',
             status: 403,
-            message: "Incorrect Pie state: #{req.body.state} is not a recognized state."
-            title: "Incorrect Pie state"
+            message: "Team does not exist."
+            title: "Incorrect Team id"
             stylesheet: 'admin'        
         else
           Player.all "Players#{teamId}", (err, players)->
