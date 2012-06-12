@@ -10,7 +10,7 @@ All written in [Node.js](http://nodejs.org/) with the fantastic and beautiful _l
 
 ##Description
 
-This is the 0.0.1 version of this project, actually it only has a quick match functionality hwere you can create your teams, and stream a game; but I hope to grow it, adding more functionality eventually.
+This is the 0.0.1 version of this project, actually it only has a quick match functionality where you can create your teams, and stream a game; but I hope to grow it, adding more functionality eventually.
 
 ##Requirements
 Live Throw uses a Node.js full stack.
