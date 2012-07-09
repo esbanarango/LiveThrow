@@ -46,6 +46,14 @@ routes = (app) ->
   #LiveScore
   app.namespace '/live', ->
 
+    # Authentication check
+    app.all '/:id/*', (req, res, next) ->
+      if not (req.session.currentUser)
+        req.flash 'error', 'Please login.'
+        res.redirect '/login'
+        return
+      next()
+
     app.get '/:id/monitor', (req, res) ->
       Match.getById req.params.id, (err, match) ->
         match.fillUp (err, matchFull)->
