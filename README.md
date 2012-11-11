@@ -43,14 +43,13 @@ To run it you just need to follow the steps below.
 
 First clone the repo into your machine, `$ git clone git@github.com:esbanarango/LiveThrow.git`, this will create a folder, _LiveThrow_, where you'll find:
 
-  |-- app       -> Express.js app.
-  |-- Docs.     -> References documents
+    |-- app       -> Express.js app.
+    |-- Docs.     -> References documents
 
 Now you need to start the Node.js server.
-
->`$ cd app` 
-
 >Make sure you already have installed NPM on you machine. [NPM](http://npmjs.org/)
+
+`$ cd app` 
 
 First you need install all dependencies on your local directory, run `$ npm install`. All the dependencies are specified on _package.json_
 
