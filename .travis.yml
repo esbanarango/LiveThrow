@@ -3,4 +3,4 @@ node_js:
   - 0.8.11
 services:
   - redis-server
-script: cd app/ && ./bin/devserver
+script: cd app/ && npm install && ./bin/devserver
