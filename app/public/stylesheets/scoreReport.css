@@ -71,7 +71,7 @@
 
 
 .bordersTableScore{
-    min-width:350px;
+    min-width:335px;
     max-width: 470px;
     padding: 5px;
     max-height:700px;
@@ -110,10 +110,6 @@
 
 .scoreTable{
 
-}
-
-.golTimeTr{
-    background-color: rgba(46, 46, 46, 1);
 }
 
 .golTimeTr img{
