@@ -5,7 +5,7 @@ Player = require '../../models/Management/player'
 
 routes = (app) ->
 
-  #Teams
+  # TEAMS
   app.namespace '/teams', ->
     # Authentication check
     app.all '/*', (req, res, next) ->
@@ -56,7 +56,7 @@ routes = (app) ->
               team: team
               players: players
 
-  #Players
+  # PLAYERS
   app.namespace '/players', ->
 
     # Authentication check
@@ -92,7 +92,7 @@ routes = (app) ->
         res.contentType('json')
         res.send({ response: response})
 
-  #Matches
+  # MATCHES
   app.namespace '/matches', ->
 
     # Authentication check
@@ -110,17 +110,5 @@ routes = (app) ->
           title: "Live Throw"
           teams: teams
 
-
-
 module.exports = routes
-
-
-
-
-
-
-
-
-
-
 

@@ -4,15 +4,15 @@ Live Throw is the final project for the _Special Topics in Telematics_ course; t
 
 All written in [Node.js](http://nodejs.org/) with the fantastic and beautiful _little language_ [CoffeeScript](http://coffeescript.org/).
 
-###Context
+### Context
 
 >Ultimate is a sport played with a flying disc. The object of the game is to score points by passing the disc to a player in the opposing end zone, similar to an end zone in American football or rugby. Players may not run with the disc, and may only move one foot (pivot) while holding the disc.
 
-##Description
+# Description
 
 This is the 0.0.1 version of this project, actually it only has a quick match functionality where you can create your teams, and stream a game; but I hope to grow it, adding more functionality eventually.
 
-##Requirements
+##  Requirements
 Live Throw uses a Node.js full stack.
 
 ```json
@@ -37,6 +37,29 @@ Live Throw uses a Node.js full stack.
 }
 ```
 
-##Author
+## Install and run it
+
+To run it you just need to follow the steps below.
+
+First clone the repo into your machine, `$ git clone git@github.com:esbanarango/LiveThrow.git`, this will create a folder, _LiveThrow_, where you'll find:
+
+  |-- app       -> Express.js app.
+  |-- Docs.     -> References documents
+
+Now you need to start the Node.js server.
+
+>`$ cd app` 
+
+>Make sure you already have installed NPM on you machine. [NPM](http://npmjs.org/)
+
+First you need install all dependencies on your local directory, run `$ npm install`. All the dependencies are specified on _package.json_
+
+Run `$ ./bin/devserver` to start the Node.js server.
+
+## Try it
+
+Having everything ready and running, go to `http://localhost:3000` and enjoy! :)
+
+## Author
 This was written by [Esteban Arango Medina](http://twitter.com/esbanarango).
 >Special thanks to [@sduquej](https://twitter.com/sduquej) and [@dduqueti](https://twitter.com/dduqueti), for all the documentation.

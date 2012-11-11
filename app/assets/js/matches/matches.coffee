@@ -1,4 +1,7 @@
 jQuery ->
+
+
+
 ###
 #Create team ajax
   $("#newMatchForm").on "submit", (e) ->

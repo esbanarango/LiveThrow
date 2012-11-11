@@ -10,7 +10,7 @@ div.span8.offset1.bordersform
         label.control-label
           | Teams
         div.controls
-          select(id="teams", name="teams", class="chzn-select", multiple="", required="required")
+          select(id="teams", name="teams", class="chzn-select", multiple="")
             optgroup(label="My Teams")
               each team in myTeams      
                 option(value=team.id)= team.name
@@ -39,6 +39,5 @@ script(type="text/javascript")
       }
     }
   });
-
 
 

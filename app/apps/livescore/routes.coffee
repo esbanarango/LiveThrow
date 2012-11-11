@@ -21,7 +21,7 @@ routes = (app) ->
       
     app.get '/new', (req, res) ->
       Team.getByuserId req.session.currentUser, (err, _myTeams) ->
-        Team.all (err,_allTeams)->
+        Team.all (err,_allTeams) ->
           myTeams = _myTeams.reverse()
           allTeams = _allTeams.reverse()
           res.render "#{__dirname}/views/matches/new",
@@ -30,7 +30,11 @@ routes = (app) ->
             allTeams: allTeams
             scripts: ['matches/matches']
 
-    app.post '/create', (req, res) ->      
+    app.post '/create', (req, res) -> 
+      if (req.body.teams is undefined) or (req.body.teams.length < 2)
+        req.flash 'error', 'Please select 2 teams.'
+        res.redirect '/matches/new'
+        return             
       attributes =
         teamId1: req.body.teams[0]
         teamId2: req.body.teams[1]
