@@ -2,8 +2,20 @@ express = require 'express'
 assert  = require 'assert'
 request = require 'request'
 app     = require "../../server"
+User = require '../../models/user'
+redis    = require('redis').createClient()
 
 describe 'authentication', ->
+
+  before ->
+    attributes =
+      username: 'admin'
+      email: 'admin@admin.com'
+      password: '111111'
+      gender: 'm'
+    user = new User attributes
+    user.save()
+
   describe 'GET /login', ->
     body = null
     before (done) ->
@@ -12,8 +24,8 @@ describe 'authentication', ->
         done()
     it "has title", ->
       assert.hasTag body, '//head/title', 'Live Throw - Login'
-    it "has user field", ->
-      assert.hasTag body, '//input[@name="user"]', ''
+    it "has email field", ->
+      assert.hasTag body, '//input[@name="email"]', ''
     it "has password field", ->
       assert.hasTag body, '//input[@name="password"]', ''
 
@@ -24,7 +36,7 @@ describe 'authentication', ->
         options =
           uri:"http://localhost:#{app.settings.port}/sessions"
           form:
-            user: 'incorrect user'
+            email: 'incorrect user'
             password: 'incorrect password'
           followAllRedirects: true
         request.post options, (err, _response, _body) ->
@@ -40,15 +52,15 @@ describe 'authentication', ->
         options =
           uri:"http://localhost:#{app.settings.port}/sessions"
           form:
-            user: 'admin'
+            email: 'admin@admin.com'
             password: '111111'
           followAllRedirects: true
         request.post options, (err, _response, _body) ->
           [body, response] = [_body, _response]
           done()
       it "shows flash message", ->
-        errorText = 'You are now logged in as admin.'
-        assert.hasTag body, "//div[2]/div[@class='alert alert-success']/text()", errorText
+        rightText = 'You are now logged in as admin.'
+        assert.hasTag body, "//div[2]/div[@class='alert alert-success']/text()", rightText
 
   describe "DELETE /sessions", ->
     [body, response] = [null, null]
@@ -63,4 +75,6 @@ describe 'authentication', ->
       errorText = 'You have been logged out.'
       assert.hasTag body, "//div[2]/div[@class='alert alert-info']/text()", errorText
 
+  after ->
+    redis.hdel User.key(), 'admin@admin.com'
 

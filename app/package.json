@@ -20,7 +20,7 @@
     "node-dev": "~0.2.2",
     "mocha": "~0.14.1",
     "request": "~2.9.153",
-    "libxmljs": "0.5.3"
+    "libxmljs": "~0.6.1"
   },
   "scripts": {
     "test": "./bin/test",
