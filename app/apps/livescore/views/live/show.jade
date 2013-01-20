@@ -14,10 +14,14 @@ block content
 
           div(style="float:left")
             div(class="equipo_1",style="margin-top: 20px;")
-              div.numerico
-                strong(id="team1Score")=match.scoreTeam1          
+              //- Scorekeeper
+              score = match.scoreTeam1
+              team = 1 
+              include scorekeeper
+
               div.namerico
                 label=match.team1.name
+            //- To get the players info                
             select(id="playersTeam1", style="display:none")
               each player in match.players1
                 option(id="id-"+player.id+"team-1", data-name=player.name, data-number=player.number, data-nickname=player.nickname, data-lastname=player.last_name)
@@ -26,10 +30,14 @@ block content
 
           div(style="float:left")       
             div(class="equipo_2",style="margin-top: 20px;")
-              div.numerico
-                strong(id="team2Score")=match.scoreTeam2       
+              //- Scorekeeper
+              score = match.scoreTeam2
+              team = 2
+              include scorekeeper 
+
               div.namerico
                 label=match.team2.name
+            //- To get the players info                
             select(id="playersTeam2", style="display:none")
               each player in match.players2
                 option(id="id-"+player.id+"team-2", data-name=player.name, data-number=player.number, data-nickname=player.nickname, data-lastname=player.last_name)

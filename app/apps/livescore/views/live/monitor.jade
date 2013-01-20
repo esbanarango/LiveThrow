@@ -14,8 +14,11 @@ block content
 
           div(style="float:left")
             div(class="equipo_1",style="margin-top: 20px;")
-              div.numerico
-                strong(id="team1Score")=match.scoreTeam1          
+              //- Scorekeeper
+              score = match.scoreTeam1
+              team = 1 
+              include scorekeeper 
+
               div.namerico
                 label=match.team1.name
             div(id="control_gol_1", style="display: ; padding-bottom: 15px;")
@@ -51,8 +54,11 @@ block content
 
           div(style="float:left")       
             div(class="equipo_2",style="margin-top: 20px;")
-              div.numerico
-                strong(id="team2Score")=match.scoreTeam2       
+              //- Scorekeeper
+              score = match.scoreTeam2
+              team = 2
+              include scorekeeper
+                     
               div.namerico
                 label=match.team2.name
             div(id="control_gol_2", style="padding-bottom: 15px;")
