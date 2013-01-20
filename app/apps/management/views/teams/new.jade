@@ -1,61 +1,64 @@
-div.span6.offset3.bordersform
-  legend
-    | New team
-  fieldset
-    form(action="/teams/create", id="newTeamForm", method="post").form-horizontal
-      div.control-group
-        label.control-label
-          | Name
-        div.controls
-          input(type='text', name="name", id="name", data-content="Teams name?", data-original-title="name").input-medium
-      div(style="margin-bottom:5px;").control-group
-        label.control-label
-          | Category
-        div.controls
-          label.radio
-            | Open
-            input(type='radio', value="Open", name='category', checked)
-          label.radio
-            | Women
-            input(type='radio', value="Women", name='category')
-          label.radio
-            | Coed
-            input(type='radio', value="Coed", name='category')            
-      div.control-group
-        label.control-label Public 
-          em(id="publicQ", rel="tooltip", data-original-title="Do you want everyone to see this team?", style="color:#d99; cursor:help")?
-        div.controls
-          input(type="checkbox", name="public", checked)          
-      div.form-actions
-        button(type='submit').btn.btn-success
-          | Create New Team
+extends ../../../../views/layout
 
-script(type="text/javascript")
-  $('#publicQ').tooltip()
-  $("#newTeamForm").validate({
-        rules:{
-          name:{
-              required:true
-            },
-          category:{
-              required:true
-            }
-        },
-        messages:{
-          name:{
-            required:"Enter a team name"
+block content
+  div.span6.offset3.bordersform
+    legend
+      | New team
+    fieldset
+      form(action="/teams/create", id="newTeamForm", method="post").form-horizontal
+        div.control-group
+          label.control-label
+            | Name
+          div.controls
+            input(type='text', name="name", id="name", data-content="Teams name?", data-original-title="name").input-medium
+        div(style="margin-bottom:5px;").control-group
+          label.control-label
+            | Category
+          div.controls
+            label.radio
+              | Open
+              input(type='radio', value="Open", name='category', checked)
+            label.radio
+              | Women
+              input(type='radio', value="Women", name='category')
+            label.radio
+              | Coed
+              input(type='radio', value="Coed", name='category')            
+        div.control-group
+          label.control-label Public 
+            em(id="publicQ", rel="tooltip", data-original-title="Do you want everyone to see this team?", style="color:#d99; cursor:help")?
+          div.controls
+            input(type="checkbox", name="public", checked)          
+        div.form-actions
+          button(type='submit').btn.btn-success
+            | Create New Team
+
+  script(type="text/javascript")
+    $('#publicQ').tooltip()
+    $("#newTeamForm").validate({
+          rules:{
+            name:{
+                required:true
+              },
+            category:{
+                required:true
+              }
           },
-          category:{
-            required:"Enter the category"
+          messages:{
+            name:{
+              required:"Enter a team name"
+            },
+            category:{
+              required:"Enter the category"
+            }
+          },
+          errorClass: "help-inline",
+          errorElement: "span",
+          highlight:function(element, errorClass, validClass) {
+            $(element).parents('.control-group').addClass('error');
+          },
+          unhighlight: function(element, errorClass, validClass) {
+            $(element).parents('.control-group').removeClass('error');
+            //$(element).parents('.control-group').addClass('success');
           }
-        },
-        errorClass: "help-inline",
-        errorElement: "span",
-        highlight:function(element, errorClass, validClass) {
-          $(element).parents('.control-group').addClass('error');
-        },
-        unhighlight: function(element, errorClass, validClass) {
-          $(element).parents('.control-group').removeClass('error');
-          //$(element).parents('.control-group').addClass('success');
-        }
-      });
+        });

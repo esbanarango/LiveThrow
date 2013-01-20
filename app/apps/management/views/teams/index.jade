@@ -1,24 +1,27 @@
-div.span6.offset3
-  h2 
-    | My Teams
-  table(class="table table-striped")
-    thead
-      tr
-        th
-          | Name
-        th
-          | Category
-        th
-    tbody
-      each team in teams
+extends ../../../../views/layout
+
+block content
+  div.span6.offset3
+    h2 
+      | My Teams
+    table(class="table table-striped")
+      thead
         tr
-          td= team.name
-          td= team.category
-          td
-            a(class="btn btn-small", href="/teams/#{team.id}")
-              i(class="icon-cog")
-              |  Edit
+          th
+            | Name
+          th
+            | Category
+          th
+      tbody
+        each team in teams
+          tr
+            td= team.name
+            td= team.category
+            td
+              a(class="btn btn-small", href="/teams/#{team.id}")
+                i(class="icon-cog")
+                |  Edit
 
 
-  a(href="/teams/new").btn.btn-inverse
-    | Create New Team
+    a(href="/teams/new").btn.btn-inverse
+      | Create New Team

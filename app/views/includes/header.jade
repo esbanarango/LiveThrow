@@ -16,11 +16,11 @@ div.navbar.navbar-fixed-top
             a(href='#') About
         ul.nav.pull-right
           li.divider-vertical
-          - if (currentUserName)
+          - if (currentUserName())
             li.dropdown
               a(href='#',data-toggle="dropdown").dropdown-toggle
-                i(style="opacity:0.6;").icon-user.icon-white  
-                #{" "+currentUserName}
+                i(style="opacity:0.6;").icon-user.icon-white
+                =" " + currentUserName()                
               ul.dropdown-menu
                 li
                   a(href="/matches/new")

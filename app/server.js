@@ -4,15 +4,16 @@ require('coffee-script');
  * Module dependencies.
  */
 
-var express = require('express'),
-  stylus = require('stylus'),
-  RedisStore = require('connect-redis')(express);
+var express     = require('express')
+  , stylus      = require('stylus')
+  , RedisStore  = require('connect-redis')(express)
+  , http        = require('http')
+  , path        = require('path');
 
-require('express-namespace')
+require('express-namespace');
 
-var app = module.exports = express.createServer();
-
-require('./apps/socket-io')(app)
+var app = module.exports = express();
+var server = http.createServer(app);
 
 // Configuration
 
@@ -32,9 +33,10 @@ app.configure(function(){
     secret: "KioxIqpvdyfMXOHjVkUQmGLwEAtB0SZ9cTuNgaWFJYsbzerCDn",
     store: new RedisStore
   }));
+  app.use(require('connect-flash')());
   app.use(require('connect-assets')());
   app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
+  app.use(express.static(path.join(__dirname, 'public')));
 });
 
 app.configure('development', function(){
@@ -53,11 +55,15 @@ app.configure('production', function(){
 require('./apps/helpers')(app);
 
 // Routes
+require('./middleware/upgrade')(app);
 require('./apps/static/routes')(app);
 require('./apps/authentication/routes')(app);
 require('./apps/management/routes')(app);
 require('./apps/livescore/routes')(app);
 
-app.listen(app.settings.port, function(){
-  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+server.listen(app.settings.port, function(){
+  console.log("Express server listening on port %d in %s mode", server.address().port, app.settings.env);
 });
+
+// Express 3.0 returns the server after the call to `listen`.
+require('./apps/socket-io')(server, app)

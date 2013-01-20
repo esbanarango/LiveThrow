@@ -1,76 +1,79 @@
-div.span12.offset3
-  label
-    |  Share this game 
-  a(href="https://twitter.com/share", class="twitter-share-button", data-url="http://200.12.180.110/live/"+match.id, data-text="Hey "+match.team1.name+" is playing against "+match.team2.name+", Check it out! on Live Throw")
-  script(type="text/javascript")
-    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+extends ../../../../views/layout
 
-  div(class="datos_juego")
-    div(class="top-information")
-      div(class="marcador")
+block content
+  div.span12.offset3
+    label
+      |  Share this game 
+    a(href="https://twitter.com/share", class="twitter-share-button", data-url="http://200.12.180.110/live/"+match.id, data-text="Hey "+match.team1.name+" is playing against "+match.team2.name+", Check it out! on Live Throw")
+    script(type="text/javascript")
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
-        div(style="float:left")
-          div(class="equipo_1",style="margin-top: 20px;")
-            div.numerico
-              strong(id="team1Score")=match.scoreTeam1          
-            div.namerico
-              label=match.team1.name
-          select(id="playersTeam1", style="display:none")
-            each player in match.players1
-              option(id="id-"+player.id+"team-1", data-name=player.name, data-number=player.number, data-nickname=player.nickname, data-lastname=player.last_name)
+    div(class="datos_juego")
+      div(class="top-information")
+        div(class="marcador")
 
-        div.separador_x 
+          div(style="float:left")
+            div(class="equipo_1",style="margin-top: 20px;")
+              div.numerico
+                strong(id="team1Score")=match.scoreTeam1          
+              div.namerico
+                label=match.team1.name
+            select(id="playersTeam1", style="display:none")
+              each player in match.players1
+                option(id="id-"+player.id+"team-1", data-name=player.name, data-number=player.number, data-nickname=player.nickname, data-lastname=player.last_name)
 
-        div(style="float:left")       
-          div(class="equipo_2",style="margin-top: 20px;")
-            div.numerico
-              strong(id="team2Score")=match.scoreTeam2       
-            div.namerico
-              label=match.team2.name
-          select(id="playersTeam2", style="display:none")
-            each player in match.players2
-              option(id="id-"+player.id+"team-2", data-name=player.name, data-number=player.number, data-nickname=player.nickname, data-lastname=player.last_name)
+          div.separador_x 
 
-  div(id="tableScores").bordersTableScore
-    table(class="scoreTable")
-      thead
-        tr(class="accion_header")
-          th(style="width:10%")
-            | Time
-          th(style="width:40%")
-            | Gol
-          th(style="width:40%")
-            | Assitence
-      each action in match.actions
-        tr(class="accion_equipo_"+action.team)
-          td.golTimeTr
-            label.golTime <img src="./../../images/tiempo.png">#{action.minuto}
-          td
-            label(class="changeId", data-idteam=action.team).golName=action.golPlayerId
-          td
-            label(class="changeId", data-idteam=action.team).assistName=action.assitencePlayerId
+          div(style="float:left")       
+            div(class="equipo_2",style="margin-top: 20px;")
+              div.numerico
+                strong(id="team2Score")=match.scoreTeam2       
+              div.namerico
+                label=match.team2.name
+            select(id="playersTeam2", style="display:none")
+              each player in match.players2
+                option(id="id-"+player.id+"team-2", data-name=player.name, data-number=player.number, data-nickname=player.nickname, data-lastname=player.last_name)
 
-  // Smaple elements      
-  div(style="display:none;")      
-      div#golStructTeam1
-        table
-          tr(style="display:;").accion_equipo_1
-            td.tiempo_1.golTimeTr
-              label.golTime <img src="./../../images/tiempo.png">00:02:00
-            td(style="display:none;")
-              label.golName Hector Lavoe  
-            td(style="display:none;")
-              label.assistName Pete Conde Rodriguez
+    div(id="tableScores").bordersTableScore
+      table(class="scoreTable")
+        thead
+          tr(class="accion_header")
+            th(style="width:10%")
+              | Time
+            th(style="width:40%")
+              | Gol
+            th(style="width:40%")
+              | Assitence
+        each action in match.actions
+          tr(class="accion_equipo_"+action.team)
+            td.golTimeTr
+              label.golTime <img src="./../../images/tiempo.png">#{action.minuto}
+            td
+              label(class="changeId", data-idteam=action.team).golName=action.golPlayerId
+            td
+              label(class="changeId", data-idteam=action.team).assistName=action.assitencePlayerId
 
-      div#golStructTeam2
-        table
-          tr(style="display:;").accion_equipo_2
-            td.tiempo_1.golTimeTr
-              label.golTime <img src="./../../images/tiempo.png"> 00:02:00
-            td(style="display:none;")
-              label.golName Hector Lavoe      
-            td(style="display:none;")
-              label.assistName Pete Conde Rodriguez
+    // Smaple elements      
+    div(style="display:none;")      
+        div#golStructTeam1
+          table
+            tr(style="display:;").accion_equipo_1
+              td.tiempo_1.golTimeTr
+                label.golTime <img src="./../../images/tiempo.png">00:02:00
+              td(style="display:none;")
+                label.golName Hector Lavoe  
+              td(style="display:none;")
+                label.assistName Pete Conde Rodriguez
+
+        div#golStructTeam2
+          table
+            tr(style="display:;").accion_equipo_2
+              td.tiempo_1.golTimeTr
+                label.golTime <img src="./../../images/tiempo.png"> 00:02:00
+              td(style="display:none;")
+                label.golName Hector Lavoe      
+              td(style="display:none;")
+                label.assistName Pete Conde Rodriguez
 
 
 

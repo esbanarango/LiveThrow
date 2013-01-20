@@ -2,8 +2,8 @@ express = require 'express'
 assert  = require 'assert'
 request = require 'request'
 app     = require "../../server"
-User = require '../../models/user'
-redis    = require('redis').createClient()
+User    = require '../../models/user'
+redis   = require('redis').createClient()
 
 describe 'authentication', ->
 

@@ -2,7 +2,7 @@
 
 ####Bootstrap Custom
 ```css
-	  @textColor = #AAA
+	@textColor = #AAA
 	@linkColorHover = lighten(@linkColor, 15%)
 	@inputBackground = #3D3D3D
 	@inputBorder = rgba(255, 255, 255, 0.08)

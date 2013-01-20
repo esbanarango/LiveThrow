@@ -1,4 +1,4 @@
-!!! 
+doctype 5
 html
   head
     title= "Live Throw - "+ title 
@@ -34,7 +34,8 @@ html
               = flash[flashType]
               
         div.row
-          div.span12!= body
+          div.span12
+            block content
         include includes/footer   
       script(src='/socket.io/socket.io.js') 
       -var scripts = scripts || []

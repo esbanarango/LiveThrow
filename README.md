@@ -10,7 +10,7 @@ All written in [Node.js](http://nodejs.org/) with the fantastic and beautiful _l
 
 # Description
 
-This is the 0.0.1 version of this project, actually it only has a quick match functionality where you can create your teams, and stream a game; but I hope to grow it, adding more functionality eventually.
+This is the 0.0.1 version of this project, right now it only has a _quick match_ functionality where you can create your teams, and stream a game; but I hope to grow it up adding more functionality eventually.
 
 ##  Requirements
 Live Throw uses a Node.js full stack.
@@ -21,18 +21,19 @@ Live Throw uses a Node.js full stack.
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "express": "2.5.1",
-    "jade": ">= 0.0.1",
+    "express": "~3.0.6",
+    "jade": "~0.28.1",
     "coffee-script": "~1.2.0",
-    "express-namespace": "0.0.4",
+    "express-namespace": "0.1.1",
     "connect-assets": "~2.1.8",
-    "socket.io": "~0.9.2",
-    "underscore": "~1.3.1",
+    "socket.io": "~0.9.13",
+    "underscore": "~1.3.3",
     "stylus": "~0.24.0",
-    "redis": "~0.7.2",
+    "redis": "~0.7.3",
     "hiredis": "~0.1.14",
     "connect-redis": "~1.3.0",
-    "gravatar": "~1.0.6"
+    "gravatar": "~1.0.6",
+    "connect-flash": "~0.1.0"
   }
 }
 ```
@@ -47,17 +48,19 @@ First clone the repo into your machine, `$ git clone git@github.com:esbanarango/
     |-- Docs.     -> References documents
 
 Now you need to start the Node.js server.
->Make sure you already have installed NPM on you machine. [NPM](http://npmjs.org/)
+>Make sure you already have installed NPM on you machine ([NPM](http://npmjs.org/)), and [Redis](http://redis.io/download).
 
 `$ cd app` 
 
-First you need install all dependencies on your local directory, run `$ npm install`. All the dependencies are specified on _package.json_
+First you need install all dependencies on your local directory, run `$ npm install`. All the dependencies are specified on _package.json_.
 
-Run `$ ./bin/devserver` to start the Node.js server.
+* Remember to run Redis, you can make sure it's running by executing  `$ redis-cli`.
+
+Then run `$ ./bin/devserver` to start the Node.js server.
 
 ## Try it
 
-Having everything ready and running, go to `http://localhost:3000` and enjoy! :)
+Having everything ready and running, go to `http://localhost:3000` and enjoy it! :)
 
 ## Author
 This was written by [Esteban Arango Medina](http://twitter.com/esbanarango).

@@ -110,9 +110,6 @@ routes = (app) ->
     app.get '/', (req, res) ->
       Match.all (err, _matches) ->
         Team.allall (err, _teams) ->
-
-          console.log _matches
-          console.log _teams
           res.render "#{__dirname}/views/live/index",
             title: "Live Games"
             matches: _matches
