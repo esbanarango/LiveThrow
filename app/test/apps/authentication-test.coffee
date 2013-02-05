@@ -1,20 +1,11 @@
+require "../spec_helper"
 express = require 'express'
 assert  = require 'assert'
 request = require 'request'
-app     = require "../../server"
-User    = require '../../models/user'
-redis   = require('redis').createClient()
+app     = require '../../server'
+RequestHelper = require '../support/request-helper'
 
 describe 'authentication', ->
-
-  before ->
-    attributes =
-      username: 'admin'
-      email: 'admin@admin.com'
-      password: '111111'
-      gender: 'm'
-    user = new User attributes
-    user.save()
 
   describe 'GET /login', ->
     body = null
@@ -52,14 +43,14 @@ describe 'authentication', ->
         options =
           uri:"http://localhost:#{app.settings.port}/sessions"
           form:
-            email: 'admin@admin.com'
+            email: 'bayron@beltran.com'
             password: '111111'
           followAllRedirects: true
         request.post options, (err, _response, _body) ->
           [body, response] = [_body, _response]
           done()
       it "shows flash message", ->
-        rightText = 'You are now logged in as admin.'
+        rightText = 'You are now logged in as bayron.'
         assert.hasTag body, "//div[2]/div[@class='alert alert-success']/text()", rightText
 
   describe "DELETE /sessions", ->
@@ -74,7 +65,4 @@ describe 'authentication', ->
     it "shows flash message", ->
       errorText = 'You have been logged out.'
       assert.hasTag body, "//div[2]/div[@class='alert alert-info']/text()", errorText
-
-  after ->
-    redis.hdel User.key(), 'admin@admin.com'
 

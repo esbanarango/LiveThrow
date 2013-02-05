@@ -19,7 +19,7 @@ routes = (app) ->
       Team.getByuserId req.session.currentUser, (err, _teams) ->
         teams = _teams.reverse()
         res.render "#{__dirname}/views/teams/index",
-          title: "Live Throw"
+          title: "Teams"
           teams: teams
 
     app.get '/new', (req, res) ->
