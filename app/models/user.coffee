@@ -13,7 +13,7 @@ class User
       for key, value of objects
         user = new User JSON.parse(value)
         users.push user
-      callback null, users
+      callback err, users
   # Retrive a single User by email.
   #
   # callback: (err, user)
@@ -23,7 +23,7 @@ class User
         callback new Error("User '#{email}' could not be found.")
         return
       user = new User JSON.parse(json)
-      callback null, user
+      callback err, user
   constructor: (attributes) ->
     @[key] = value for key,value of attributes
     @
@@ -33,7 +33,7 @@ class User
   # callback: (err, user)
   save: (callback) ->
     redis.hset User.key(), @email, JSON.stringify(@), (err, responseCode) =>
-      callback null, @ if callback
+      callback err, @ if callback
   destroy: (callback) ->
     redis.hdel User.key(), @email, (err) ->
       callback err if callback

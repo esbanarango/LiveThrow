@@ -8,7 +8,7 @@ routes = (app) ->
   # TEAMS
   app.namespace '/teams', ->
     # Authentication check
-    app.all '/*', (req, res, next) ->
+    app.all '/(*)?', (req, res, next) ->
       if not (req.session.currentUser)
         req.flash 'error', 'Please login.'
         res.redirect '/login'
