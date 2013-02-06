@@ -31,31 +31,32 @@ $ ->
     $("#tableScores table tbody").find(":first").find("td").show("slow")
     #$("#tableScores table tbody").find(":first").slideDown("slow")
 
-    secondPlay = ->
-      $("body").removeClass "play"
-      aa = $("ul.secondPlay li.active")
-      if aa.html() is `undefined`
-        aa = $("ul.secondPlay li").eq(0)
-        aa.addClass("before").removeClass("active").next("li").addClass("active").closest("body").addClass "play"
-      else if aa.is(":last-child")
-        $("ul.secondPlay li").removeClass "before"
-        aa.addClass("before").removeClass "active"
-        aa = $("ul.secondPlay li").eq(0)
-        aa.addClass("active").closest("body").addClass "play"
-      else
-        $("ul.secondPlay li").removeClass "before"
-        aa.addClass("before").removeClass("active").next("li").addClass("active").closest("body").addClass "play"
-    minutePlay = ->
-      $("body").removeClass "play"
-      aa = $("ul.minutePlay li.active")
-      if aa.html() is `undefined`
-        aa = $("ul.minutePlay li").eq(0)
-        aa.addClass("before").removeClass("active").next("li").addClass("active").closest("body").addClass "play"
-      else if aa.is(":last-child")
-        $("ul.minutePlay li").removeClass "before"
-        aa.addClass("before").removeClass "active"
-        aa = $("ul.minutePlay li").eq(0)
-        aa.addClass("active").closest("body").addClass "play"
-      else
-        $("ul.minutePlay li").removeClass "before"
-        aa.addClass("before").removeClass("active").next("li").addClass("active").closest("body").addClass "play"
+@secondPlay = ->
+  $("body").removeClass "play"
+  aa = $("ul.secondPlay li.active")
+  if aa.html() is `undefined`
+    aa = $("ul.secondPlay li").eq(0)
+    aa.addClass("before").removeClass("active").next("li").addClass("active").closest("body").addClass "play"
+  else if aa.is(":last-child")
+    $("ul.secondPlay li").removeClass "before"
+    aa.addClass("before").removeClass "active"
+    aa = $("ul.secondPlay li").eq(0)
+    aa.addClass("active").closest("body").addClass "play"
+  else
+    $("ul.secondPlay li").removeClass "before"
+    aa.addClass("before").removeClass("active").next("li").addClass("active").closest("body").addClass "play"
+    
+@minutePlay = ->
+  $("body").removeClass "play"
+  aa = $("ul.minutePlay li.active")
+  if aa.html() is `undefined`
+    aa = $("ul.minutePlay li").eq(0)
+    aa.addClass("before").removeClass("active").next("li").addClass("active").closest("body").addClass "play"
+  else if aa.is(":last-child")
+    $("ul.minutePlay li").removeClass "before"
+    aa.addClass("before").removeClass "active"
+    aa = $("ul.minutePlay li").eq(0)
+    aa.addClass("active").closest("body").addClass "play"
+  else
+    $("ul.minutePlay li").removeClass "before"
+    aa.addClass("before").removeClass("active").next("li").addClass("active").closest("body").addClass "play"
