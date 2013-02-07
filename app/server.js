@@ -40,6 +40,7 @@ app.configure(function(){
 });
 
 app.configure('development', function(){
+  process.env.NODE_ENV = 'development';
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
@@ -48,6 +49,7 @@ app.configure('test', function () {
 });
 
 app.configure('production', function(){
+  process.env.NODE_ENV = 'production';
   app.use(express.errorHandler());
 });
 

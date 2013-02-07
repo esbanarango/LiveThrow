@@ -31,6 +31,11 @@ $ ->
     $("#tableScores table tbody").find(":first").find("td").show("slow")
     #$("#tableScores table tbody").find(":first").slideDown("slow")
 
+
+@setScore = (num)->
+
+
+
 @secondPlay = ->
   $("body").removeClass "play"
   aa = $("ul.secondPlay li.active")

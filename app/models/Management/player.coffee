@@ -2,10 +2,9 @@ redis          = require('redis').createClient()
 _              = require 'underscore'
 
 class Player
-  ### The Redis key that will store all Player objects as a hash.
+  # The Redis key that will store all Player objects as a hash.
   @key: ->
-    "Players"
-  ###  
+    "Players:#{process.env.NODE_ENV}"
   # Fetch all Player objects from the database.
   # callback: (err, players)
   @all: (key, callback) ->
@@ -30,7 +29,7 @@ class Player
 
   constructor: (attributes, key) ->
     @[k] = value for k,value of attributes
-    @key = key
+    @key = Player.key()+key
     @
   # Persists the current object to Redis. The key is the Id.
   # All other attributes are saved as a sub-hash in JSON format.

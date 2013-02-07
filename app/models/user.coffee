@@ -4,7 +4,7 @@ _              = require 'underscore'
 class User
   # The Redis key that will store all User objects as a hash.
   @key: ->
-    "Users"
+    "Users:#{process.env.NODE_ENV}"
   # Fetch all User objects from the database.
   # callback: (err, users)
   @all: (callback) ->

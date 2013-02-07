@@ -77,7 +77,7 @@ routes = (app) ->
         position: req.body.position || ""
         number: req.body.number || ""
         gender: req.body.gender || ""        
-      player = new Player attributes, "Players#{teamId}"
+      player = new Player attributes, teamId
       player.save () ->        
         res.contentType('json');
         res.send({ response: player, message:"Player was successfully added." });
@@ -86,7 +86,7 @@ routes = (app) ->
       refParts = req.header('Referrer').split('/')
       teamId = refParts[4].split('?')[0]
       id = req.body.id
-      Player.destroy "Players#{teamId}", id, (err) ->
+      Player.destroy teamId, id, (err) ->
         response = "Destroyed"
         response = err if err
         res.contentType('json')

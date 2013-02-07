@@ -1,4 +1,6 @@
+redis   = require('redis').createClient()
 Team    = require '../../models/Management/team'
+_       = require 'underscore'
 
 TeamFactory =
   # Create two teams in the database.
@@ -21,6 +23,11 @@ TeamFactory =
       category: "Women"
       public: 'on'
       userId: "bayron@beltran.com"
+    team4 =
+      name: "El Cucuta"
+      category: "Women"
+      public: 'on'
+      userId: "alexis@copen.com" 
     teamAttributes = [team1, team2, team3]
     # Now create them all
     createOne = @createOne
@@ -36,6 +43,13 @@ TeamFactory =
     team = new Team attributes
     team.save (err, team) ->
       callback err, team
+
+  clean: ->
+    Team.allall (err,_allTeams) ->
+      redis.DEL "Teams:#{process.env.NODE_ENV}Id"
+      _.each _allTeams, (t)->
+        t.destroy()
+
 
 
 module.exports = TeamFactory

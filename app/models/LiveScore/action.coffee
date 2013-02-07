@@ -4,7 +4,7 @@ _              = require 'underscore'
 class Action
   # The Redis key that will store all Action objects as a hash.
   @key: ->
-    "Actions"
+    "Actions:#{process.env.NODE_ENV}"
   # Fetch all Action objects from the database.
   # callback: (err, actions)
   @all: (key, callback) ->
@@ -18,7 +18,7 @@ class Action
 
   constructor: (attributes, key) ->
     @[k] = value for k,value of attributes
-    @key = key
+    @key = Action.key()+key
     @
   # Persists the current object to Redis. The key is the Id.
   # All other attributes are saved as a sub-hash in JSON format.
@@ -26,7 +26,7 @@ class Action
   # callback: (err, action)
   save: (callback) ->
     # Generate de id
-    redis.incr @key+"Id", ( err, id ) =>
+    redis.incr @key+'Id', ( err, id ) =>
       @id = id
       redis.hset @key, id, JSON.stringify(@), (err, responseCode) =>
         callback null, @  

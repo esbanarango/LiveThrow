@@ -27,6 +27,13 @@ assert.match = (actual, expected, message) ->
     assert.fail(actual, expected, message || "expected #{actual} to match #{expected}", "match", assert.match)
 assert.matches = assert.match
 
+assert.notMatch = (actual, expected, message) ->
+  if typeOf(expected) is 'string'
+    expected = new RegExp(expected)
+  if (expected.test(actual))
+    assert.fail(actual, expected, message || "expected #{actual} to doesn't match #{expected}", "match", assert.match)
+
+
 assert.instanceOf = (actual, expected, message) ->
   unless (actual instanceof expected)
     assert.fail(actual, expected, message || "expected #{actual} to be an instance of #{expected}", "instanceof", assert.instanceOf)

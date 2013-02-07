@@ -48,6 +48,11 @@ describe 'management', ->
       it "displays a team", ->
         xpath = "//table[@id='teams']/tbody/tr/td[1]"
         assert.hasTag body, xpath, 'Galatasara'
+      it "doesn't display a team which is not mine", ->
+        xpath = "//table[@id='teams']/tbody"
+        assert.notMatch body, 'El Cucuta'  
 
+    after ->
+      TeamFactory.clean()
 
 

@@ -1,10 +1,10 @@
 #Models
-User = require '../../models/user'
-Team = require '../../models/Management/team'
-Player = require '../../models/Management/player'
-Match = require '../../models/LiveScore/match'
-Action = require '../../models/LiveScore/action'
-_              = require 'underscore'
+User    = require '../../models/user'
+Team    = require '../../models/Management/team'
+Player  = require '../../models/Management/player'
+Match   = require '../../models/LiveScore/match'
+Action  = require '../../models/LiveScore/action'
+_       = require 'underscore'
 
 routes = (app) ->
 
@@ -22,8 +22,10 @@ routes = (app) ->
     app.get '/new', (req, res) ->
       Team.getByuserId req.session.currentUser, (err, _myTeams) ->
         Team.all (err,_allTeams) ->
-          myTeams = _myTeams.reverse()
-          allTeams = _allTeams.reverse()
+          myTeams = _myTeams
+          allString = _.collect _allTeams, (t) -> JSON.stringify t
+          myString = _.collect _myTeams, (t) -> JSON.stringify t
+          allTeams =  _.collect (_.difference allString,myString),(s)->JSON.parse(s)
           res.render "#{__dirname}/views/matches/new",
             title: "New Match"            
             myTeams: myTeams
@@ -62,7 +64,7 @@ routes = (app) ->
       Match.getById req.params.id, (err, match) ->
         match.fillUp (err, matchFull)->
           res.render "#{__dirname}/views/live/monitor",
-            title: "Live Score"
+            title: "Live Score / Transmitting"
             csss: ['scoreReport']
             scripts: ['livescore/monitor','livescore/live']
             match: matchFull
@@ -74,7 +76,7 @@ routes = (app) ->
           golPlayerId: req.body.golPlayerId
           assitencePlayerId: req.body.assitencePlayerId
           minuto: req.body.minuto        
-        action = new Action attributes, "Actions#{matchId}"
+        action = new Action attributes, matchId
         action.save () ->
           #Update Score
           Match.getById matchId, (err,match) ->

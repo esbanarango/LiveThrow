@@ -7,7 +7,7 @@ Action         = require './action'
 class Match
   # The Redis key that will store all Match objects as a hash.
   @key: ->
-    "Matches"
+    "Matches:#{process.env.NODE_ENV}"
   # Fetch all Match objects from the database.
   # callback: (err, matchs)
   @all: (callback) ->
@@ -49,7 +49,7 @@ class Match
   # callback: (err, match)
   save: (callback) ->
     # Generate de id
-    redis.incr "MatchesId", ( err, id ) =>
+    redis.incr Match.key()+'Id', ( err, id ) =>
       @id = id      
       redis.hset Match.key(), id, JSON.stringify(@), (err, responseCode) =>
         callback null, @

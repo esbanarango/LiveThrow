@@ -4,8 +4,8 @@ _              = require 'underscore'
 class Team
   # The Redis key that will store all Team objects as a hash.
   @key: ->
-    "Teams"
-  # Fetch all Team objects from the database.
+    "Teams:#{process.env.NODE_ENV}"
+  # Fetch all the public Teams objects from the database.
   # callback: (err, teams)
   @all: (callback) ->
     redis.hgetall Team.key(), (err, objects) ->
@@ -14,7 +14,9 @@ class Team
         team = new Team JSON.parse(value)
         teams.push team if team.public is "on"
       callback null, teams
-
+  
+  # All the Teams 
+  # callback: (err, teams)
   @allall: (callback) ->
     redis.hgetall Team.key(), (err, objects) ->
       teams = []
@@ -49,7 +51,7 @@ class Team
   # callback: (err, team)
   save: (callback) ->
     # Generate de id
-    redis.incr "TeamsId", ( err, id ) =>
+    redis.incr Team.key()+'Id', ( err, id ) =>
       @id = id
       redis.hset Team.key(), id, JSON.stringify(@), (err, responseCode) =>
         callback null, @
