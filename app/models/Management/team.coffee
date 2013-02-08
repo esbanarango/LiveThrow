@@ -46,7 +46,12 @@ class Team
 
   constructor: (attributes) ->
     @[key] = value for key,value of attributes
+    @setDefaults()
     @
+
+  setDefaults: ->
+    unless @public
+      @public = 'on'
 
   # callback: (err, team)
   save: (callback) ->
