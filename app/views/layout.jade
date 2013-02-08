@@ -14,8 +14,14 @@ html
       link(rel="stylesheet", href="/stylesheets/"+css+".css")
 
     meta( name="viewport", content="width=device-width, initial-scale=1.0")
-    script(src='//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js')    
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/jquery.form/3.24/jquery.form.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.10.0/jquery.validate.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/chosen/0.9.11/chosen.jquery.min.js')
     != js('application')
+
     script(src='/lib/bootstrap/js/bootstrap.min.js')
     //- Hack to keep all links in same browser when in iOS app mode.
     script(type="text/javascript")
