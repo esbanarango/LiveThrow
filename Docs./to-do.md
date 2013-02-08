@@ -1,4 +1,6 @@
 ## To do
+- [x] Improvements in Scorekeeper
+- [ ] Automatic chronometer
 - [ ] Twitter and Facebook OAuth
     * https://github.com/jaredhanson/passport 
     * https://github.com/ciaranj/node-oauth   
