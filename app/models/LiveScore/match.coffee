@@ -36,11 +36,11 @@ class Match
       @team1 = _team1
       Team.getById @teamId2, (err, _team2) =>
         @team2 = _team2
-        Player.all "Players#{@teamId1}", (err, _players1) =>
+        Player.all @teamId1, (err, _players1) =>
           @players1 = _players1
-          Player.all "Players#{@teamId2}", (err, _players2) =>
+          Player.all @teamId2, (err, _players2) =>
             @players2 = _players2
-            Action.all "Actions"+@id, (err,_actions) =>              
+            Action.all @id, (err,_actions) =>              
               @actions =_actions.reverse()
               callback null,@
   # Persists the current object to Redis. The key is the Id.

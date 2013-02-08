@@ -49,7 +49,7 @@ routes = (app) ->
             title: "Incorrect Team id"
             stylesheet: 'admin'        
         else
-          Player.all "Players#{teamId}", (err, players)->
+          Player.all teamId, (err, players)->
             res.render "#{__dirname}/views/teams/show",
               title: "Team #{team.name}"
               scripts: ['teams/teams','players/players']

@@ -4,37 +4,38 @@
 //- div.numerico
 //-   strong(id="team#{team}Score")=score
 div.numerico
+  span.scoreHidden=score
   ul.flip.minutePlay
-      li.before
-        a(href='#')
-          .up
-            .shadow
-            .inn=score
-          .down
-            .shadow
-            .inn=score
-      li.active
-        a(href='#')
-          .up
-            .shadow
-            .inn 1
-          .down
-            .shadow
-            .inn 1
-    ul.flip.secondPlay
-      li.before
-        a(href='#')
-          .up
-            .shadow
-            .inn 0
-          .down
-            .shadow
-            .inn 0
-      li.active
-        a(href='#')
-          .up
-            .shadow
-            .inn 1
-          .down
-            .shadow
-            .inn 1
+    li.active
+      a(href='#')
+        .up
+          .shadow
+          .inn=('0'+score).slice(-2).charAt(0)
+        .down
+          .shadow
+          .inn=('0'+score).slice(-2).charAt(0)
+    li.before
+      a(href='#')
+        .up
+          .shadow
+          .inn
+        .down
+          .shadow
+          .inn
+  ul.flip.secondPlay
+    li.active
+      a(href='#')
+        .up
+          .shadow
+          .inn=('0'+score).slice(-2).charAt(1)
+        .down
+          .shadow
+          .inn=('0'+score).slice(-2).charAt(1)
+    li.before
+      a(href='#')
+        .up
+          .shadow
+          .inn
+        .down
+          .shadow
+          .inn

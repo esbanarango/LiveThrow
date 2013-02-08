@@ -8,7 +8,7 @@ class Player
   # Fetch all Player objects from the database.
   # callback: (err, players)
   @all: (key, callback) ->
-    redis.hgetall key, (err, objects) ->
+    redis.hgetall Player.key()+key, (err, objects) ->
       players = []
       for key, value of objects
         player = new Player JSON.parse(value), key

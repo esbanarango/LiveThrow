@@ -99,11 +99,13 @@ ul.flip li a div.down div.inn {
 
 /* PLAY */
 
-.play ul li.before {
+
+
+ul.play li.before {
     z-index: 3;
 }
 
-.play ul li.active {
+ul.play li.active {
     animation: asd .5s .5s linear both;
     z-index: 2;
 }
@@ -120,7 +122,7 @@ ul.flip li a div.down div.inn {
     }
 }
 
-.play ul li.active .down {
+ul.play li.active .down {
     z-index: 2;
     animation: turn .5s .5s linear both;
 }
@@ -134,7 +136,7 @@ ul.flip li a div.down div.inn {
     }
 }
 
-.play ul li.before .up {
+ul.play li.before .up {
     z-index: 2;
     animation: turn2 .5s linear both;
 }
@@ -150,7 +152,7 @@ ul.flip li a div.down div.inn {
 
 /* SHADOW */
 
-.play ul li.before .up .shadow {
+ul.play li.before .up .shadow {
     background: -moz-linear-gradient(top, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 1) 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, .1)), color-stop(100%, rgba(0, 0, 0, 1)));
     background: linear-gradient(top, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 1) 100%);
@@ -160,7 +162,7 @@ ul.flip li a div.down div.inn {
     animation: show .5s linear both;
 }
 
-.play ul li.active .up .shadow {
+ul.play li.active .up .shadow {
     background: -moz-linear-gradient(top, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 1) 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, .1)), color-stop(100%, rgba(0, 0, 0, 1)));
     background: linear-gradient(top, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 1) 100%);
@@ -172,7 +174,7 @@ ul.flip li a div.down div.inn {
 
 /*DOWN*/
 
-.play ul li.before .down .shadow {
+ul.play li.before .down .shadow {
     background: -moz-linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 1)), color-stop(100%, rgba(0, 0, 0, .1)));
     background: linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
@@ -182,7 +184,7 @@ ul.flip li a div.down div.inn {
     animation: show .5s linear both;
 }
 
-.play ul li.active .down .shadow {
+ul.play li.active .down .shadow {
     background: -moz-linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 1)), color-stop(100%, rgba(0, 0, 0, .1)));
     background: linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
@@ -210,6 +212,10 @@ ul.flip li a div.down div.inn {
     }
 }
 
+.scoreHidden{
+    opacity: 0;
+    display: none;
+}
 
 .principal2
 {

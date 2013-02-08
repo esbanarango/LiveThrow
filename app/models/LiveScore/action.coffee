@@ -8,7 +8,7 @@ class Action
   # Fetch all Action objects from the database.
   # callback: (err, actions)
   @all: (key, callback) ->
-    redis.hgetall key, (err, objects) ->
+    redis.hgetall Action.key()+key, (err, objects) ->
       actions = []
       for key, value of objects
         action = new Action JSON.parse(value), key

@@ -44,6 +44,7 @@ routes = (app) ->
         scoreTeam2: 0
         description: req.body.description
         date: ""
+        owner: req.session.currentUser
       match = new Match attributes
       match.save () -> 
         req.flash 'success', 'Match was successfully created.'
@@ -62,6 +63,9 @@ routes = (app) ->
 
     app.get '/:id/monitor', (req, res) ->
       Match.getById req.params.id, (err, match) ->
+        if match.owner isnt req.session.currentUser
+          res.redirect "/live/#{req.params.id}"
+          return
         match.fillUp (err, matchFull)->
           res.render "#{__dirname}/views/live/monitor",
             title: "Live Score / Transmitting"

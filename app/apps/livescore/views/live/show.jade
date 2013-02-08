@@ -13,7 +13,7 @@ block content
         div(class="marcador")
 
           div(style="float:left")
-            div(class="equipo_1",style="margin-top: 20px;")
+            div(id="eq1",class="equipo_1",style="margin-top: 20px;")
               //- Scorekeeper
               score = match.scoreTeam1
               team = 1 
@@ -28,7 +28,7 @@ block content
 
           div.separador_x 
 
-          div(style="float:left")       
+          div(id="eq2",style="float:left")       
             div(class="equipo_2",style="margin-top: 20px;")
               //- Scorekeeper
               score = match.scoreTeam2

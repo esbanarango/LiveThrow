@@ -7,14 +7,48 @@
     stringInfo = "#"+playerInfo.data("number")+" "+playerInfo.data("name")+" "+playerInfo.data("nickname")+" "+playerInfo.data("lastname")
     $(@).text(stringInfo)
 
+@addToScore = (team)->
+  #get number
+  num = parseInt($("#eq#{team}").find('.scoreHidden').text())
+  num++
+  numS = ('0' + (num)).slice(-2)
+  $("#eq#{team}").find('.scoreHidden').text(num)
+  #Right digit
+  aa = $("#eq#{team}").find('ul.secondPlay li.active')
+  if aa.is(":last-child")
+    $("#eq#{team}").find("ul.secondPlay li").removeClass "before"
+    aa.addClass("before").removeClass "active"
+    aa = $("#eq#{team}").find("ul.secondPlay li").eq(0)
+    aa.find('.up .inn,.down .inn').text(numS[1])
+    aa.addClass("active")
+  else
+    $("#eq#{team}").find("ul.secondPlay li").removeClass "before"
+    aa.addClass("before").removeClass("active")
+    aa.next("li").find('.up .inn,.down .inn').text(numS[1])
+    aa.next("li").addClass("active")
+  $("#eq#{team}").find('ul.secondPlay').addClass "play"
+  #Left digit
+  aa = $("#eq#{team}").find('ul.minutePlay li.active')
+  if parseInt(aa.find('.up .inn').text()) < parseInt(numS[0])
+    if aa.is(":last-child")
+      $("#eq#{team}").find("ul.minutePlay li").removeClass "before"
+      aa.addClass("before").removeClass "active"
+      aa = $("#eq#{team}").find("ul.minutePlay li").eq(0)
+      aa.find('.up .inn,.down .inn').text(numS[0])
+      aa.addClass("active").closest("body").addClass "play"
+    else
+      $("#eq#{team}").find("ul.minutePlay li").removeClass "before"
+      aa.addClass("before").removeClass("active")
+      aa.next("li").find('.up .inn,.down .inn').text(numS[0])
+      aa.next("li").addClass("active").closest("body").addClass "play"
+    $("#eq#{team}").find('ul.minutePlay').addClass "play"
+
 $ ->
   changeIdByInfo()
   matchId = window.location.pathname.split('/')[2]
   socket = io.connect("/")
   socket.on "match:#{matchId}", (action) ->
-    console.log(action)
-    score = parseInt($("#team#{action.team}Score").text())
-    $("#team#{action.team}Score").text(++score)
+    addToScore(action.team)
     assisPlayer = $("#id-#{action.assitencePlayerId}team-#{action.team}")
     golPlayer = $("#id-#{action.golPlayerId}team-#{action.team}")
     divData = $("#golStructTeam#{action.team} table tbody").clone()
@@ -29,39 +63,3 @@ $ ->
     $("#tableScores table").prepend(divData.html())
     $("#tableScores").animate({scrollTop : 0},'fast')
     $("#tableScores table tbody").find(":first").find("td").show("slow")
-    #$("#tableScores table tbody").find(":first").slideDown("slow")
-
-
-@setScore = (num)->
-
-
-
-@secondPlay = ->
-  $("body").removeClass "play"
-  aa = $("ul.secondPlay li.active")
-  if aa.html() is `undefined`
-    aa = $("ul.secondPlay li").eq(0)
-    aa.addClass("before").removeClass("active").next("li").addClass("active").closest("body").addClass "play"
-  else if aa.is(":last-child")
-    $("ul.secondPlay li").removeClass "before"
-    aa.addClass("before").removeClass "active"
-    aa = $("ul.secondPlay li").eq(0)
-    aa.addClass("active").closest("body").addClass "play"
-  else
-    $("ul.secondPlay li").removeClass "before"
-    aa.addClass("before").removeClass("active").next("li").addClass("active").closest("body").addClass "play"
-    
-@minutePlay = ->
-  $("body").removeClass "play"
-  aa = $("ul.minutePlay li.active")
-  if aa.html() is `undefined`
-    aa = $("ul.minutePlay li").eq(0)
-    aa.addClass("before").removeClass("active").next("li").addClass("active").closest("body").addClass "play"
-  else if aa.is(":last-child")
-    $("ul.minutePlay li").removeClass "before"
-    aa.addClass("before").removeClass "active"
-    aa = $("ul.minutePlay li").eq(0)
-    aa.addClass("active").closest("body").addClass "play"
-  else
-    $("ul.minutePlay li").removeClass "before"
-    aa.addClass("before").removeClass("active").next("li").addClass("active").closest("body").addClass "play"
