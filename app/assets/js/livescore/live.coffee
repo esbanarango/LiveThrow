@@ -8,40 +8,30 @@
     $(@).text(stringInfo)
 
 @addToScore = (team)->
-  #get number
-  num = parseInt($("#eq#{team}").find('.scoreHidden').text())
+  div = $("#eq#{team}")
+  #Get number
+  num = parseInt(div.find('.scoreHidden').text())
   num++
   numS = ('0' + (num)).slice(-2)
-  $("#eq#{team}").find('.scoreHidden').text(num)
-  #Right digit
-  aa = $("#eq#{team}").find('ul.secondPlay li.active')
-  if aa.is(":last-child")
-    $("#eq#{team}").find("ul.secondPlay li").removeClass "before"
-    aa.addClass("before").removeClass "active"
-    aa = $("#eq#{team}").find("ul.secondPlay li").eq(0)
-    aa.find('.up .inn,.down .inn').text(numS[1])
-    aa.addClass("active")
-  else
-    $("#eq#{team}").find("ul.secondPlay li").removeClass "before"
-    aa.addClass("before").removeClass("active")
-    aa.next("li").find('.up .inn,.down .inn').text(numS[1])
-    aa.next("li").addClass("active")
-  $("#eq#{team}").find('ul.secondPlay').addClass "play"
-  #Left digit
-  aa = $("#eq#{team}").find('ul.minutePlay li.active')
-  if parseInt(aa.find('.up .inn').text()) < parseInt(numS[0])
+  div.find('.scoreHidden').text(num)
+  tables = ["minutePlay","secondPlay"]
+  i = 1
+  loop
+    aa = div.find("ul.#{tables[i]} li.active")
     if aa.is(":last-child")
-      $("#eq#{team}").find("ul.minutePlay li").removeClass "before"
+      div.find("ul.#{tables[i]} li").removeClass "before"
       aa.addClass("before").removeClass "active"
-      aa = $("#eq#{team}").find("ul.minutePlay li").eq(0)
-      aa.find('.up .inn,.down .inn').text(numS[0])
-      aa.addClass("active").closest("body").addClass "play"
+      aa = div.find("ul.#{tables[i]} li").eq(0)
+      aa.find('.up .inn,.down .inn').text(numS[i])
+      aa.addClass("active")
     else
-      $("#eq#{team}").find("ul.minutePlay li").removeClass "before"
+      div.find("ul.#{tables[i]} li").removeClass "before"
       aa.addClass("before").removeClass("active")
-      aa.next("li").find('.up .inn,.down .inn').text(numS[0])
-      aa.next("li").addClass("active").closest("body").addClass "play"
-    $("#eq#{team}").find('ul.minutePlay').addClass "play"
+      aa.next("li").find('.up .inn,.down .inn').text(numS[i])
+      aa.next("li").addClass("active")
+    div.find("ul.#{tables[i]}").addClass "play"
+    i--
+    break unless div.find("ul.minutePlay li.active .up .inn").text() < numS[0]
 
 $ ->
   changeIdByInfo()

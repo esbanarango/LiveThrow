@@ -4,4 +4,6 @@ module.exports = (server, app) ->
   unless app.settings.socketIO
     app.set 'socketIO', socketIO
   socketIO.sockets.on 'connection', (socket) ->
-    console.log "CONNECTED"
+    console.log 'CONNECTED'
+    socket.on 'disconnect', ->
+      console.log 'DISCONNECTED'
