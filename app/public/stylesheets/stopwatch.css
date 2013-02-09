@@ -1,0 +1,236 @@
+body {
+  background:#000000;
+}
+.board {
+  margin-top: 10px;
+  overflow:hidden;
+  border:5px solid #ddd;
+  border-radius:5px;
+  z-index:3;
+  width:360px;
+  height:55px;
+}
+
+.block-digital {
+  float: left;
+  position: relative;
+  z-index:10;
+  width:45px;
+  height:67.5px;
+}
+.block-padding {
+  float: left;
+  position: relative;
+  z-index:10;
+  width:7.5px;
+  height:67.5px;
+}
+.light {
+  background:#222;
+  position:absolute;
+  margin:0.5px;
+  border-radius:6.5px;
+  width:6.5px;
+  height:6.5px;
+}
+.colon .row-2.col-2,
+.colon .row-2.col-3,
+.colon .row-3.col-2,
+.colon .row-3.col-3,
+.colon .row-5.col-2,
+.colon .row-5.col-3,
+.colon .row-6.col-2,
+.colon .row-6.col-3
+{
+  background:#d8b711;
+}
+
+.num-0 .row-1.col-2,
+.num-0 .row-1.col-3,
+.num-0 .row-1.col-4,
+.num-0 .row-2.col-1,
+.num-0 .row-2.col-5,
+.num-0 .row-3.col-1,
+.num-0 .row-3.col-4,
+.num-0 .row-3.col-5,
+.num-0 .row-4.col-1,
+.num-0 .row-4.col-3,
+.num-0 .row-4.col-5,
+.num-0 .row-5.col-1,
+.num-0 .row-5.col-1,
+.num-0 .row-5.col-2,
+.num-0 .row-5.col-5,
+.num-0 .row-6.col-1,
+.num-0 .row-6.col-5,
+.num-0 .row-7.col-2,
+.num-0 .row-7.col-3,
+.num-0 .row-7.col-4
+
+{
+  background:#d8b711;
+}
+
+.num-1 .row-1.col-3,
+.num-1 .row-2.col-2,
+.num-1 .row-2.col-3,
+.num-1 .row-3.col-3,
+.num-1 .row-4.col-3,
+.num-1 .row-5.col-3,
+.num-1 .row-6.col-3,
+.num-1 .row-7.col-2,
+.num-1 .row-7.col-3,
+.num-1 .row-7.col-4
+{
+  background:#d8b711;
+}
+
+.num-2 .row-1.col-2,
+.num-2 .row-1.col-3,
+.num-2 .row-1.col-4,
+.num-2 .row-2.col-1,
+.num-2 .row-2.col-5,
+.num-2 .row-3.col-5,
+.num-2 .row-4.col-4,
+.num-2 .row-5.col-3,
+.num-2 .row-6.col-2,
+.num-2 .row-7.col-1,
+.num-2 .row-7.col-2,
+.num-2 .row-7.col-3,
+.num-2 .row-7.col-4,
+.num-2 .row-7.col-5
+{
+  background:#d8b711;
+}
+
+.num-3 .row-1.col-1, 
+.num-3 .row-1.col-2, 
+.num-3 .row-1.col-3, 
+.num-3 .row-1.col-4, 
+.num-3 .row-1.col-5,
+.num-3 .row-2.col-4,
+.num-3 .row-3.col-3,
+.num-3 .row-4.col-4,
+.num-3 .row-5.col-5,
+.num-3 .row-6.col-1,
+.num-3 .row-6.col-5,
+.num-3 .row-7.col-4,
+.num-3 .row-7.col-3,
+.num-3 .row-7.col-2
+{
+  /*background:#ffff33;*/
+  background:#d8b711;
+}
+
+.num-4 .row-1.col-4,
+.num-4 .row-2.col-3,
+.num-4 .row-2.col-4,
+.num-4 .row-3.col-2,
+.num-4 .row-3.col-4,
+.num-4 .row-4.col-1,
+.num-4 .row-4.col-4,
+.num-4 .row-5.col-1,
+.num-4 .row-5.col-2,
+.num-4 .row-5.col-3,
+.num-4 .row-5.col-4,
+.num-4 .row-5.col-5,
+.num-4 .row-6.col-4,
+.num-4 .row-7.col-4
+{
+  background:#d8b711;
+}
+
+.num-5 .row-1.col-1,
+.num-5 .row-1.col-2,
+.num-5 .row-1.col-3,
+.num-5 .row-1.col-4,
+.num-5 .row-1.col-5,
+.num-5 .row-2.col-1,
+.num-5 .row-3.col-1,
+.num-5 .row-3.col-2,
+.num-5 .row-3.col-3,
+.num-5 .row-3.col-4,
+.num-5 .row-4.col-5,
+.num-5 .row-5.col-5,
+.num-5 .row-6.col-1,
+.num-5 .row-6.col-5,
+.num-5 .row-7.col-2,
+.num-5 .row-7.col-3,
+.num-5 .row-7.col-4
+{
+  /*background:#ffff33;*/
+  background:#d8b711;
+}
+
+.num-6 .row-1.col-3,
+.num-6 .row-1.col-4,
+.num-6 .row-2.col-2,
+.num-6 .row-3.col-1,
+.num-6 .row-4.col-1,
+.num-6 .row-4.col-2,
+.num-6 .row-4.col-3,
+.num-6 .row-4.col-4,
+.num-6 .row-5.col-1,
+.num-6 .row-5.col-5,
+.num-6 .row-6.col-1,
+.num-6 .row-6.col-5,
+.num-6 .row-7.col-2,
+.num-6 .row-7.col-3,
+.num-6 .row-7.col-4
+{
+  background:#d8b711;
+}
+
+.num-7 .row-1.col-1,
+.num-7 .row-1.col-2,
+.num-7 .row-1.col-3,
+.num-7 .row-1.col-4,
+.num-7 .row-1.col-5,
+.num-7 .row-2.col-5,
+.num-7 .row-3.col-4,
+.num-7 .row-4.col-3,
+.num-7 .row-5.col-2,
+.num-7 .row-6.col-2,
+.num-7 .row-7.col-2
+{
+  background:#d8b711;
+}
+
+.num-8 .row-1.col-2,
+.num-8 .row-1.col-3,
+.num-8 .row-1.col-4,
+.num-8 .row-2.col-1,
+.num-8 .row-2.col-5,
+.num-8 .row-3.col-1,
+.num-8 .row-3.col-5,
+.num-8 .row-4.col-2,
+.num-8 .row-4.col-3,
+.num-8 .row-4.col-4,
+.num-8 .row-5.col-1,
+.num-8 .row-5.col-5,
+.num-8 .row-6.col-1,
+.num-8 .row-6.col-5,
+.num-8 .row-7.col-2,
+.num-8 .row-7.col-3,
+.num-8 .row-7.col-4
+{
+  background:#d8b711; 
+}
+
+.num-9 .row-1.col-2,
+.num-9 .row-1.col-3,
+.num-9 .row-1.col-4,
+.num-9 .row-2.col-1,
+.num-9 .row-2.col-5,
+.num-9 .row-3.col-1,
+.num-9 .row-3.col-5,
+.num-9 .row-4.col-2,
+.num-9 .row-4.col-3,
+.num-9 .row-4.col-4,
+.num-9 .row-4.col-5,
+.num-9 .row-5.col-5,
+.num-9 .row-6.col-4,
+.num-9 .row-7.col-2,
+.num-9 .row-7.col-3
+{
+  background:#d8b711;
+}

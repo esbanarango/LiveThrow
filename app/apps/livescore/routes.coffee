@@ -69,8 +69,8 @@ routes = (app) ->
         match.fillUp (err, matchFull)->
           res.render "#{__dirname}/views/live/monitor",
             title: "Live Score / Transmitting"
-            csss: ['scoreReport']
-            scripts: ['livescore/monitor','livescore/live']
+            csss: ['scoreReport','stopwatch']
+            scripts: ['livescore/monitor','livescore/live', 'livescore/stopwatch']
             match: matchFull
 
     app.post '/action', (req,res) ->
@@ -109,8 +109,8 @@ routes = (app) ->
           match.fillUp (err, matchFull)->
             res.render "#{__dirname}/views/live/show",
               title: "Live Score"
-              csss: ['scoreReport']
-              scripts: ['livescore/live']
+              csss: ['scoreReport','stopwatch']
+              scripts: ['livescore/live', 'livescore/stopwatch']
               match: matchFull
 
     app.get '/', (req, res) ->
