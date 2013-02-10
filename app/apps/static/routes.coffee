@@ -5,6 +5,10 @@ routes = (app) ->
 	  res.render "#{__dirname}/views/index",
 		  title: "Live Throw"
 
+  app.get '/about', (req, res) ->
+    res.render "#{__dirname}/views/about",
+      title: "About"
+
   # Prueba de No-blocking
   app.get '/prueba', (req, res) ->
     exec "find /",
