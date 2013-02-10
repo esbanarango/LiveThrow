@@ -1,4 +1,5 @@
-redis          = require('redis').createClient()
+redisHeroku = require('heroku-redis-client')
+redis       = redisHeroku.createClient()
 _              = require 'underscore'
 
 class Player

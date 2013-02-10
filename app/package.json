@@ -15,7 +15,12 @@
     "hiredis": "~0.1.14",
     "connect-redis": "~1.3.0",
     "gravatar": "~1.0.6",
-    "connect-flash": "~0.1.0"
+    "connect-flash": "~0.1.0",
+    "heroku-redis-client": "~0.3.3"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
   },
   "devDependencies": {
     "node-dev": "~0.2.9",

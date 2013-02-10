@@ -7,6 +7,7 @@ require('coffee-script');
 var express     = require('express')
   , stylus      = require('stylus')
   , RedisStore  = require('connect-redis')(express)
+  , redis       = require('heroku-redis-client')
   , http        = require('http')
   , path        = require('path');
 
@@ -14,6 +15,7 @@ require('express-namespace');
 
 var app = module.exports = express();
 var server = http.createServer(app);
+var port = process.env.PORT || 3000;
 
 // Configuration
 
@@ -25,14 +27,11 @@ app.configure(function(){
   }));
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
-  app.set('port', 3000);
+  app.set('port', port);
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
-  app.use(express.session({
-    secret: "KioxIqpvdyfMXOHjVkUQmGLwEAtB0SZ9cTuNgaWFJYsbzerCDn",
-    store: new RedisStore
-  }));
+  app.use(express.session({ store: new RedisStore({ client: redis.createClient() }), secret: 'KioxIqpvdyfMXOHjVkUQmGLwEAtB0SZ9cTuNgaWFJYsbzerCDn' }));
   app.use(require('connect-flash')());
   app.use(require('connect-assets')());
   app.use(app.router);
