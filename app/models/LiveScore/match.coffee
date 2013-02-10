@@ -57,7 +57,7 @@ class Match
     redis.hset Match.key(), @id, JSON.stringify(@), (err, responseCode) =>
       callback null, @            
   destroy: (callback) ->
-    redis.hdel Match.key(), @email, (err) ->
+    redis.hdel Match.key(), @id, (err) ->
       callback err if callback
 
 

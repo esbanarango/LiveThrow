@@ -3,6 +3,8 @@ express = require 'express'
 assert  = require 'assert'
 request = require 'request'
 app     = require '../../server'
+TeamFactory   = require '../factories/team-factory'
+MatchFactory   = require '../factories/match-factory'
 RequestHelper = require '../support/request-helper'
 
 describe 'matches', ->
@@ -45,5 +47,35 @@ describe 'matches', ->
           RequestHelper.login done
 
       describe "POST /create", ->
+
+        describe "one team selected", ->
+          [response, body] = [null, null]
+          before (done) ->
+            options =
+              uri:"http://localhost:#{app.settings.port}/matches/create"
+              form:
+                teams: [1]
+            request.post options, (err, _response, _body) ->
+              [response, body] = [_response, _body]
+              done()
+          it "redirects to /matches/new", ->
+            assert.match body, "Redirecting to /matches/new"
+
+        describe "two team selected", ->
+          [response, body] = [null, null]
+          before (done) ->
+            options =
+              uri:"http://localhost:#{app.settings.port}/matches/create"
+              form:
+                teams: [1,2]
+            request.post options, (err, _response, _body) ->
+              [response, body] = [_response, _body]
+              done()
+          it "redirects to /live/1/monitor", ->
+            assert.match body, "Redirecting to /live/1/monitor"
+
+      after ->
+        TeamFactory.clean()
+        MatchFactory.clean()
 
 
