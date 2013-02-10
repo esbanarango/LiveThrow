@@ -34,6 +34,7 @@
     break unless div.find("ul.minutePlay li.active .up .inn").text() < numS[0]
 
 $ ->
+  $('#stopwatch').stopwatch()
   changeIdByInfo()
   matchId = window.location.pathname.split('/')[2]
   socket = io.connect("/")

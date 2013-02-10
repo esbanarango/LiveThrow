@@ -70,7 +70,7 @@ routes = (app) ->
           res.render "#{__dirname}/views/live/monitor",
             title: "Live Score / Transmitting"
             csss: ['scoreReport','stopwatch']
-            scripts: ['livescore/monitor','livescore/live', 'livescore/stopwatch']
+            scripts: ['livescore/monitor','livescore/live','stopwatch']
             match: matchFull
 
     app.post '/action', (req,res) ->

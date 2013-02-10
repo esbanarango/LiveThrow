@@ -1,14 +1,15 @@
 extends ../../../../views/layout
 
 block content
-  div.span12.offset3
+  div.span9.offset3
     label
       |  Share this game 
     a(href="https://twitter.com/share", class="twitter-share-button", data-url="http://200.12.180.110/live/"+match.id, data-text="Hey "+match.team1.name+" is playing against "+match.team2.name+", Check it out! on Live Throw")
     script(type="text/javascript")
       !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-    div
-      include stopwatch
+    .row
+      .span6
+        #stopwatch
     div(class="datos_juego")
       div(class="top-information")
         div(class="marcador")
@@ -42,14 +43,9 @@ block content
                         select(class="chzn-seect", name="assitencePlayerId", data-placeholder="Seleccione Jugador",  id="idPartAssist_E_1", data-placeholder="Players...", style="width: 200px;",  tabindex="3")
                           each player in match.players1
                             option(value=player.id)=player.number+" "+player.name+" "+player.nickname+" "+player.last_name
-                  div.span3.controlDivOut
-                    label.control-label
-                      | Time
-                    div.controls            
-                      input(style="width:110px; height: 21px; text-align: center; font-size: 13px;", value="00:00", name="minuto",  type="text", class="chzn-container chzn-container-single chzn-done", id="minuto_gol_1", placeholder="Tiempo")
                   div.clear
-                  div.controlsSubmit                              
-                      input(class="btn btn-inverse", type="submit", value="Insertar") 
+                  div.controlsSubmit                            
+                    input(class="btn btn-inverse", type="submit", value="Introduce") 
 
           div.separador_x 
 
@@ -82,14 +78,9 @@ block content
                         select(class="chzn-select", name="assitencePlayerId", data-placeholder="Seleccione Jugador",  id="idPartAssist_E_1", data-placeholder="Players...", style="width: 200px;",  tabindex="3")
                           each player in match.players2
                             option(value=player.id)=player.number+" "+player.name+" "+player.nickname+" "+player.last_name
-                  div.span3.controlDivOut
-                    label.control-label
-                      | Time
-                    div.controls            
-                      input(style="width:110px; height: 21px; text-align: center; font-size: 13px;", value="00:00", name="minuto",  type="text", class="chzn-container chzn-container-single chzn-done", id="minuto_gol_1", placeholder="Tiempo")
                   div.clear
                   div.controlsSubmit                              
-                      input(class="btn btn-inverse", type="submit", value="Insertar")              
+                    input(class="btn btn-inverse", type="submit", value="Introduce")              
     .clear     
     div(id="tableScores").bordersTableScore
       table(class="scoreTable")
