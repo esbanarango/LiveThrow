@@ -1,4 +1,6 @@
-##Reference CSS
+#Reference 
+
+##CSS
 
 ####Bootstrap Custom
 ```css
@@ -16,3 +18,7 @@
 	@navbarText = #ddd
 	@navbarLinkColor = #ddd
 ```
+
+##Heroku
+
+`"socket.io": "~0.9.6"`
