@@ -2,10 +2,14 @@
   font-family: 'digi';
   src: url('http://cssdeck.com/uploads/resources/fonts/digii/DS-DIGII.TTF');
 }
+.controlLive{
+  margin-left: 12%;
+}
 
 #stopwatch{
-  width: 250px;
-  margin: 0 auto;
+  float: left;
+  padding-top: 10px;
+  width: 270px;
 }
 
 .the-time .min:before {
@@ -16,12 +20,43 @@
 }
 
 .the-time {
-  width: 200px; height: 80px;
+  display: inline-block;
+  width: 200px; height: 50px;
   font-size: 3.5em;
-  color: #707070;
   text-align: center;
-  line-height: 100px;
-  
-  border-top: 5px solid #E54B6B;
-  background-image: linear-gradient(#f0f0f0, white);
+  line-height: 50px;
+  padding-right: 01px;
+  border: 2px solid rgba(229, 215, 237, 0.4);
+  background-color: rgba(51, 51, 51, 0.3);
+  border-radius: 3px;
+}
+
+.digit {
+
+}
+
+.start-stop{
+  vertical-align: middle;
+  margin-bottom: 25px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#lightLive{
+  margin-top: 30px;
+  margin-right: 10px;
+  float: left;
+  width: 15px;
+  height: 15px;
+  border-radius: 50px;
+}
+
+#lightLive.off{
+  background: #60576b;
+  box-shadow: 0px 0px 21px #60576b;
+}
+
+#lightLive.on{
+  background: #f0576b;
+  box-shadow: 0px 0px 21px #f0576b;
 }
