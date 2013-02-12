@@ -45,10 +45,10 @@ class User
       callback err if callback
 
   validate: (callback)->
-    return callback new Error("Username is required.") unless @username
-    User.getByEmail @email, (err, json) ->
-      unless err
-        callback new Error("User email already taken.")
+    return callback new Error('Username is required.') unless @username
+    redis.hexists User.key(), @email, (err, data)->
+      if data
+        callback new Error('Email is already taken.')
       else
         callback()
 

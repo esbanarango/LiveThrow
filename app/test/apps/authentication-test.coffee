@@ -33,7 +33,7 @@ describe 'authentication', ->
         request.post options, (err, _response, _body) ->
           [body, response] = [_body, _response]
           done()
-      it "shows flash message", ->
+      it "shows 'Those credentials were incorrect. Please login again.'", ->
         errorText = 'Those credentials were incorrect. Please login again.'
         assert.hasTag body, "//div[2]/div[@class='alert alert-error']/text()", errorText
 
@@ -49,7 +49,7 @@ describe 'authentication', ->
         request.post options, (err, _response, _body) ->
           [body, response] = [_body, _response]
           done()
-      it "shows flash message", ->
+      it "shows a welcome flash message", ->
         rightText = 'You are now logged in as bayron.'
         assert.hasTag body, "//div[2]/div[@class='alert alert-success']/text()", rightText
 
@@ -62,7 +62,45 @@ describe 'authentication', ->
       request.del options, (err, _response, _body) ->
         [body, response] = [_body, _response]
         done()
-    it "shows flash message", ->
+    it "shows 'You have been logged out.'", ->
       errorText = 'You have been logged out.'
       assert.hasTag body, "//div[2]/div[@class='alert alert-info']/text()", errorText
+
+  describe 'GET /signup', ->
+    body = null
+    before (done) ->
+      request {uri:"http://localhost:#{app.settings.port}/signup"}, (err, response, _body) ->
+        body = _body
+        done()
+    it "has title", ->
+      assert.hasTag body, '//head/title', 'Live Throw - Sign up'
+    it "has email field", ->
+      assert.hasTag body, '//input[@name="email"]', ''
+    it "has password field", ->
+      assert.hasTag body, '//input[@name="password"]', ''
+    it "has password confirmation field", ->
+      assert.hasTag body, '//input[@name="password_confirmation"]', ''      
+      
+
+  describe "/user", ->
+
+    describe "POST /create", ->
+      describe "with an email that already exists", ->
+        [body, response] = [null, null]
+        before (done) ->
+          options =
+            uri:"http://localhost:#{app.settings.port}/user/create"
+            form:
+              username: 'albarito'
+              email: 'bayron@beltran.com'
+              password: '111111'
+              password_confirmation: '111111'
+            followAllRedirects: true
+          request.post options, (err, _response, _body) ->
+            [body, response] = [_body, _response]
+            done()        
+        it "shows 'Email is already taken.'", ->
+          errorText = 'Email is already taken.'
+          assert.hasTag body, "//div[2]/div[@class='alert alert-error']/text()", errorText
+
 

@@ -34,11 +34,15 @@ routes = (app) ->
         password: req.body.password
         gender: req.body.gender
       user = new User attributes
-      user.save () ->
-        req.session.currentUser = user.email
-        req.session.currentUser_name = user.username
-        req.flash 'success', "You are now logged in as #{req.session.currentUser_name}."        
-        res.redirect '/'
+      user.save (err, user) ->
+        unless err
+          req.session.currentUser = user.email
+          req.session.currentUser_name = user.username
+          req.flash 'success', "You are now logged in as #{req.session.currentUser_name}."        
+          res.redirect '/'
+        else
+          req.flash 'error', err.message
+          res.redirect '/signup'
 
     app.get '/edit', (req, res) ->
       User.getByEmail req.session.currentUser, (err,user) ->

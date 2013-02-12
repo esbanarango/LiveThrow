@@ -119,13 +119,13 @@ describe 'User', ->
       it "returns error", (done)->
         user = new User attrs
         user.save (err, json) ->
-          assert.equal err.message, "User email already taken."
+          assert.equal err.message, 'Email is already taken.'
           done()
 
     it "requires a username", ->
       user = new User {email: 'emilio@ar.com', password: '123456'}
       user.save (err, json) ->
-        assert.equal err.message, "Username is required."
+        assert.equal err.message, 'Username is required.'
 
   after ->
     UserFactory.clean()
