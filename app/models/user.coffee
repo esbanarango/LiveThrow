@@ -33,10 +33,23 @@ class User
   #
   # callback: (err, user)
   save: (callback) ->
-    redis.hset User.key(), @email, JSON.stringify(@), (err, responseCode) =>
-      callback err, @ if callback
+    @validate (err) =>
+      unless err
+        redis.hset User.key(), @email, JSON.stringify(@), (err, responseCode) =>
+          callback err, @ if callback
+      else
+        callback err if callback
+
   destroy: (callback) ->
     redis.hdel User.key(), @email, (err) ->
       callback err if callback
+
+  validate: (callback)->
+    return callback new Error("Username is required.") unless @username
+    User.getByEmail @email, (err, json) ->
+      unless err
+        callback new Error("User email already taken.")
+      else
+        callback()
 
 module.exports = User

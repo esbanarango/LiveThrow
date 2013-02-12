@@ -37,7 +37,7 @@ TeamFactory =
       category: "Women"
       public: 'on'
       userId: "alexis@copen.com" 
-    teamAttributes = [team1, team2, team3]
+    teamAttributes = [team1, team2, team3, team4]
     # Now create them all
     createOne = @createOne
     runSequentially = (item, otherItems...) ->

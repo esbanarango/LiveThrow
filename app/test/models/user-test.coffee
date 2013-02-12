@@ -3,12 +3,13 @@ assert        = require 'assert'
 request       = require 'request'
 User          = require '../../models/user'
 UserFactory   = require '../factories/user-factory'
-Faker         = require('Faker')
+Faker         = require 'Faker'
 _             = require 'underscore'
 
 attr = null
 
 describe 'User', ->
+
   before ->
     attr=
       username: 'Mariano'
@@ -70,22 +71,22 @@ describe 'User', ->
           assert.equal user.gender, 'm'
 
       describe "non-existing record", ->
-        
+
         it "returns error", (done) ->
           User.getByEmail 'amparito@yahoo.com', (err, json) ->
             assert.equal err.message, "User 'amparito@yahoo.com' could not be found."
             done()
 
-    describe "all", ->
-      users = null
-      before (done) ->
-        UserFactory.clean ->
-          UserFactory.createSeveral 4, ->
-            User.all (err, _users) ->
-              users = _users
-              done()
-      it "retrieves all users", ->
-        assert.equal users.length, 4
+      describe "all", ->
+        users = null
+        before (done) ->
+          UserFactory.clean ->
+            UserFactory.createSeveral 4, ->
+              User.all (err, _users) ->
+                users = _users
+                done()
+        it "retrieves all users", ->
+          assert.equal users.length, 4
 
     describe "destroy", ->
       before (done) ->
@@ -103,3 +104,28 @@ describe 'User', ->
               assert.equal err.message, "User 'marla_singer@latinchat.com' could not be found."
               done()
 
+  describe "validation", ->
+
+    describe "emial uniqueness", ->
+      user = null
+      attrs= null
+      before (done) ->
+        attrs=
+          username: 'eduardo'
+          email: 'edward_norton@latinchat.com'
+          password: '123456'
+          gender: 'm'          
+        UserFactory.createOne attrs, done
+      it "returns error", (done)->
+        user = new User attrs
+        user.save (err, json) ->
+          assert.equal err.message, "User email already taken."
+          done()
+
+    it "requires a username", ->
+      user = new User {email: 'emilio@ar.com', password: '123456'}
+      user.save (err, json) ->
+        assert.equal err.message, "Username is required."
+
+  after ->
+    UserFactory.clean()

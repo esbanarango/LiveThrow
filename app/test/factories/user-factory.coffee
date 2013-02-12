@@ -1,6 +1,6 @@
 redis   = require('redis').createClient()
 User    = require '../../models/user'
-Faker   = require('Faker')
+Faker   = require 'Faker'
 _       = require 'underscore'
 
 UserFactory =
