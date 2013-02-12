@@ -26,7 +26,8 @@
     "node-dev": "~0.2.9",
     "mocha": "~1.8.1",
     "request": "~2.12.0",
-    "libxmljs": "~0.6.1"
+    "libxmljs": "~0.6.1",
+    "Faker": "~0.5.6"
   },
   "scripts": {
     "test": "./bin/test",

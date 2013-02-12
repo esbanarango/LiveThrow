@@ -49,4 +49,7 @@ describe 'Team', ->
         it "returns a Team object", ->
           assert.instanceOf team, Team
         it "fetches the correct object", ->
-          assert.equal team.name, 'Ki-ê'        
+          assert.equal team.name, 'Ki-ê'
+
+  after ->
+    TeamFactory.clean()

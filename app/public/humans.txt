@@ -1,0 +1,26 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Esteban Arango Medina
+    
+    http://esbanarango.com/
+    
+    Twitter: esbanarango
+
+    Location: Bordeaux, France
+
+# THANKS
+
+    Special thanks to @sduquej and @dduqueti, for all the documentation.
+
+# SITE
+
+  Last update: 2012/02/13
+
+  Standards: HTML5, CSS3
+
+  Components:  jQuery, Modernizr, Prefixfree, Underscore, Bootstrap
+
+  Software: Node.js, Sublime Text 2

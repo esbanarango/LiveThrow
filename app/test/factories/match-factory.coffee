@@ -4,12 +4,9 @@ _       = require 'underscore'
 
 MatchFactory =
 
-  clean: ->
-    Match.all (err,_allMatches) ->
-      redis.DEL "Matches:#{process.env.NODE_ENV}Id"
-      _.each _allMatches, (m)->
-        m.destroy()
-
-
+  clean: (callback)->
+    redis.DEL Match.key()+'Id', ->
+      redis.DEL Match.key(), ->
+        callback() if callback
 
 module.exports = MatchFactory
