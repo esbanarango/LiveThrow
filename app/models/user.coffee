@@ -38,7 +38,7 @@ class User
         redis.hset User.key(), @email, JSON.stringify(@), (err, responseCode) =>
           callback err, @ if callback
       else
-        callback err if callback
+        callback err, @ if callback
 
   destroy: (callback) ->
     redis.hdel User.key(), @email, (err) ->

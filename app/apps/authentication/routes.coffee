@@ -28,12 +28,12 @@ routes = (app) ->
 
   app.namespace '/user', ->
     app.post '/create', (req, res) ->
-      attributes =
+      attrs =
         username: req.body.username
         email: req.body.email
         password: req.body.password
         gender: req.body.gender
-      user = new User attributes
+      user = new User attrs
       user.save (err, user) ->
         unless err
           req.session.currentUser = user.email
@@ -46,9 +46,9 @@ routes = (app) ->
 
     app.get '/edit', (req, res) ->
       User.getByEmail req.session.currentUser, (err,user) ->
-            res.render "#{__dirname}/views/users/edit",
-              title: 'Edit'
-              user:user
+        res.render "#{__dirname}/views/users/edit",
+          title: 'Edit'
+          user:user
 
     app.put '/:email', (req, res) ->
       userEmail = req.params.email

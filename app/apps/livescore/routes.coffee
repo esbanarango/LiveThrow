@@ -30,7 +30,7 @@ routes = (app) ->
             title: "New Match"            
             myTeams: myTeams
             allTeams: allTeams
-            scripts: ['matches/matches']
+            scripts: ['matches/matches','pickdate']
 
     app.post '/create', (req, res) -> 
       if (req.body.teams is undefined) or (req.body.teams.length < 2)
@@ -43,7 +43,7 @@ routes = (app) ->
         scoreTeam1: 0
         scoreTeam2: 0
         description: req.body.description
-        date: ""
+        date: req.body.date_submit
         owner: req.session.currentUser
       match = new Match attributes
       match.save () -> 
@@ -56,8 +56,7 @@ routes = (app) ->
     # Authentication check
     app.all '/:id/*', (req, res, next) ->
       if not (req.session.currentUser)
-        req.flash 'error', 'Please login.'
-        res.redirect '/login'
+        res.redirect "/live/#{req.params.id}"
         return
       next()
 

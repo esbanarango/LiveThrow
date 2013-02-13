@@ -1163,8 +1163,9 @@ input[readonly],
 select[readonly],
 textarea[readonly] {
   cursor: not-allowed;
-  background-color: #eeeeee;
-  border-color: #ddd;
+  background-color: #3d3d3d;
+  border-color: 1px solid rgba(255, 255, 255, 0.08);
+  color:#aaa;
 }
 input[type="radio"][disabled],
 input[type="checkbox"][disabled],
@@ -2848,7 +2849,7 @@ input[type="submit"].btn.btn-mini {
   font-size: 20px;
   font-weight: 200;
   line-height: 1;
-  color: #dddddd;
+  color: #eee;
 }
 .navbar .navbar-text {
   margin-bottom: 0;
@@ -2993,7 +2994,7 @@ input[type="submit"].btn.btn-mini {
   float: none;
   padding: 9px 10px 11px;
   line-height: 19px;
-  color: #dddddd;
+  color: #eee;
   text-decoration: none;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }

@@ -7,7 +7,7 @@ block content
     fieldset
       form(id="newMatchForm", action="/matches/create", method="post").form-vertical
         p(style="font-size:13px")
-          | Create a match is so easy, just select the teams you want face, and that's all. :)
+          | Create a match is so easy, just select the teams you want to face, date of game and that's all. :)
    
         div.control-group.control-group-match
           label.control-label
@@ -20,12 +20,17 @@ block content
               optgroup(label="Public Teams")
                 each team in allTeams
                   - if (team.userId != currentUserId)          
-                    option(value=team.id)= team.name     
+                    option(value=team.id)= team.name
+        div.control-group.control-group-match
+          label.control-label
+            | Date
+          div.controls
+            input(class="datepicker",name="date")                       
         div.control-group.control-group-match
           label.control-label
             | Description
           div.controls
-            textarea(class="textAreaMatch", name="description")                    
+            textarea(class="textAreaMatch", name="description")                         
         div.form-actions
           button(type='submit').btn.btn-success
             | Create Match

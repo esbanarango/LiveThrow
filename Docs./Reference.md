@@ -3,6 +3,7 @@
 ##CSS
 
 ####Bootstrap Custom
+* Remember the readonly.
 ```css
 	@textColor = #AAA
   @baseFontSize = 13px

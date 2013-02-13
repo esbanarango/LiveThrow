@@ -3,12 +3,13 @@ html
   head
     link(rel="author", href="humans.txt")
     title= "Live Throw - "+ title 
-    link(rel="stylesheet", href="/lib/bootstrap/css/bootstrap.min.css")
+    link(rel="stylesheet", href="/lib/bootstrap/css/bootstrap.css")
     link(rel='stylesheet', href='/stylesheets/custom.css')
     link(rel="stylesheet", href="/lib/bootstrap/css/bootstrap-responsive.min.css")
     link(rel="stylesheet", href="/lib/css/jquery.noty.css")
     link(rel="stylesheet", href="/lib/css/noty_theme_twitter.css")
     link(rel="stylesheet", href="/lib/css/chosen.css")
+    link(rel="stylesheet", href="/lib/css/pickdate.css")
 
     -var csss = csss || []
     -each css in csss
@@ -45,13 +46,19 @@ html
           div.span12
             block content
         include includes/footer   
+
       script(src='/socket.io/socket.io.js') 
+
       -var scripts = scripts || []
       -each script in scripts
-        if (script == 'stopwatch')
-          script(src='/javascripts/lib/jq.stopwatch.js')   
-        else
-          != js(script)
+        case script
+          when 'stopwatch'
+            script(src='/javascripts/lib/jq.stopwatch.js') 
+          when 'pickdate'
+            script(src='/javascripts/lib/pickdate.js') 
+          default 
+            != js(script)      
+
       script(type='text/javascript')
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-38152308-3']);

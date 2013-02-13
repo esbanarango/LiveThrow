@@ -180,6 +180,7 @@ input{
                  0px 13px 15px rgba(100, 100, 100, 0.3);
       }      
 .imgLogo{
+  border-radius: 3px;
   display:block; 
   margin-left:auto; 
   margin-right:auto;
@@ -252,6 +253,18 @@ filter:alpha(opacity=80); /* For IE8 and earlier */
 }
 
 .spanModalRight{
+}
+
+/*about*/
+.meAbout{
+  margin: 0 auto;
+  height: 229px;
+  width: 186px; 
+  background-image: url('../images/elpa.png');
+  background-position: 186px 0px;
+}
+.meAbout:hover{
+  background-position: 0px 0px;
 }
 
 /* footer */
