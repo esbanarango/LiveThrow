@@ -32,23 +32,25 @@ routes = (app) ->
             allTeams: allTeams
             scripts: ['matches/matches','pickdate']
 
-    app.post '/create', (req, res) -> 
-      if (req.body.teams is undefined) or (req.body.teams.length < 2)
-        req.flash 'error', 'Please select 2 teams.'
-        res.redirect '/matches/new'
-        return             
-      attributes =
+    app.post '/create', (req, res) ->             
+      attrs =
         teamId1: req.body.teams[0]
         teamId2: req.body.teams[1]
         scoreTeam1: 0
         scoreTeam2: 0
         description: req.body.description
+        dateFormated: req.body.date
         date: req.body.date_submit
+        time: '8:00'
         owner: req.session.currentUser
-      match = new Match attributes
-      match.save () -> 
-        req.flash 'success', 'Match was successfully created.'
-        res.redirect "/live/#{match.id}/monitor"            
+      match = new Match attrs
+      match.save (err, _match) -> 
+        unless err
+          req.flash 'success', 'Match was successfully created.'
+          res.redirect "/live/#{match.id}/monitor" 
+        else
+          req.flash 'error', err.message
+          res.redirect '/matches/new'                 
 
   #LiveScore
   app.namespace '/live', ->

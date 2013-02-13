@@ -8,6 +8,8 @@ block content
       thead
         tr
           th
+            | When?
+          th
             | Home Team
           th
             | Away Team
@@ -15,6 +17,7 @@ block content
       tbody
         each match in matches
           tr
+            td=match.dateFormated
             each team in teams
               if team.id == match.teamId1 || team.id == match.teamId2 
                 td= team.name  

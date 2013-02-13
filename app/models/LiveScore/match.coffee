@@ -9,6 +9,7 @@ class Match
   # The Redis key that will store all Match objects as a hash.
   @key: ->
     "Matches:#{process.env.NODE_ENV}"
+  @states: ['finished','transmitting','standby','canceled','unstarted']
   # Fetch all Match objects from the database.
   # callback: (err, matchs)
   @all: (callback) ->
@@ -30,7 +31,17 @@ class Match
       callback null, match
   constructor: (attributes) ->
     @[key] = value for key,value of attributes
+    @setDefaults()
     @
+
+  setDefaults: ->
+    unless @public
+      @public = 'on'
+
+  validate: (callback)->
+    return callback new Error('Two teams are required.') unless @teamId1 and @teamId2
+    return callback new Error('Owner is required.') unless @owner
+    callback()
 
   fillUp: (callback) ->
     Team.getById @teamId1, (err, _team1) =>
@@ -49,11 +60,16 @@ class Match
   #
   # callback: (err, match)
   save: (callback) ->
-    # Generate de id
-    redis.incr Match.key()+'Id', ( err, id ) =>
-      @id = id      
-      redis.hset Match.key(), id, JSON.stringify(@), (err, responseCode) =>
-        callback null, @
+    @validate (err) =>
+      unless err
+        # Generate de id
+        redis.incr Match.key()+'Id', ( err, id ) =>
+          @id = id      
+          redis.hset Match.key(), id, JSON.stringify(@), (err, responseCode) =>
+            callback err, @ if callback
+      else
+        callback err, @ if callback
+
   update: (callback) ->
     redis.hset Match.key(), @id, JSON.stringify(@), (err, responseCode) =>
       callback null, @            
