@@ -6,6 +6,7 @@
 * Remember the readonly.
 
 ```css
+  @bodyBackground = #252123
   @textColor = #AAA
   @baseFontSize = 13px
   @baseLineHeight = 18px
@@ -17,8 +18,11 @@
   @formActionsBackground = rgba(62, 57, 61, 0.25)
   @navbarBackground = #103249
   @navbarBackgroundHighlight = #31646A
-  @navbarText = #ddd
-  @navbarLinkColor = #ddd
+  @navbarSearchBackground = darken(@navbarBackground,25%)
+  @navbarSearchBackgroundFocus = #393939
+  @navbarText = #ccc
+  @navbarLinkColor = #ccc
+  @dropdownLinkColor = #333333
 ```
 
 ##Heroku
