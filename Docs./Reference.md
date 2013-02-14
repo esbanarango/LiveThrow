@@ -21,7 +21,8 @@
   @navbarSearchBackground = darken(@navbarBackground,25%)
   @navbarSearchBackgroundFocus = #393939
   @navbarText = #ccc
-  @navbarLinkColor = #ccc
+  @navbarBrandColor = #ddd
+  @navbarLinkColor = #eee
   @dropdownLinkColor = #333333
 ```
 
