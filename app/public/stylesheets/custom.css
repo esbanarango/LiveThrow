@@ -12,10 +12,6 @@ html {
   overflow-y: scroll;
 }
 
-body {
-  padding-top: 60px;
-}
-
 section {
   overflow: auto;
 }
@@ -204,15 +200,8 @@ filter:alpha(opacity=80); /* For IE8 and earlier */
 
 /* modal */
 .modal {
-  position: fixed;
-  top: 60%;
-  left: 50%;
   z-index: 1050;
-  overflow: auto;
-  width: auto;
-  margin: -250px 0 0 -280px;
   background: #252123 url("../images/bg-texture-light.png") repeat;
-  /*background-color: rgba(50,50,50,0.9);*/
   border: 1px solid #999;
   border: 1px solid rgba(0, 0, 0, 0.3);
   -webkit-border-radius: 6px;

@@ -39,11 +39,12 @@ jQuery ->
       )  
 
 addToList = (player) ->
-  newTr ="<tr style='display:none;' data-playerid='#{player.id}' data-playername='#{player.name} #{player.nickname} #{player.last_name}' >
+  newTr = """<tr style='display:none;' data-playerid='#{player.id}' data-playername='#{player.name} #{player.nickname} #{player.last_name}' >
             <td>#{player.number}</td>
             <td>#{player.name} #{player.nickname} #{player.last_name}</td>
             <td>#{player.position}</td>
             <td>#{player.gender}</td>
-            <td><a href='#' class='deletePlayer' ><i class='icon-remove icon-white'></i></a></td></tr>"
+            <td><a href='#' class='deletePlayer' ><i class='icon-remove icon-white'></i></a></td></tr>
+          """
   $("#playersTable").append(newTr);
   $("#playersTable tr:last").show("slow");
