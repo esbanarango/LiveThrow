@@ -3,7 +3,7 @@
 [![][2]][1]
 
   [1]: https://travis-ci.org/esbanarango/LiveThrow
-  [2]: https://api.travis-ci.org/esbanarango/LiveThrow.png (Code status)
+  [2]: https://api.travis-ci.org/esbanarango/LiveThrow.png?branch=master (Code status)
 
 Live Throw is the final project for the _Special Topics in Telematics_ course; the idea behind this project is a open-source web app where you can keep track of statistics, real-time updates/score and community collaboration, all around Ultimate Frisbee games.
 
