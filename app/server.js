@@ -22,7 +22,8 @@ var port = process.env.PORT || 3000;
 
 // Configuration
 // Facebook keys
-var fb_keys = yamlConfig.readConfig(__dirname + '/config/facebook.yml');
+var fbYml = (process.env.NODE_ENV == 'test') ? 'facebook-test' : 'facebook'
+var fbKeys = yamlConfig.readConfig(__dirname + '/config/'+fbYml+'.yml');
 
 /**
  * OAuth Configuration
@@ -37,9 +38,9 @@ passport.deserializeUser(function(obj, done) {
 });
 
 passport.use(new FacebookStrategy({
-    clientID: fb_keys.app_id,
-    clientSecret: fb_keys.secret_key,
-    callbackURL: fb_keys.callback_url
+    clientID: fbKeys.app_id,
+    clientSecret: fbKeys.secret_key,
+    callbackURL: fbKeys.callback_url
   },
   function(accessToken, refreshToken, profile, done) {
     done(null, profile);    

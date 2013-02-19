@@ -4,4 +4,4 @@
 /app/node_modules/
 *.rdb
 
-/app/config/*
+/app/config/facebook.yml

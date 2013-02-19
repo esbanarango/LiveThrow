@@ -1,0 +1,10 @@
+#config/facebook-test.yml
+development: &defaults
+  app_id: 287825231306454
+  secret_key: a4c2bce7b95b170eb43b46178a0d0207
+  callback_url: http://localhost:3000/auth/facebook/callback
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
