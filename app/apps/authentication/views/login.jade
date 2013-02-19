@@ -18,10 +18,12 @@ block content
             div.controls
               input(type='password', name='password', required="required").input-xlarge
         div.form-actions
-          button(type='submit').btn.btn-large.btn-primary
+          button(type='submit').btn.btn-primary
             | Submit
+          a(href='/auth/facebook') Login with Facebook
       label.control-label
-        | New user? 
-        a(href="/signup")
-          | Sign up now!
+        | Don't want to use Facebook?
+        small
+          a(style="display:block;",href="/signup")
+            | Sign up now with your email!
 

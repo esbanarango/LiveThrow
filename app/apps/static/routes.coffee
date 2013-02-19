@@ -2,8 +2,8 @@ exec = require("child_process").exec;
 
 routes = (app) ->
   app.get '/', (req, res) ->
-	  res.render "#{__dirname}/views/index",
-		  title: "Live Throw"
+    res.render "#{__dirname}/views/index",
+      title: "Live Throw"
 
   app.get '/about', (req, res) ->
     res.render "#{__dirname}/views/about",

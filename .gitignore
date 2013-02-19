@@ -3,3 +3,5 @@
 
 /app/node_modules/
 *.rdb
+
+/app/config/*
