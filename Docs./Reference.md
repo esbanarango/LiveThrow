@@ -29,3 +29,11 @@
 ##Heroku
 
 `"socket.io": "~0.9.6"`
+
+"The WebSockets protocol is not yet supported on the Cedar stack."
+
+```coffeescript
+  socketIO.configure ->
+    socketIO.set "transports", ["xhr-polling"]
+    socketIO.set "polling duration", 10
+```
