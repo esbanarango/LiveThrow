@@ -1,4 +1,4 @@
- ![et](https://github.com/esbanarango/LiveThrow/blob/master/Docs./lg.png?raw=true)
+ [![et](https://github.com/esbanarango/LiveThrow/blob/master/Docs./lg.png?raw=true)](http://livethrow.herokuapp.com/)
 
 [![][2]][1]
 
@@ -38,7 +38,11 @@ Live Throw uses a Node.js full stack.
     "hiredis": "~0.1.14",
     "connect-redis": "~1.3.0",
     "gravatar": "~1.0.6",
-    "connect-flash": "~0.1.0"
+    "connect-flash": "~0.1.0",
+    "heroku-redis-client": "~0.3.3",
+    "passport": "~0.1.15",
+    "passport-facebook": "~0.1.5",
+    "yaml-config": "~0.2.1"
   }
 }
 ```
