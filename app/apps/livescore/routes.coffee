@@ -64,15 +64,21 @@ routes = (app) ->
 
     app.get '/:id/monitor', (req, res) ->
       Match.getById req.params.id, (err, match) ->
-        if match.owner isnt req.session.currentUser
-          res.redirect "/live/#{req.params.id}"
-          return
-        match.fillUp (err, matchFull)->
-          res.render "#{__dirname}/views/live/monitor",
-            title: "Live Score / Transmitting"
-            csss: ['scoreReport','stopwatch']
-            scripts: ['livescore/monitor','livescore/live','stopwatch']
-            match: matchFull
+        unless match is undefined
+          if match.owner isnt req.session.currentUser
+            res.redirect "/live/#{req.params.id}"
+            return
+          match.fillUp (err, matchFull)->
+            res.render "#{__dirname}/views/live/monitor",
+              title: "Live Score / Transmitting"
+              csss: ['scoreReport','stopwatch']
+              scripts: ['livescore/monitor','livescore/live','stopwatch']
+              match: matchFull        
+        else
+          res.render 'error',
+            status: 403,
+            message: "Match does not exist."
+            title: "Non-existent Match"        
 
     app.post '/action', (req,res) ->
         matchId = req.header('Referrer').split('/')[4]
@@ -99,20 +105,18 @@ routes = (app) ->
 
     app.get '/:id', (req, res) ->
       Match.getById req.params.id, (err, match) ->
-        if match is undefined
-          console.log(err)
-          res.render 'error',
-            status: 403,
-            message: "Match does not exist."
-            title: "Incorrect Team id"
-            stylesheet: 'admin'        
-        else
+        unless match is undefined
           match.fillUp (err, matchFull)->
             res.render "#{__dirname}/views/live/show",
               title: "Live Score"
               csss: ['scoreReport','stopwatch']
               scripts: ['livescore/live', 'stopwatch']
-              match: matchFull
+              match: matchFull      
+        else
+          res.render 'error',
+            status: 403,
+            message: "Match does not exist."
+            title: "Non-existent Match"        
 
     app.get '/', (req, res) ->
       Match.all (err, _matches) ->
