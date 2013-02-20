@@ -2,7 +2,6 @@
 
 ### Structure
 
-The structure has been studied to be easyly adaptable over a lot of new cases.
 
     ├── apps/                                 # VC (View, Controller/Routes)
     │   ├── authentication/
