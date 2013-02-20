@@ -5,10 +5,11 @@ routes = (app) ->
     user= new User {}
     res.render "#{__dirname}/views/login",
       title: 'Login'
+      csss: ['zocial']
 
   app.post '/sessions', (req, res) ->
     User.getByEmail req.body.email, (err, user) =>
-      if (user and user.password is req.body.password)
+      if (user and (user.password is req.body.password) and (user.signup_from isnt 'facebook'))
         req.session.currentUser = user.email
         req.session.currentUser_name = user.username
         req.flash 'success', "You are now logged in as #{req.session.currentUser_name}."
@@ -33,6 +34,7 @@ routes = (app) ->
         email: req.body.email
         password: req.body.password
         gender: req.body.gender
+        signup_from: 'email'
       user = new User attrs
       user.save (err, user) ->
         unless err
@@ -50,20 +52,21 @@ routes = (app) ->
           title: 'Edit'
           user:user
 
-    app.put '/:email', (req, res) ->
-      userEmail = req.params.email
-      attrs =
-        username: req.body.username
-        password: req.body.password
-        gender: req.body.gender
+    app.put '/me', (req, res) ->
       User.getByEmail req.session.currentUser, (err,user) ->
-        user.username = attrs.username
-        user.passwoord = attrs.password if attrs.password
-        user.gender = attrs.gender
-        user.save ->
-          req.session.currentUser_name = user.username
-          req.flash 'success', "User was successfully updated."        
-          res.redirect '/'
+        user.username = req.body.username
+        user.password = req.body.password if req.body.password
+        user.gender = req.body.gender
+        user.first_name = req.body.first_name
+        user.last_name = req.body.last_name
+        user.update (err,user) ->
+          unless err
+            req.session.currentUser_name = user.username
+            req.flash 'success', "User was successfully updated."        
+            res.redirect '/'
+          else
+            req.flash 'error', err.message
+            res.redirect '/user/edit'          
 
 
 

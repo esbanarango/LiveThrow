@@ -6,15 +6,30 @@ routes = (app, passport) ->
 
     #Facebook
     app.get "/facebook", passport.authenticate("facebook",
-      scope: ["read_stream", "publish_actions"]
+      scope: ["read_stream", "publish_actions", "email"]
     )
 
     app.get "/facebook/callback", passport.authenticate("facebook",
       failureRedirect: "/login"
     ), (req, res) ->
-      console.log 'User from FB.'
-      console.log req.user
-      res.redirect "/login"
+      User.getByEmail req.user.emails[0].value, (err, user) =>
+        if user
+          req.session.currentUser = user.email
+          req.session.currentUser_name = user.username
+          req.flash 'success', "You are now logged in as #{req.session.currentUser_name}."
+          res.redirect '/'
+          return
+        else
+          User.createFromFacebook req.user, (user) =>
+            user.save (err, user) ->
+              unless err
+                req.session.currentUser = user.email
+                req.session.currentUser_name = user.username
+                req.flash 'success', "You are now logged in as #{req.session.currentUser_name}."        
+                res.redirect '/'
+              else
+                req.flash 'error', err.message
+                res.redirect '/signup'
 
 
 

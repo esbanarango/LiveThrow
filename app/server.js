@@ -22,7 +22,7 @@ var port = process.env.PORT || 3000;
 
 // Configuration
 // Facebook keys
-var fbYml = (process.env.NODE_ENV == 'test') ? 'facebook-test' : 'facebook'
+var fbYml = (process.env.NODE_ENV != 'production') ? 'facebook-test' : 'facebook'
 var fbKeys = yamlConfig.readConfig(__dirname + '/config/'+fbYml+'.yml');
 
 /**

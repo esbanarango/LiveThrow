@@ -12,7 +12,11 @@ html
 
     -var csss = csss || []
     -each css in csss
-      link(rel="stylesheet", href="/stylesheets/"+css+".css")
+      case css
+        when 'zocial'
+          link(rel="stylesheet", href="/lib/css/zocial/zocial.css")          
+        default 
+          link(rel="stylesheet", href="/stylesheets/"+css+".css")
 
     meta( name="viewport", content="width=device-width, initial-scale=1.0")
     script(src='//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js')
