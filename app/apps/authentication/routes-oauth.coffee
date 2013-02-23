@@ -31,6 +31,15 @@ routes = (app, passport) ->
                 req.flash 'error', err.message
                 res.redirect '/signup'
 
+    #Twitter
+    app.get "/twitter", passport.authenticate("twitter",
+      scope: 'email'
+    )
 
+    app.get "/twitter/callback", passport.authenticate("twitter",
+      failureRedirect: "/login"
+    ), (req, res) ->
+      console.log req.user
+      res.redirect '/signup'
 
 module.exports = routes

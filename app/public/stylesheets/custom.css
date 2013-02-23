@@ -1,3 +1,28 @@
+/* Meanwhile release */
+
+@font-face {
+    font-family: 'BLOKKNeue-Regular';
+    src: url('./../fonts/BLOKK/BLOKKNeue-Regular.eot');
+    src: url('./../fonts/BLOKK/BLOKKNeue-Regular.eot?#iefix') format('embedded-opentype'),
+         url('./../fonts/BLOKK/BLOKKNeue-Regular.woff') format('woff'),
+         url('./../fonts/BLOKK/BLOKKNeue-Regular.svg#BLOKKNeue-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BLOKKRegular';
+    src: url('./../fonts/BLOKK/BLOKKRegular.eot');
+    src: url('./../fonts/BLOKK/BLOKKRegular.eot?#iefix') format('embedded-opentype'),
+         url('./../fonts/BLOKK/BLOKKRegular.woff') format('woff'),
+         url('./../fonts/BLOKK/BLOKKRegular.svg#BLOKKRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
 body { 
 
   padding-top: 60px; 

@@ -1,0 +1,15 @@
+#config/oauth-test.yml
+development: &defaults
+  facebook:
+    app_id: 287825231306454
+    secret_key: a4c2bce7b95b170eb43b46178a0d0207
+    callback_url: http://localhost:3000/auth/facebook/callback
+  twitter:
+    consumer_key: MmUdziQagPb2xO8s8ZW5w
+    consumer_secret: 2IkvR3cQSHNTjeVBQJEj6RJtZ9YwdI70OY4rSbpO8MU
+    callback_url: http://localhost:3000/auth/twitter/callback  
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

@@ -4,4 +4,4 @@
 /app/node_modules/
 *.rdb
 
-/app/config/facebook.yml
+/app/config/oauth.yml

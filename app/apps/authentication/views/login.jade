@@ -17,10 +17,11 @@ block content
               | Password
             div.controls
               input(type='password', name='password', required="required").input-xlarge
-        div.form-actions
           button(type='submit').btn.btn-primary
-            | Submit
+            | Submit              
+        div.form-actions
           a(href='/auth/facebook',style='float:right;',class='zocial facebook') Login with Facebook
+          a(href='/auth/twitter',style='float:right;',class='zocial twitter') Login with Twitter
       label.control-label
         | Don't want to use Facebook? / 
         small

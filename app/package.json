@@ -19,7 +19,8 @@
     "heroku-redis-client": "~0.3.3",
     "passport": "~0.1.15",
     "passport-facebook": "~0.1.5",
-    "yaml-config": "~0.2.1"
+    "yaml-config": "~0.2.1",
+    "passport-twitter": "~0.1.4"
   },
   "engines": {
     "node": "0.8.x",

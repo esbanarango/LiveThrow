@@ -12,7 +12,8 @@ var express     = require('express')
   , path        = require('path')
   , yamlConfig  = require('yaml-config')
   , passport    = require('passport')
-  , FacebookStrategy = require('passport-facebook').Strategy;
+  , FacebookStrategy  = require('passport-facebook').Strategy
+  , TwitterStrategy   = require('passport-twitter').Strategy;
 
 require('express-namespace');
 
@@ -21,9 +22,9 @@ var server = http.createServer(app);
 var port = process.env.PORT || 3000;
 
 // Configuration
-// Facebook keys
-var fbYml = (process.env.NODE_ENV != 'production') ? 'facebook-test' : 'facebook'
-var fbKeys = yamlConfig.readConfig(__dirname + '/config/'+fbYml+'.yml');
+// Facebook and Twitter keys
+var oauthYml = (process.env.NODE_ENV != 'production') ? 'oauth-test' : 'oauth'
+var fbtwKeys = yamlConfig.readConfig(__dirname + '/config/'+oauthYml+'.yml');
 
 /**
  * OAuth Configuration
@@ -32,18 +33,25 @@ var fbKeys = yamlConfig.readConfig(__dirname + '/config/'+fbYml+'.yml');
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
-
 passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
-
 passport.use(new FacebookStrategy({
-    clientID: fbKeys.app_id,
-    clientSecret: fbKeys.secret_key,
-    callbackURL: fbKeys.callback_url
+    clientID: fbtwKeys.facebook.app_id,
+    clientSecret: fbtwKeys.facebook.secret_key,
+    callbackURL: fbtwKeys.facebook.callback_url
   },
   function(accessToken, refreshToken, profile, done) {
     done(null, profile);    
+  }
+));
+passport.use(new TwitterStrategy({
+    consumerKey: fbtwKeys.twitter.consumer_key,
+    consumerSecret: fbtwKeys.twitter.consumer_secret,
+    callbackURL: fbtwKeys.twitter.callback_url
+  },
+  function(token, tokenSecret, profile, done) {
+    done(null, profile); 
   }
 ));
 
