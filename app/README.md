@@ -48,6 +48,7 @@
     ├── public/
     │   ├── humans.txt
     │   ├── images/
+    │   ├── fonts/
     │   ├── javascripts/
     │   │   └── lib/
     │   │       ├── jq.stopwatch.js
