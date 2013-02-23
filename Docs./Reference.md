@@ -28,6 +28,8 @@
 
 ##Heroku
 
+jQuery noty version.
+
 `"socket.io": "~0.9.6"`
 
 "The WebSockets protocol is not yet supported on the Cedar stack."
