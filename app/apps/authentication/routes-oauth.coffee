@@ -40,6 +40,7 @@ routes = (app, passport) ->
       failureRedirect: "/login"
     ), (req, res) ->
       console.log req.user
+      req.flash 'info', "Twitter authentication hasn't been finished yet." 
       res.redirect '/signup'
 
 module.exports = routes

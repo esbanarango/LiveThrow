@@ -6155,6 +6155,9 @@ button.close {
   body {
     padding-top: 0 !important;
   }
+  .ribbon-fork img {
+    top: 51px !important;
+  }
   .navbar-fixed-top,
   .navbar-fixed-bottom {
     position: static;
