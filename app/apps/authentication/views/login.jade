@@ -1,28 +1,26 @@
 extends ../../../views/layout
 
 block content
-  div.span5.offset3.bordersform
+  div.span5.offset3.bordersform.loginForm
     legend
-      | Login
+      | Log in
     fieldset
       form(action='/sessions', method='post').form-inline
-        div(style="padding-left:10px;")
+        div(style="text-align:center;padding-left:10px;")
           div.control-group
-            label.control-label
-              | Email
             div.controls
-              input(type='email', name='email', required="required").input-xlarge  
+              input(type='email', name='email', required="required", placeholder="Email").input-xlarge  
           div.control-group
-            label.control-label
-              | Password
             div.controls
-              input(type='password', name='password', required="required").input-xlarge
+              input(type='password', name='password', required="required", placeholder="Password").input-xlarge
           button(type='submit').btn.btn-primary
-            | Submit              
-        div(style='text-align:center;', class='form-actions')
+            | Log in
+        hr.sep
+          span or
+        div(style='text-align:center;margin-top', class='form-actions')
           a(href='/auth/facebook',class='zocial facebook') Login with Facebook
           //- a(href='/auth/twitter',style='float:right;',class='zocial twitter') Login with Twitter
-      label.control-label
+      label(style='text-align:center;',class='control-label')
         | Don't want to use Facebook? / 
         small
           a(href="/signup")
