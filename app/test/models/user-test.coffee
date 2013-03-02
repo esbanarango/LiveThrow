@@ -122,6 +122,11 @@ describe 'User', ->
           assert.equal err.message, 'Email is already taken.'
           done()
 
+    it "requires a email", ->
+      user = new User {username: 'eduardo', password: '123456'}
+      user.save (err, json) ->
+        assert.equal err.message, 'Email is required.'
+
     it "requires a username", ->
       user = new User {email: 'emilio@ar.com', password: '123456'}
       user.save (err, json) ->

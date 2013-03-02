@@ -19,9 +19,9 @@ block content
               input(type='password', name='password', required="required").input-xlarge
           button(type='submit').btn.btn-primary
             | Submit              
-        div.form-actions
-          a(href='/auth/facebook',style='float:left;',class='zocial facebook') Login with Facebook
-          a(href='/auth/twitter',style='float:right;',class='zocial twitter') Login with Twitter
+        div(style='text-align:center;', class='form-actions')
+          a(href='/auth/facebook',class='zocial facebook') Login with Facebook
+          //- a(href='/auth/twitter',style='float:right;',class='zocial twitter') Login with Twitter
       label.control-label
         | Don't want to use Facebook? / 
         small

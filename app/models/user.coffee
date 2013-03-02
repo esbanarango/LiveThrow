@@ -27,7 +27,7 @@ class User
       user = new User JSON.parse(json)
       callback err, user
 
-  # Extracts all the user information form the Facebook response,
+  # Extracts all the user information from the Facebook response,
   # and calls the callbak with the new user.
   # callback: (err, user)
   @createFromFacebook: (user, callback) ->
@@ -81,6 +81,7 @@ class User
 
   validate: (from,callback)->
     return callback new Error('Username is required.') unless @username
+    return callback new Error('Email is required.') unless @email
     if from is 'save'
       redis.hexists User.key(), @email, (err, data)->
         if data

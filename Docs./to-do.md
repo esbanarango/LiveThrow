@@ -1,7 +1,7 @@
 ## To do
 - [x] Improvements in Scorekeeper
 - [x] Upgrade to Bootstrap Version 2.2.2
-- [/] Twitter and Facebook OAuth (✓) 
+- [x] Facebook OAuth
     * https://github.com/jaredhanson/passport 
     * https://github.com/ciaranj/node-oauth
 - [/] Automatic chronometer
