@@ -35,6 +35,7 @@
 
 $ ->
   $('#stopwatch').stopwatch()
+  $(".bordersTableScore").nanoScroller()
   changeIdByInfo()
   matchId = window.location.pathname.split('/')[2]
   socket = io.connect("/")
@@ -52,5 +53,5 @@ $ ->
     divData.attr("id","actionId"+action.id)
     #Put, scroll top and slideDown
     $("#tableScores table").prepend(divData.html())
-    $("#tableScores").animate({scrollTop : 0},'fast')
+    $("#tableScores").find('.content').animate({scrollTop : 0},'fast')
     $("#tableScores table tbody").find(":first").find("td").show("slow")
