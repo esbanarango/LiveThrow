@@ -958,7 +958,7 @@ table {
   line-height: 18px;
   text-align: left;
   vertical-align: top;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #888;
 }
 .table th {
   font-weight: bold;
@@ -1068,7 +1068,7 @@ table {
 }
 .table-striped tbody > tr:nth-child(odd) > td,
 .table-striped tbody > tr:nth-child(odd) > th {
-  background-color: #393939;
+  background-color: rgba(38, 38, 38, 0.3);
 }
 .table-hover tbody tr:hover > td,
 .table-hover tbody tr:hover > th {
@@ -1793,8 +1793,8 @@ select:focus:invalid:focus {
   line-height: 18px;
   text-align: center;
   text-shadow: 0 1px 0 #ffffff;
-  background-color: #eeeeee;
-  border: 1px solid #ccc;
+  background-color: #222;
+  border: 1px solid #3d3d3d;
 }
 .input-append .add-on,
 .input-prepend .add-on,

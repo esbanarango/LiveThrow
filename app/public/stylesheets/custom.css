@@ -321,7 +321,8 @@ footer{
        -o-transition:background 1.8s;
           transition:background 1.8s;
 }
-footer:hover{
+footer:hover,
+footer:focus{
   background:url('../images/footer-grass-green.png') repeat bottom right;
   /*transition*/
   -webkit-transition:background 2s;

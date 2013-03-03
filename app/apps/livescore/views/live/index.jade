@@ -4,7 +4,7 @@ block content
   div.span6.offset3
     h2 
       | Current Games
-    table(class="table table-striped")
+    table(class="table table-striped ")
       thead
         tr
           th
@@ -22,5 +22,9 @@ block content
               if team.id == match.teamId1 || team.id == match.teamId2 
                 td= team.name  
             td
-              a(class="label label-info", href="/live/#{match.id}")
+              a(class="label label-success", href="/live/#{match.id}")
                  |  watch
+              if match.owner == currentUserId()
+                |  | 
+                a(class="label label-info", href="/live/#{match.id}/monitor")
+                   |  broadcast                 

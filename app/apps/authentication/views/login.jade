@@ -9,11 +9,17 @@ block content
         div(style="text-align:center;padding-left:10px;")
           div.control-group
             div.controls
-              input(type='email', name='email', required="required", placeholder="Email").input-xlarge  
+              .input-prepend
+                  span.add-on
+                      i.icon-envelope.icon-white
+                    input(type='email', name='email', required="required", placeholder="Email").input-large 
           div.control-group
             div.controls
-              input(type='password', name='password', required="required", placeholder="Password").input-xlarge
-          button(type='submit').btn.btn-primary
+              .input-prepend
+                  span.add-on
+                      i.icon-lock.icon-white
+                    input(type='password', name='password', required="required", placeholder="Password").input-large              
+          button(type='submit').btn.btn-inverse
             | Log in
         hr.sep
           span or
