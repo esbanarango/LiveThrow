@@ -176,6 +176,10 @@ input{
 
 /* container */
 
+#container{
+  margin-bottom: 50px;
+}
+
 .hero-unit {
 	background-color: #F2F39E;
 }

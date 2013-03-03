@@ -227,7 +227,7 @@ ul.play li.active .down .shadow {
 
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
     font-size: 11px;
     color: #006798;
 }
@@ -244,7 +244,7 @@ ul.play li.active .down .shadow {
 .marcador
 {
     min-height: 210px;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
     /*line-height: 0px !important;*/
 }
 
@@ -253,6 +253,7 @@ ul.play li.active .down .shadow {
     max-width:200px;
     background-color: rgba(156, 154, 58, 0.1);
     color: #aaa;
+    margin: 0;
 }
 
 .form-actions2{
@@ -260,6 +261,7 @@ ul.play li.active .down .shadow {
     max-width:200px;
     background-color: rgba(0, 148, 151, 0.1);
     color: #aaa;
+    margin: 0;
 }
 
 .controlDivOut{
@@ -277,6 +279,8 @@ ul.play li.active .down .shadow {
     width: 220px;
     text-align: center;
     padding: 10px;
+    padding-bottom: 15px;
+    border-radius: 2px;
 }
 .equipo_1
 {
@@ -292,13 +296,13 @@ ul.play li.active .down .shadow {
     min-width:335px;
     max-width: 470px;
     padding: 5px;
-    max-height:700px;
+    max-height:500px;
     overflow: auto;
-    border: 5px solid rgba(162, 57, 61, 0.25);
+    border: 5px solid rgba(162, 57, 61, 0.1);
 }
 
 .numerico{
-    margin-top: 30px;
+    /*margin-top: 30px;*/
     height:100px;
     font-size: 90px; 
     text-shadow: 3px 3px #C1C1C1;

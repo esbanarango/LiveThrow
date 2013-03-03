@@ -4,24 +4,22 @@ block content
   div.span6.offset3
     h2 
       | My Teams
+      a(href="/teams/new",style="float:right;margin-top:7px;").btn.btn-inverse
+        | Create New Team
     table(id="teams", class="table table-striped")
       thead
         tr
+          th(style="width:22%;")    
           th
             | Name
           th
             | Category
-          th
       tbody
         each team in teams
           tr
-            td= team.name
-            td= team.category
-            td
+            td(style="text-align:center;") 
               a(class="btn btn-small", href="/teams/#{team.id}")
                 i(class="icon-cog")
-                |  Edit
-
-
-    a(href="/teams/new").btn.btn-inverse
-      | Create New Team
+                |  Edit            
+            td= team.name
+            td= team.category
