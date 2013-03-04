@@ -34,7 +34,7 @@
     break unless div.find("ul.minutePlay li.active .up .inn").text() < numS[0]
 
 $ ->
-  $('#stopwatch').stopwatch()
+  $('#stopwatch').stopwatch('','00','00','00')
   $(".bordersTableScore").nanoScroller()
   changeIdByInfo()
   matchId = window.location.pathname.split('/')[2]

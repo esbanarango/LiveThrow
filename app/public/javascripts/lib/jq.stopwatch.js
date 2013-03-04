@@ -1,5 +1,5 @@
 (function($) {
-  $.fn.stopwatch = function(theme) {
+  $.fn.stopwatch = function(theme,hh,mm,ss) {
     var stopwatch = $(this);
     stopwatch.addClass('stopwatch').addClass(theme);
 
@@ -8,9 +8,9 @@
       var timer = 0;
 
       var stopwatchFace = $('<div>').addClass('the-time');
-      var timeHour = $('<span>').addClass('hr digit').text('00');
-      var timeMin = $('<span>').addClass('min digit').text('00');
-      var timeSec = $('<span>').addClass('sec digit').text('00');
+      var timeHour = $('<span>').addClass('hr digit').text(hh);
+      var timeMin = $('<span>').addClass('min digit').text(mm);
+      var timeSec = $('<span>').addClass('sec digit').text(ss);
       var startStopBtn = $('<a>').attr('href', '').addClass('start-stop btn btn-inverse').text('Start');
       stopwatchFace = stopwatchFace.append(timeHour).append(timeMin).append(timeSec);
       instance.html('').append(stopwatchFace).append(startStopBtn);

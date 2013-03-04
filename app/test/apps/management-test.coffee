@@ -46,7 +46,7 @@ describe 'management', ->
       it "has title", ->
         assert.hasTag body, '//head/title', 'Live Throw - Teams'
       it "displays a team", ->
-        xpath = "//table[@id='teams']/tbody/tr/td[1]"
+        xpath = "//table[@id='teams']/tbody/tr/td[2]"
         assert.hasTag body, xpath, 'Galatasara'
       it "doesn't display a team which is not mine", ->
         xpath = "//table[@id='teams']/tbody"
