@@ -11,6 +11,9 @@ block content
       .span6.controlLive
         #lightLive.off
         #stopwatch
+          input(type='hidden',id='watchhh',value=match.time[0])
+          input(type='hidden',id='watchmm',value=match.time[0])
+          input(type='hidden',id='watchss',value=match.time[0])
     div(class="datos_juego")
       div(class="top-information")
         div(class="marcador")

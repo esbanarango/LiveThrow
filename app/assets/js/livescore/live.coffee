@@ -38,8 +38,9 @@ $ ->
   $(".bordersTableScore").nanoScroller()
   changeIdByInfo()
   matchId = window.location.pathname.split('/')[2]
-  socket = io.connect("/")
-  socket.on "match:#{matchId}", (action) ->
+  @socket = io.connect("/")
+
+  @socket.on "match:#{matchId}", (action) ->
     addToScore(action.team)
     assisPlayer = $("#id-#{action.assitencePlayerId}team-#{action.team}")
     golPlayer = $("#id-#{action.golPlayerId}team-#{action.team}")
@@ -55,3 +56,5 @@ $ ->
     $("#tableScores table").prepend(divData.html())
     $("#tableScores").find('.content').animate({scrollTop : 0},'fast')
     $("#tableScores table tbody").find(":first").find("td").show("slow")
+
+

@@ -32,12 +32,17 @@ routes = (app) ->
             allTeams: allTeams
             scripts: ['matches/matches','pickdate']
 
-    app.post '/create', (req, res) ->             
+    app.post '/create', (req, res) ->
+      if (req.body.teams is undefined) or (req.body.teams.length < 2)
+        req.flash 'error', 'Please select 2 teams.'
+        res.redirect '/matches/new'
+        return                  
       attrs =
         teamId1: req.body.teams[0]
         teamId2: req.body.teams[1]
         scoreTeam1: 0
         scoreTeam2: 0
+        time: ['00','00','00']
         description: req.body.description
         dateFormated: req.body.date
         date: req.body.date_submit
@@ -72,13 +77,34 @@ routes = (app) ->
             res.render "#{__dirname}/views/live/monitor",
               title: "Live Score / Transmitting"
               csss: ['scoreReport','stopwatch']
-              scripts: ['livescore/monitor','livescore/live','stopwatch']
+              scripts: ['livescore/live','livescore/monitor','stopwatch']
               match: matchFull        
         else
           res.render 'error',
             status: 403,
             message: "Match does not exist."
-            title: "Non-existent Match"        
+            title: "Non-existent Match"
+
+    app.post '/:id/monitor/register', (req, res) ->
+      Match.getById req.params.id, (err, match) ->
+        unless match is undefined
+          if match.owner isnt req.session.currentUser
+            res.json 500,
+              error: "You are not the owner of this game."
+            return
+          # Socket id
+          socketId = req.body.id
+          if socketIO = app.settings.socketIO
+            socketIO.sockets.sockets[socketId].type = 'monitor'
+            socketIO.sockets.sockets[socketId].currentUser = req.session.currentUser
+            socketIO.sockets.sockets[socketId].match = req.params.id
+            res.json message: 'Successful id registration'
+            return
+          res.json 500,
+            error: "Error on the socket."
+        else
+          res.json 500,
+            error: "Match does not exist."           
 
     app.post '/action', (req,res) ->
         matchId = req.header('Referrer').split('/')[4]

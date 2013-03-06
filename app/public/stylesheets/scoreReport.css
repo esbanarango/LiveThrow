@@ -293,12 +293,12 @@ ul.play li.active .down .shadow {
 
 
 .bordersTableScore{
-    min-width:335px;
+    min-width:340px;
     max-width: 470px;
     padding: 5px;
-    height:500px;
+    height:350px;
     overflow: auto;
-    border: 5px solid rgba(162, 57, 61, 0.1);
+    border: 5px solid rgba(162, 57, 61, 0);
 }
 
 .numerico{

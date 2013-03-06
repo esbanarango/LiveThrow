@@ -11,6 +11,10 @@ module.exports = (server, app) ->
   unless app.settings.socketIO
     app.set 'socketIO', socketIO
   socketIO.sockets.on 'connection', (socket) ->
-    console.log 'CONNECTED'
-    socket.on 'disconnect', ->
-      console.log 'DISCONNECTED'
+    # Expose its socket id
+    socket.emit 'id', socket.id
+    socket.on 'disconnect', ->      
+      console.log "DISCONNECTED"
+      console.log "User: #{socket.currentUser}"
+      console.log "Match: #{socket.match}"
+

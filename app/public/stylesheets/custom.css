@@ -307,6 +307,7 @@ filter:alpha(opacity=80); /* For IE8 and earlier */
 /* footer */
 
 footer{
+  
   position:fixed;
   bottom:0;
   width:100%;
