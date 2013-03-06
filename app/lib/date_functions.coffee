@@ -1,3 +1,7 @@
+ # Util functions for Date manipulations 
+ #
+ # @author Esteban Arango Medina <marranoparael31@gmail.com>
+
 date =
   timeBetween: (t1,t2) ->
     dif = t1.getTime() - t2.getTime()

@@ -43,6 +43,8 @@
     │   └── test
     ├── config/
     │   └── facebook-test.yml
+    ├── lib/
+    │   └── date_functions.coffee    
     ├── middleware/
     │   └── upgrade.coffee
     ├── public/
