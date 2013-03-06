@@ -72,7 +72,7 @@ class Match
 
   update: (callback) ->
     redis.hset Match.key(), @id, JSON.stringify(@), (err, responseCode) =>
-      callback null, @            
+      callback null, @ if callback     
   destroy: (callback) ->
     redis.hdel Match.key(), @id, (err) ->
       callback err if callback

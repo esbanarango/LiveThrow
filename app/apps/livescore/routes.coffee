@@ -42,11 +42,13 @@ routes = (app) ->
         teamId2: req.body.teams[1]
         scoreTeam1: 0
         scoreTeam2: 0
-        time: ['00','00','00']
+        time:
+          hh: 0
+          mm: 0
+          ss: 0
         description: req.body.description
         dateFormated: req.body.date
         date: req.body.date_submit
-        time: '8:00'
         owner: req.session.currentUser
       match = new Match attrs
       match.save (err, _match) -> 

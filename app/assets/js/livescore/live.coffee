@@ -1,4 +1,6 @@
 
+@socket = io.connect("/")
+
 @changeIdByInfo = () ->
   $(".changeId").each ->
     id = $(@).text()
@@ -34,13 +36,12 @@
     break unless div.find("ul.minutePlay li.active .up .inn").text() < numS[0]
 
 $ ->
-  $('#stopwatch').stopwatch('','00','00','00')
+  $('#stopwatch').stopwatch '', $('#watchhh').val(), $('#watchmm').val(), $('#watchss').val()
   $(".bordersTableScore").nanoScroller()
   changeIdByInfo()
-  matchId = window.location.pathname.split('/')[2]
-  @socket = io.connect("/")
+  matchId = window.location.pathname.split('/')[2]  
 
-  @socket.on "match:#{matchId}", (action) ->
+  socket.on "match:#{matchId}", (action) ->
     addToScore(action.team)
     assisPlayer = $("#id-#{action.assitencePlayerId}team-#{action.team}")
     golPlayer = $("#id-#{action.golPlayerId}team-#{action.team}")

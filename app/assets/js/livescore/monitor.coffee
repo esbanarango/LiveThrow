@@ -1,7 +1,7 @@
 
 $ ->
 
-  @socket.on 'id', (id)->
+  socket.on 'id', (id)->
 
     url = window.location.pathname
     # it could ../:id/monitor/ or ../:id/monitor
