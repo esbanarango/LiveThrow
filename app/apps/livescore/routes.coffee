@@ -40,12 +40,6 @@ routes = (app) ->
       attrs =
         teamId1: req.body.teams[0]
         teamId2: req.body.teams[1]
-        scoreTeam1: 0
-        scoreTeam2: 0
-        time:
-          hh: 0
-          mm: 0
-          ss: 0
         description: req.body.description
         dateFormated: req.body.date
         date: req.body.date_submit

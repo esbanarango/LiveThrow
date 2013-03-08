@@ -35,6 +35,12 @@ class Match
     @
 
   setDefaults: ->
+    @scoreTeam1= 0
+    @scoreTeam2= 0
+    @time=
+      hh: 0
+      mm: 0
+      ss: 0    
     unless @public
       @public = 'on'
 
