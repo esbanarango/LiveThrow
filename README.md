@@ -87,6 +87,9 @@ Run tests:
 
     $ npm test
 
+## Contribute
+
+Pull requests are welcome!
 
 ## Author
 This was written by [Esteban Arango Medina](http://twitter.com/esbanarango).
