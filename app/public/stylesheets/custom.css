@@ -206,24 +206,17 @@ input{
                  0px 13px 15px rgba(100, 100, 100, 0.3);
       }
 
-#cf {
-  position:relative;
-  height:300px;
-  width:450px;
-  margin:0 auto;
-}
+.imgLogo, #slideshow{
 
-#cf img {
-  position:absolute;
-  left:0;
-  height: inherit;
-
+  height: 330px;
+  width: 592px;
+  opacity: 0;  
   border-radius: 3px;
   display:block; 
   margin-left:auto; 
   margin-right:auto;
   margin-bottom: 20px;
-  opacity:0.8;
+  /*opacity:0.8;*/
   filter:alpha(opacity=80); /* For IE8 and earlier */
   -webkit-box-reflect: below 10px
   -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255, 255, 255, 0.04)));
@@ -232,55 +225,10 @@ input{
   -webkit-box-shadow: 1px 1px 5px #999;
   box-shadow: 1px 1px 5px #999;
 
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-position:center; 
 
-}
-
-@keyframes cfFadeInOut {
-  0% {
-    opacity:1;
-  }  
-  45% {
-    opacity:1;
-  }
-  55% {
-    opacity:0;
-  }
-  100% {
-    opacity:0;
-  }
-}
-
-#cf img.top {
-  animation-name: cfFadeInOut;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-duration: 4s;
-  animation-direction: alternate;
-}
-
-#cf img.center {
-  animation-name: cfFadeInOut;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-duration: 4s;
-  animation-direction: alternate;
-}
-
-
-.imgLogo{
-  border-radius: 3px;
-  display:block; 
-  margin-left:auto; 
-  margin-right:auto;
-  margin-bottom: 20px;
-  opacity:0.8;
-  filter:alpha(opacity=80); /* For IE8 and earlier */
-  -webkit-box-reflect: below 10px
-  -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255, 255, 255, 0.04)));
-  border: solid 1px #CCC;
-  -moz-box-shadow: 1px 1px 5px #999;
-  -webkit-box-shadow: 1px 1px 5px #999;
-  box-shadow: 1px 1px 5px #999;
 }
 
 .bordersform{
