@@ -204,19 +204,24 @@ input{
                  0px 11px 9px rgba(100, 100, 100, 0.2),
                  0px 12px 11px rgba(100, 100, 100, 0.25),
                  0px 13px 15px rgba(100, 100, 100, 0.3);
-      }
+}
 
-.imgLogo, #slideshow{
+.logo3d i{
+  text-shadow: none;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  font-style: none;
+}
 
-  height: 330px;
-  width: 592px;
-  opacity: 0;  
+.imgLogo{
+
   border-radius: 3px;
-  display:block; 
-  margin-left:auto; 
+  display:block;
+  margin-top: -20px;
+  margin-left:auto;
   margin-right:auto;
   margin-bottom: 20px;
-  /*opacity:0.8;*/
+  opacity:0.8;
   filter:alpha(opacity=80); /* For IE8 and earlier */
   -webkit-box-reflect: below 10px
   -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255, 255, 255, 0.04)));
@@ -224,10 +229,6 @@ input{
   -moz-box-shadow: 1px 1px 5px #999;
   -webkit-box-shadow: 1px 1px 5px #999;
   box-shadow: 1px 1px 5px #999;
-
-  background-repeat:no-repeat;
-  background-attachment:fixed;
-  background-position:center; 
 
 }
 

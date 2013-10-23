@@ -61,12 +61,13 @@ jQuery ->
   timeToDisplay = 2000
   opacityChangeDelay = 50
   opacityChangeAmount = 0.05
-  slideshow = $("#slideshow")
+  slideshow = $(".imgLogo")
   urls = ["../images/front_4.jpg","../images/front_3.jpg", "../images/front_2.jpg", "../images/front_1.jpg"]
   index = 0
   transition = ->
     url = urls[index]
-    slideshow.css "background-image", "url(" + url + ")"
+    slideshow.attr("src", url).fadeIn "slow"
+    # slideshow.css "background-image", "url(" + url + ")"
     index = index + 1
     index = 0  if index > urls.length - 1
 
