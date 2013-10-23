@@ -5,3 +5,5 @@
 *.rdb
 
 /app/config/oauth.yml
+
+npm-debug.log
