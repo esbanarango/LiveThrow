@@ -94,3 +94,7 @@ Pull requests are welcome!
 ## Author
 This was written by [Esteban Arango Medina](http://twitter.com/esbanarango).
 >Special thanks to [@sduquej](https://twitter.com/sduquej) and [@dduqueti](https://twitter.com/dduqueti), for all the documentation.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/esbanarango/livethrow/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
