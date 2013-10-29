@@ -54,6 +54,7 @@
     │   ├── javascripts/
     │   │   └── lib/
     │   │       ├── jq.stopwatch.js
+    │   │       ├── offline.min.js    
     │   │       └── pickdate.js
     │   ├── lib/
     │   │   ├── bootstrap/

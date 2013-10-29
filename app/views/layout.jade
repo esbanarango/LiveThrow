@@ -9,6 +9,7 @@ html
     link(rel="stylesheet", href="/lib/css/noty_theme_twitter.css")
     link(rel="stylesheet", href="/lib/css/chosen.css")
     link(rel="stylesheet", href="/lib/css/pickdate.css")
+    link(rel="stylesheet", href="/lib/css/offline-theme-chrome.css")
 
     -var csss = csss || []
     -each css in csss
@@ -26,7 +27,8 @@ html
     script(src='//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.10.0/jquery.validate.min.js')
     script(src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js')
     script(src='//cdnjs.cloudflare.com/ajax/libs/chosen/0.9.11/chosen.jquery.min.js')
-    script(src='//cdnjs.cloudflare.com/ajax/libs/jquery.nanoscroller/0.6.8/jquery.nanoscroller.min.js')      
+    script(src='//cdnjs.cloudflare.com/ajax/libs/jquery.nanoscroller/0.6.8/jquery.nanoscroller.min.js')
+    script(src='/javascripts/lib/offline.min.js')
     != js('application')
 
     //- Hack to keep all links in same browser when in iOS app mode.
