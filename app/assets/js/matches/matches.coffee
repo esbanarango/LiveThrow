@@ -1,6 +1,6 @@
 $ ->
   $('.datepicker').pickadate
-    formatSubmit: 'dd/mm/yyyy'
+    formatSubmit: 'mm/dd/yyyy'
     clear: false
     dateMin: true
     dateMax: false
