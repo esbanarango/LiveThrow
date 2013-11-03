@@ -63,6 +63,7 @@ jQuery ->
   opacityChangeAmount = 0.05
   slideshow = $(".imgLogo")
   urls = ["../images/front_4.jpg","../images/front_3.jpg", "../images/front_2.jpg", "../images/front_1.jpg"]
+
   index = 0
   transition = ->
     url = urls[index]
@@ -103,5 +104,10 @@ jQuery ->
       slideshow.trigger "display-complete"
     ), timeToDisplay
 
-  transition()
-  fadeIn 0
+  countTotalImages = urls.length;
+
+  $(urls).each ->
+    $("<img/>")[0].src = this
+    unless --countTotalImages
+      transition()
+      fadeIn 0
