@@ -17,13 +17,7 @@ class Match
       matchs = []
       for key, value of objects
         match = new Match JSON.parse(value)
-        unless _.isEmpty(opts)
-          switch opts.except
-            when 'finished'
-              matchs.push match unless match.isfinished()
-            else
-              matchs.push match
-        else
+        if _.isEmpty(opts) || (opts.except == 'finished' && !match.isfinished())
           matchs.push match
       callback null, matchs
   # Retrive a single Match by email.
