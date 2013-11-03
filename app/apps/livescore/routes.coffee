@@ -36,7 +36,7 @@ routes = (app) ->
       if (req.body.teams is undefined) or (req.body.teams.length < 2)
         req.flash 'error', 'Please select 2 teams.'
         res.redirect '/matches/new'
-        return                  
+        return                
       attrs =
         teamId1: req.body.teams[0]
         teamId2: req.body.teams[1]
@@ -141,7 +141,7 @@ routes = (app) ->
             title: "Non-existent Match"        
 
     app.get '/', (req, res) ->
-      Match.all (err, _matches) ->
+      Match.all {except: 'finished'},(err, _matches) ->
         Team.allall (err, _teams) ->
           res.render "#{__dirname}/views/live/index",
             title: "Live Games"

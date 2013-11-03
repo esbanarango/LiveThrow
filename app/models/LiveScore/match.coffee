@@ -13,12 +13,18 @@ class Match
   # Fetch all Match objects from the database.
   # callback: (err, matchs)
   @all: (opts,callback) ->
-
     redis.hgetall Match.key(), (err, objects) ->
       matchs = []
       for key, value of objects
         match = new Match JSON.parse(value)
-        matchs.push match
+        unless _.isEmpty(opts)
+          switch opts.except
+            when 'finished'
+              matchs.push match unless match.isfinished()
+            else
+              matchs.push match
+        else
+          matchs.push match
       callback null, matchs
   # Retrive a single Match by email.
   #
@@ -33,7 +39,8 @@ class Match
 
   isfinished: () ->
     now = new Date()
-    matchDate = new Date(@date)
+    matchDate = Date.parse(@date)
+    return true if isNaN(matchDate)
     now > matchDate
 
   constructor: (attributes) ->
