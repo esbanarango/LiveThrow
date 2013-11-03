@@ -9,6 +9,22 @@ RequestHelper = require '../support/request-helper'
 
 describe 'matches', ->
 
+  describe 'matches display', ->
+
+    before (done) ->
+      MatchFactory.createSeveral done
+
+    describe 'GET /', ->
+      [response, body] = [null, null]
+      before (done) ->
+        options =
+          uri:"http://localhost:#{app.settings.port}/live"
+        request.get options, (err, _response, _body) ->
+          [response, body] = [_response, _body]
+          done()
+      it "has title", ->
+        assert.hasTag body, '//head/title', 'Live Throw - Live Games'
+
   describe 'matches creation', ->
 
     describe 'unauthenticated', ->
@@ -29,6 +45,8 @@ describe 'matches', ->
         it "redirects to /login", ->
           assert.match body, "Redirecting to /login"
 
+# //*[@id="container"]/div/div/div/table/tbody/tr/td[2]
+
       describe 'GET /new', ->
         [response, body] = [null, null]
         before (done) ->
@@ -43,8 +61,9 @@ describe 'matches', ->
     describe 'authenticated', ->
       # Login
       before (done) ->
-        TeamFactory.createSeveral ->
-          RequestHelper.login done
+        MatchFactory.clean ->
+          TeamFactory.createSeveral ->
+            RequestHelper.login done
 
       describe "POST /create", ->
 
