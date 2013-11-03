@@ -12,7 +12,8 @@ class Match
   @states: ['finished','transmitting','standby','canceled','unstarted']
   # Fetch all Match objects from the database.
   # callback: (err, matchs)
-  @all: (callback) ->
+  @all: (opts,callback) ->
+
     redis.hgetall Match.key(), (err, objects) ->
       matchs = []
       for key, value of objects
@@ -29,6 +30,12 @@ class Match
         return
       match = new Match JSON.parse(json)
       callback null, match
+
+  isfinished: () ->
+    now = new Date()
+    matchDate = new Date(@date)
+    now > matchDate
+
   constructor: (attributes) ->
     @[key] = value for key,value of attributes
     @setDefaults()

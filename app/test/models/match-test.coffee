@@ -24,6 +24,15 @@ describe 'Match', ->
           owner: '1'
         done()    
 
+  describe "#isfinished()", ->
+    match = null
+    before (done) ->
+      attrs.date = '01/12/2013'
+      match = new Match attrs
+      done()
+    it "returns true if the game is finished", ->
+      assert.equal match.isfinished(), true
+
   describe "create", ->
     match = null
     before (done) ->
