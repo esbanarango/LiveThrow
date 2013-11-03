@@ -24,6 +24,9 @@ describe 'matches', ->
           done()
       it "has title", ->
         assert.hasTag body, '//head/title', 'Live Throw - Live Games'
+      it "displays a match", ->
+        xpath = "//*[@id='matches']/tbody/tr/td[2]"
+        assert.hasTag body, xpath, 'Las Galacticos'
 
   describe 'matches creation', ->
 
