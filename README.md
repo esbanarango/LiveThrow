@@ -43,7 +43,8 @@ Live Throw uses a Node.js full stack.
     "passport": "~0.1.15",
     "passport-facebook": "~0.1.5",
     "yaml-config": "~0.2.1",
-    "passport-twitter": "~0.1.4"
+    "passport-twitter": "~0.1.4",
+    "moment":"2.4.0"
   }
 }
 ```
